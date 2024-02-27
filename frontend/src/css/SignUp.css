@@ -1,0 +1,107 @@
+body{
+    background: url('../images/bg-image.jpg');
+    background-repeat: no-repeat;
+    background-position: center center center center;
+    background-size: cover;
+}
+
+.form-container {
+    width: 600px; /* Increased width to accommodate two columns */
+    height: auto;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 20px 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(10px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.25); /* Adjust opacity for glass effect */
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.title {
+    text-align: center;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    margin: 10px 0 30px 0;
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 18px;
+    margin-bottom: 15px;
+}
+
+.input,
+.textarea {
+    border-radius: 20px;
+    border: 1px solid #c0c0c0;
+    outline: 0 !important;
+    box-sizing: border-box;
+    padding: 12px 15px;
+    width: 100%; /* Ensure inputs take up full width of their container */
+}
+
+.page-link {
+    text-decoration: underline;
+    margin: 0;
+    text-align: end;
+    color: #747474;
+    text-decoration-color: #747474;
+}
+
+.page-link-label {
+    cursor: pointer;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.page-link-label:hover {
+    color: #000;
+}
+
+.form-btn {
+    padding: 10px 15px;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    border-radius: 20px;
+    border: 0 !important;
+    outline: 0 !important;
+    background: teal;
+    color: white;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    grid-column: span 2; /* Ensure the button spans both columns */
+}
+
+.form-btn:active {
+    box-shadow: none;
+}
+
+.sign-up-label {
+    padding: 20px;
+    font-size: 10px;
+    color: #747474;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.sign-up-link {
+    margin-left: 1px;
+    font-size: 11px;
+    text-decoration: underline;
+    text-decoration-color: teal;
+    color: teal;
+    cursor: pointer;
+    font-weight: 800;
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
