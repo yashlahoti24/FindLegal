@@ -6,7 +6,7 @@ function SignUp(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`http://localhost:5000/api/auth/`, {
+    const response = await fetch(`http://localhost:5000/auth/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,9 +19,9 @@ function SignUp(props) {
       localStorage.setItem("token", json.authToken);
       // Redirect to home page or any other page after successful sign up
       window.location.href = "/";
-      props.showAlert("Account created successfully", "success");
+      // props.showAlert("Account created successfully", "success");
     } else {
-      props.showAlert("Invalid Credentials", "danger");
+      // props.showAlert("Invalid Credentials", "danger");
     }
   };
 
@@ -35,7 +35,7 @@ function SignUp(props) {
         <p className="title">Register</p>
         <form className="form" onSubmit={handleSubmit}>
           <input
-            type="Name"
+            type="input"
             className="input"
             placeholder="Name"
             name="name"
