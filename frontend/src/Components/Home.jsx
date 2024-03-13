@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useRef, useState } from "react";
 import "../css/Home.css";
-
+import logo from '../images/Logo.png';
 import Marriage from "../images/Marriage.webp";
 import Birth from "../images/Birth.webp";
 import Divorce from "../images/Divorce.webp";
@@ -44,6 +44,8 @@ const Home = ({ options, label, id, selectedVal, handleChange }) => {
   return (
     <>
       <div>
+        {/* <div><img src= {logo} alt="logo" /></div> */}
+      <h2 className="m-3 text">Your trusted legal partner</h2>
         <div id="carouselExample" className="carousel slide">
           <div className="carousel-inner">
             <div className="carousel-item active">

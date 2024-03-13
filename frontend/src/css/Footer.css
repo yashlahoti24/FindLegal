@@ -1,0 +1,28 @@
+.footer {
+    background-color: #343a40; /* Dark background color */
+    color: #ffffff; /* White text color */
+    padding-top: 50px;
+    padding-bottom: 10px;
+    border: 2px solid #292e33;
+  }
+  
+  .footer h5 {
+    color: #ffffff; /* White text color for headings */
+  }
+  
+  .footer ul li {
+    list-style: none;
+  }
+  
+  .footer ul li a {
+    color: #ffffff; /* White text color for links */
+  }
+  
+  .footer ul li a:hover {
+    color: #999999; /* Light gray text color on hover */
+  }
+  
+  .text-muted {
+    color: #ffffff; /* Light gray text color */
+  }
+  

@@ -1,25 +1,40 @@
 import './App.css';
 import Home from './Components/Home';
-import {location} from './Data/location'
+import Discuss from './Components/Discuss';
 import Login from './Components/Login';
+import {location} from './Data/location';
 import Navbar from './Components/Navbar';
-import SignUp from './Components/SignUp';
 import { useState } from "react";
+import Footer from './Components/Footer';
+import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 
 function App() {
   const [value, setValue] = useState("");
+
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <><Navbar/><Home
+      options={location}
+      label="name"
+      id="id"
+      selectedVal={value}
+      handleChange={(val) => setValue(val)}
+    /><Footer/></>
+    },
+    {
+      path: '/discuss',
+      element: <><Navbar/><Discuss/><Footer/></>
+    },
+    {
+      path: '/login',
+      element: <><Login/></>
+    }
+  ])
+
   return (
     <div className="App">
-      <Navbar/>
-      {/* <Login/> */}
-      {/* <SignUp/> */}
-      <Home
-        options={location}
-        label="name"
-        id="id"
-        selectedVal={value}
-        handleChange={(val) => setValue(val)}
-      />
+      <RouterProvider router={router}/>
     </div>
   );
 }

@@ -1,0 +1,19 @@
+.dropdown-menu-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem; /* Adjust the gap between items as needed */
+  }
+  
+  .dropdown-menu-content a {
+    display: block;
+    padding: 0.5rem;
+    text-decoration: none;
+    color: #212529;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+  }
+  
+  .dropdown-menu-content a:hover {
+    background-color: #f8f9fa;
+  }
+  

@@ -1,19 +1,22 @@
-.App {
+/* .App {
   font-family: sans-serif;
-}
+} */
 
 .location {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  padding: 20px;
+  background-color: lightgray;
+  border: 1px solid white;
 }
 
 .dropdown {
   position: relative;
   color: #333;
   cursor: default;
-  width: 200px;
+  width: 250px;
+  padding: 10px;
 }
 
 .dropdown .arrow {
@@ -85,6 +88,7 @@
 
 .search-text {
   margin-right: 10px;
+
 }
 
 .selected-value {
@@ -136,3 +140,14 @@
   border-color: transparent transparent #999;
   border-width: 0 5px 5px;
 }
+
+img{
+  height: 250px;
+  width: 350px;
+}
+/* .text{
+  position: absolute;   
+  margin: auto;    
+  top: 7em;    
+  left: 13em
+} */

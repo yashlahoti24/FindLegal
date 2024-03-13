@@ -41,13 +41,13 @@ function SignUp(props) {
             name="name"
             onChange={onChange}
           />
-          <input
+          {/* <input
             type="Bar Number"
             className="input"
             placeholder="Bar Number"
             name="barnumber"
             onChange={onChange}
-          />
+          /> */}
           <input
             type="Address"
             className="textarea"
