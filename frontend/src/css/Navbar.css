@@ -2,3 +2,19 @@ a{
     text-decoration: none;
     /* color: white; */
 }
+
+.signInBtn{
+    position: absolute;
+    right: 30px;
+    top: 10px;
+
+}
+
+ul{
+    translate: -65px;
+}
+
+/* ul li{
+    position: absolute;
+    gap: 10px;
+} */

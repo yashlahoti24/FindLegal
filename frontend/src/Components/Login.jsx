@@ -32,6 +32,7 @@ function Login(props) {
 
   return (
     <>
+    <div className="bodyColor">
       <div className="form-container">
         <p className="title">Welcome</p>
         <form className="form" onSubmit={handleSubmit}>
@@ -63,6 +64,7 @@ function Login(props) {
           </a>
         </p>
       </div>
+    </div>
     </>
   );
 }

@@ -32,14 +32,20 @@ class Navbar extends Component {
                   </Link>
                 </li>
                 <li className="nav-item mr-2">
-                  <Link className="nav-link" to="/login">
+                  <Link className="nav-link" to="/lawyer-login">
                     For Lawyers
                   </Link>
                 </li>
-                <li className="nav-item dropdown mr-2">
-                  {/* <DropdownMenu /> */}
-                </li>
-            
+                <li className="nav-item mr-2">
+                  <Link className="nav-link" to="/find-lawyer">
+                    Find Lawyer
+                  </Link>
+                </li>            
+                <li className="nav-item mr-2">
+                  <Link className="nav-link" to="/profile">
+                    Profile
+                  </Link>
+                </li>            
                 <li className="nav-item dropdown">
                   <Link
                     className="nav-link dropdown-toggle"
@@ -71,8 +77,9 @@ class Navbar extends Component {
                     </li>
                   </ul>
                 </li>
-                <Link to="/login"><button type="button" className="btn btn-outline-primary">Sign In</button></Link>
               </ul>
+              <Link to="/login"><button type="button" className="btn btn-outline-primary signInBtn">Sign In</button></Link>
+              
             </div>
           </div>
         </nav>

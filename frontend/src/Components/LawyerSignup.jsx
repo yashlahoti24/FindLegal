@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "../css/SignUp.css";
+import { Link } from "react-router-dom";
 
-function SignUp(props) {
+function LawyerLogin(props) {
   const [note, setNote] = useState({ email: "", password: "", cpassword: "" });
 
   const handleSubmit = async (e) => {
@@ -41,17 +42,17 @@ function SignUp(props) {
             name="name"
             onChange={onChange}
           />
-          {/* <input
+          <input
             type="Bar Number"
             className="input"
             placeholder="Bar Number"
             name="barnumber"
             onChange={onChange}
-          /> */}
+          />
           <input
             type="Address"
             className="textarea"
-            placeholder="address"
+            placeholder="Address"
             name="address"
             onChange={onChange}
           />
@@ -82,13 +83,13 @@ function SignUp(props) {
         </form>
         <p className="sign-up-label">
           Already registered?
-          <a href="Login.js" className="sign-up-link">
+          <Link to='/lawyer-login' className="sign-up-link">
             Log in
-          </a>
+          </Link>
         </p>
       </div>
     </div>
   );
 }
 
-export default SignUp;
+export default LawyerLogin;

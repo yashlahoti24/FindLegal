@@ -1,13 +1,15 @@
-import React from "react";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react"; // Import hooks from 'react'
 import "../css/Home.css";
-import logo from '../images/Logo.png';
+import ProfileCard from "./ProfileCard";
 import Marriage from "../images/Marriage.webp";
 import Birth from "../images/Birth.webp";
 import Divorce from "../images/Divorce.webp";
 import Name from "../images/Name.webp";
 
+
 const Home = ({ options, label, id, selectedVal, handleChange }) => {
+  
+
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -44,8 +46,7 @@ const Home = ({ options, label, id, selectedVal, handleChange }) => {
   return (
     <>
       <div>
-        {/* <div><img src= {logo} alt="logo" /></div> */}
-      <h2 className="m-3 text">Your trusted legal partner</h2>
+        <h2 className="m-3 text">Your trusted legal partner</h2>
         <div id="carouselExample" className="carousel slide">
           <div className="carousel-inner">
             <div className="carousel-item active">
@@ -89,7 +90,7 @@ const Home = ({ options, label, id, selectedVal, handleChange }) => {
       </div>
       <div className="location">
         <span className="search-text">Search for top-rated Lawyers: </span>
-        <div className="dropdown">
+        <div className="dropdownHome">
           <div className="selected-value">
             <input
               ref={inputRef}
@@ -119,6 +120,13 @@ const Home = ({ options, label, id, selectedVal, handleChange }) => {
             ))}
           </div>
         </div>
+      </div>
+      <h2 className="m-3 text">Top Rated Lawyers in India</h2>
+      <div className="profileCard">
+        <ProfileCard />
+        <ProfileCard />
+        <ProfileCard />
+        <ProfileCard />
       </div>
     </>
   );

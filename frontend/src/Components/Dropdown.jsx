@@ -1,28 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
+import '../css/Dropdown.css'
 
-const DropdownMenu = () => {
+const Dropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      const dropdownMenu = document.getElementById("dropdownMenu");
-      if (dropdownMenu && !dropdownMenu.contains(event.target)) {
-        setIsOpen(false);
-      }
-    };
-
-    if (isOpen) {
-      window.addEventListener('click', handleClickOutside);
-    }
-
-    return () => {
-      window.removeEventListener('click', handleClickOutside);
-    };
-  }, [isOpen]);
-
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
 
   const options = [
     "Property Possession Delay - RERA", "Apostille Certificate", "Possession Delay - NCLT", "Mutual Consent Divorce", "Trademark Registration",
@@ -31,32 +11,30 @@ const DropdownMenu = () => {
     "GST Registration", "FSSAI License", "Legal Heir Certificate"
   ];
 
-  const optionsPerColumn = Math.ceil(options.length / 4);
-  const columns = Array.from({ length: 4 }, (_, i) =>
-    options.slice(i * optionsPerColumn, (i + 1) * optionsPerColumn)
-  );
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <li className="nav-item dropdown">
-      <div
-        className="nav-link dropdown-toggle"
-        role="button"
-        onClick={toggleDropdown}
-        aria-expanded={isOpen ? "true" : "false"}
-      >
-        Services
-      </div>
-      <ul id="dropdownMenu" className={`dropdown-menu ${isOpen ? 'show' : ''}`} style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', left: '50%', transform: 'translateX(-50%)' }}>
-        {columns.map((column, index) => (
-          <div key={index}>
-            {column.map((option, idx) => (
-              <li className="dropdown-item" key={idx}>{option}</li>
+    <div className="dropdown">
+      <ul>
+      <li className="btn btn-secondary dropdown-toggle" onClick={toggleDropdown}>
+        Dropdown
+      </li></ul>
+      <div className={`dropdown-menu${isOpen ? ' show' : ''}`} 
+       style={{ width: 'max-content', position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, 15%)', zIndex: '100000' }}>
+        <div className="container">
+          <div className="row">
+            {options.map((option, index) => (
+              <div className="col-3" key={index}>
+                <button className="dropdown-item" type="button">{option}</button>
+              </div>
             ))}
           </div>
-        ))}
-      </ul>
-    </li>
+        </div>
+      </div>
+    </div>
   );
 }
 
-export default DropdownMenu;
+export default Dropdown;

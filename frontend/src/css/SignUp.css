@@ -1,9 +1,12 @@
-.form-container{
+.bodyColor{
+    background-color: #0e0c11;
+}
+/* .form-container{
     background: url('../images/bg-image.jpg');
     background-repeat: no-repeat;
     background-position: center center center center;
     background-size: cover;
-}
+} */
 
 .form-container {
     width: 600px; /* Increased width to accommodate two columns */

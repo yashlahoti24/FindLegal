@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "../css/SignUp.css";
+import { Link } from "react-router-dom";
 
-function SignUp(props) {
+function LawyerLogin(props) {
   const [note, setNote] = useState({ email: "", password: "", cpassword: "" });
 
   const handleSubmit = async (e) => {
@@ -34,34 +35,34 @@ function SignUp(props) {
       <div className="form-container">
         <p className="title">Register</p>
         <form className="form" onSubmit={handleSubmit}>
-          <input
+          {/* <input
             type="input"
             className="input"
             placeholder="Name"
             name="name"
             onChange={onChange}
-          />
-          {/* <input
+          /> */}
+          <input
             type="Bar Number"
             className="input"
             placeholder="Bar Number"
             name="barnumber"
             onChange={onChange}
-          /> */}
-          <input
+          />
+          {/* <input
             type="Address"
             className="textarea"
-            placeholder="address"
+            placeholder="Address"
             name="address"
             onChange={onChange}
-          />
-          <input
+          /> */}
+          {/* <input
             type="email"
             className="input"
             placeholder="Email"
             name="email"
             onChange={onChange}
-          />
+          /> */}
           <input
             type="password"
             className="input"
@@ -69,26 +70,26 @@ function SignUp(props) {
             name="password"
             onChange={onChange}
           />
-          <input
+          {/* <input
             type="password"
             className="input"
             placeholder="Confirm Password"
             name="cpassword"
             onChange={onChange}
-          />
+          /> */}
           <button type="submit" className="form-btn">
-            Register
+            Login
           </button>
         </form>
         <p className="sign-up-label">
-          Already registered?
-          <a href="Login.js" className="sign-up-link">
-            Log in
-          </a>
+          New User 
+          <Link to='/lawyer-signup' className="sign-up-link">
+            Sign Up
+          </Link>
         </p>
       </div>
     </div>
   );
 }
 
-export default SignUp;
+export default LawyerLogin;

@@ -1,11 +1,20 @@
-import React from 'react'
+import React, {useContext, useState} from "react";
+// import '../Context/LegalContext';
+// import '../Context/LegalState';
+// import LegalContext from "../Context/LegalContext";
+
 
 function Discuss() {
+  
+// const context = useContext(LegalContext);
+// const {post, setPost} = context;
+
   return (
-    <div>
+    <>
       <h1>This is Discussion Forum</h1>
-    </div>
-  )
+      
+    </>
+  );
 }
 
-export default Discuss
+export default Discuss;
