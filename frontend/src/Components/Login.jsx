@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import '../css/Login.css'
+import { Link } from "react-router-dom";
 
 
 function Login(props) {
@@ -59,9 +60,9 @@ function Login(props) {
         </form>
         <p className="sign-up-label">
           Don't have an account?
-          <a href="SignUp.js" className="sign-up-link">
+          <Link to='/signup' className="sign-up-link">
             Sign up
-          </a>
+          </Link>
         </p>
       </div>
     </div>

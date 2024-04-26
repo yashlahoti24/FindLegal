@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../css/SignUp.css";
+import { Link } from "react-router-dom";
 
 function SignUp(props) {
   const [note, setNote] = useState({ email: "", password: "", cpassword: "" });
@@ -82,9 +83,9 @@ function SignUp(props) {
         </form>
         <p className="sign-up-label">
           Already registered?
-          <a href="Login.js" className="sign-up-link">
+          <Link to='/login' className="sign-up-link">
             Log in
-          </a>
+          </Link>
         </p>
       </div>
     </div>

@@ -5,11 +5,9 @@ import Marriage from "../images/Marriage.webp";
 import Birth from "../images/Birth.webp";
 import Divorce from "../images/Divorce.webp";
 import Name from "../images/Name.webp";
-
+import { Link } from "react-router-dom";
 
 const Home = ({ options, label, id, selectedVal, handleChange }) => {
-  
-
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -50,16 +48,24 @@ const Home = ({ options, label, id, selectedVal, handleChange }) => {
         <div id="carouselExample" className="carousel slide">
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img src={Marriage} className="d-block w-100" alt="..." />
+              <Link to="find-lawyer">
+                <img src={Marriage} className="d-block w-100" alt="..." />
+              </Link>
             </div>
             <div className="carousel-item">
-              <img src={Birth} className="d-block w-100" alt="..." />
+              <Link to="find-lawyer">
+                <img src={Birth} className="d-block w-100" alt="..." />
+              </Link>
             </div>
             <div className="carousel-item">
-              <img src={Divorce} className="d-block w-100" alt="..." />
+              <Link to="find-lawyer">
+                <img src={Divorce} className="d-block w-100" alt="..." />
+              </Link>
             </div>
             <div className="carousel-item">
-              <img src={Name} className="d-block w-100" alt="..." />
+              <Link to="find-lawyer">
+                <img src={Name} className="d-block w-100" alt="..." />
+              </Link>
             </div>
           </div>
           <button

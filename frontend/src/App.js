@@ -23,6 +23,7 @@ import {
   NavigationMenuTrigger,
   NavigationMenuViewport,
 } from "./Components/Menu";
+import ProfilePage from "./Components/ProfilePage";
 
 function App() {
   const [value, setValue] = useState("");
@@ -107,6 +108,10 @@ function App() {
     {
       path: "/lawyer-signup",
       element: <LawyerSignup />,
+    },
+    {
+      path: "/profile",
+      element: <ProfilePage />,
     },
   ]);
 

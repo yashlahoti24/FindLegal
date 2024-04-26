@@ -46,7 +46,7 @@ class Navbar extends Component {
                     Profile
                   </Link>
                 </li>            
-                <li className="nav-item dropdown">
+                {/* <li className="nav-item dropdown">
                   <Link
                     className="nav-link dropdown-toggle"
                     to="/"
@@ -76,7 +76,7 @@ class Navbar extends Component {
                       </Link>
                     </li>
                   </ul>
-                </li>
+                </li> */}
               </ul>
               <Link to="/login"><button type="button" className="btn btn-outline-primary signInBtn">Sign In</button></Link>
               
