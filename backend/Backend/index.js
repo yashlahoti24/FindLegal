@@ -14,7 +14,9 @@ app.use(express.json());
 app.get('/',(req,res)=>{
     res.send("hello world")
 })
-app.use('/auth', require('./routes/auth'))
+app.use('/auth', require("./routes/a"));
+app.use('/discussion-forum',require("./routes/discussion-forum"));
+app.use("/search",require("./routes/filter"));
 
 app.listen('5000',()=>{
     console.log("app listening on port 5000 for inotebook ")
