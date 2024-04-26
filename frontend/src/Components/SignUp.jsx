@@ -1,29 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "../css/SignUp.css";
 import { Link } from "react-router-dom";
 
+import noteContext from "../context/notes/NoteContext";
+import NoteState from "../context/notes/NotesState";
+
 function SignUp(props) {
-  const [note, setNote] = useState({ email: "", password: "", cpassword: "" });
+  const context = useContext(noteContext);
+  const { setUser } = context;
+
+  const [note, setNote] = useState({ name: "",PhoneNo: "", DOB: "" , email: "", password: "", cpassword: "" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`http://localhost:5000/auth/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email: note.email, password: note.password }),
-    });
-    const json = await response.json();
-    console.log(json);
-    if (json.success) {
-      localStorage.setItem("token", json.authToken);
-      // Redirect to home page or any other page after successful sign up
-      window.location.href = "/";
-      // props.showAlert("Account created successfully", "success");
-    } else {
-      // props.showAlert("Invalid Credentials", "danger");
-    }
+    setUser(note.name, note.PhoneNo, note.DOB, note.email, note.password)
+    console.log(note);
+    // const response = await fetch(`http://localhost:5000/auth/`, {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify({ email: note.email, password: note.password }),
+    // });
+    // const json = await response.json();
+    // console.log(json);
+    // if (json.success) {
+    //   localStorage.setItem("token", json.authToken);
+    //   // Redirect to home page or any other page after successful sign up
+    //   window.location.href = "/";
+    //   // props.showAlert("Account created successfully", "success");
+    // } else {
+    //   // props.showAlert("Invalid Credentials", "danger");
+    // }
   };
 
   const onChange = (e) => {
@@ -50,10 +58,17 @@ function SignUp(props) {
             onChange={onChange}
           /> */}
           <input
-            type="Address"
+            type="Number"
             className="textarea"
-            placeholder="address"
-            name="address"
+            placeholder="Phone No"
+            name="phoneNo"
+            onChange={onChange}
+          />
+          <input
+            type="Number"
+            className="textarea"
+            placeholder="DOB"
+            name="DOB"
             onChange={onChange}
           />
           <input
@@ -77,7 +92,7 @@ function SignUp(props) {
             name="cpassword"
             onChange={onChange}
           />
-          <button type="submit" className="form-btn">
+          <button type="submit" className="form-btn" onClick={handleSubmit}>
             Register
           </button>
         </form>

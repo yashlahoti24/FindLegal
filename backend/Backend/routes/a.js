@@ -12,8 +12,8 @@ router.post('/user-registration',
 [
         body('name',"please enter the valid name").isLength({min:3}),
         body('email',"please enter the valid email").isEmail(),
-        body('password',"password length should be atleast 6 characters").isLength({min:5}),
-        body("phoneNo","please enter valid phone no").isLength(10)
+        body('password',"password length should be atleast 6 characters").isLength({min:5})
+        // body("phoneNo","please enter valid phone no").isLength(10)
 ],
 async (req,res)=>{
     let success= false;

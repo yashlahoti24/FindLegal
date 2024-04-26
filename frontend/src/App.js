@@ -11,6 +11,7 @@ import SignUp from "./Components/SignUp";
 import Services from "./Components/Services";
 import LawyerLogin from "./Components/LawyerLogin";
 import LawyerSignup from "./Components/LawyerSignup";
+import NoteState from "./context/notes/NotesState";
 // import ProfilePage from './Components/ProfileCard';
 
 import {
@@ -24,6 +25,7 @@ import {
   NavigationMenuViewport,
 } from "./Components/Menu";
 import ProfilePage from "./Components/ProfilePage";
+import Post from "./Components/Post";
 
 function App() {
   const [value, setValue] = useState("");
@@ -51,7 +53,7 @@ function App() {
         <>
           <Navbar />
           <Discuss />
-          <Footer />
+          {/* <Footer /> */}
         </>
       ),
     },
@@ -113,11 +115,17 @@ function App() {
       path: "/profile",
       element: <ProfilePage />,
     },
+    {
+      path: "/post",
+      element: <><Navbar/><Post /></>,
+    },
   ]);
 
   return (
     <div className="App">
+      <NoteState>
       <RouterProvider router={router} />
+      </NoteState>
     </div>
   );
 }
