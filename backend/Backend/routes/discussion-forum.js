@@ -11,8 +11,8 @@ const fetchUser = require('../middlewares/fetchUser');
 
 //add a post  | login required 
 router.post("/addpost/",fetchUser,[
-    body("title","please enter valid title").exists(),
-    body("description","please enter valid description").isLength({min:5}),
+    body("title","please enter valid title").exists().notEmpty(),
+    // body("description","please enter valid description").notEmpty(),
     body("tag","please enter atleast one tag").notEmpty()
 ],async(req,res)=>{
 // heree the id in the parameter refers to the user id

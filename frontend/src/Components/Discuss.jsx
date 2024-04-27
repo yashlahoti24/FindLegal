@@ -7,27 +7,12 @@ import Posts from "./Posts";
 
 function Discuss() {
   const context = useContext(noteContext);
-  // const {  getPost } = context;
+  const {  getPost,data } = context;
 // let arr=[];
-let [data,setData] = useState();
+// let [data,setData] = useState();
 const host = "http://localhost:5000";
-const getPost =  async()=>{
 
-  //get all posts
-  const response = await fetch(`${host}/discussion-forum`, {
-    method: "GET", 
-    headers: {
-      "Content-Type": "application/json",
-      // "auth-token" : localStorage.getItem('token')
 
-    },
-  });
-  const json =  await response.json();
-  console.log(json.post);
-  setData(json.post);
-  // arr=json.post;
-  console.log(data,'data');
-   }
   useEffect(() => {
       getPost();
   }, []);
@@ -43,11 +28,12 @@ const getPost =  async()=>{
 
   return (
    <>
+   <Link to={"/create-post"}>
+   <button>Add</button>
+   </Link>
     {
-      console.log("tanmay",data)
-    }{
          data && Array.from( data).map((p)=>{
-        console.log(p)
+        // console.log(p)
       return (<Posts key={p._id} post={p}/>);
         })
       } 

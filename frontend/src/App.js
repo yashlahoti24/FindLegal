@@ -107,7 +107,7 @@ function App() {
       element: <><Navbar/><Posts /></>,
     },
     {
-      path: "/post-page",
+      path: "/post-page/:id",
       element: <><Navbar/><PostPage /></>,
     },
   ]);

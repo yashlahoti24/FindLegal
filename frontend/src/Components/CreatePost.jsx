@@ -1,57 +1,35 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Input from "./Common/Input";
+import { useNavigate } from "react-router-dom";
+import noteContext from "../context/notes/NoteContext";
+
 
 function CreatePost() {
-  const [post, setPost] = useState("");
-//   const { data, errors, tags } = this.state;
+    let Navigate = useNavigate();
+  const context = useContext(noteContext);
+  const { addPost } = context;
+  const [post,setPost] =useState({title: "", description: "", tag: ""});
+  //   const { data, errors, tags } = this.state;
+  useEffect(() => {
+    if(localStorage.getItem("token")===null) {
+      Navigate('/login');
+      
+    }
+  }, []);
   function handleChange(e) {
     setPost(e.target.value);
-}
-//     function handleTagChange(tagID){
-//     console.log("hello");
-//     let data = this.state.data;
-//     const newtags = data.tags;
-//     const index = newtags.indexOf(tagID);
-//     if (index === -1) newtags.push(tagID);
-//     else newtags.splice(index, 1);
-//     data = {
-//       title: data.title,
-//       description: data.description,
-//       tags: newtags,
-//     };
-//     console.log(data);
-//     this.setState({ data });
-//   };
+    setPost({...post, [e.target.name]:e.target.value})
+  }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+   addPost(post.title,post.description,post.tag);
+    setPost({title:"",description:"",tag:""});
+    // console.log(json);
+    console.log("done")
+  }
   return (
     <>
-      {/* <div className="post">
-        <textarea
-          name="title"
-          placeholder="Title"
-          cols="100"
-          rows="1"
-          onChange={handleChange}
-        ></textarea>
-        <textarea
-          name="description"
-          placeholder="Description"
-          cols="100"
-          rows="7"
-          onChange={handleChange}
-        ></textarea>
-        <textarea
-          name="tags"
-          placeholder="Tags "
-          cols="100"
-          rows="1"
-          onChange={handleChange}
-        ></textarea>
-      </div>
-      <button className="success" type="submit">
-        Post
-      </button> */}
-
       <div className="container-lg">
         <h1 className="text-center m-2">Create a New Discussion</h1>
         <div
@@ -84,26 +62,29 @@ function CreatePost() {
               {/* {tags.map((tag) => (
                 <React.Fragment>
                   <label className="mr-3 ml-3"> */}
-                    <input
-                    //   key={tag._id}
-                    //   className="form-check-input"
-                      className="form-control"
-                      type="text"
-                      onChange={handleChange}
-                    />
-                    {/* {tag.name}
+              <input
+                //   key={tag._id}
+                //   className="form-check-input"
+                className="form-control"
+                type="text"
+                name="tag"
+                id="tag"
+                onChange={handleChange}
+              />
+              {/* {tag.name}
                   </label>
                 </React.Fragment> */}
               {/* ))} */}
             </div>
             <div className="text-center">
-                <button
-                  className="btn btn-primary mt-4"
+              <button
+                className="btn btn-primary mt-4"
+                onClick={handleSubmit}
                 //   disabled={this.validate()}
-                >
-                  Submit
-                </button>
-              </div>
+              >
+                Submit
+              </button>
+            </div>
           </form>
         </div>
       </div>

@@ -1,21 +1,44 @@
-import React from "react";
+import React ,{useContext,useEffect} from "react";
 import { PersonCircle, HandThumbsUpFill } from "react-bootstrap-icons";
 import CreateReply from "./CreateReply";
+import noteContext from "../context/notes/NoteContext";
+import { useLocation } from "react-router-dom";
 
-function PostPage() {
+
+function PostPage(props) {
+    const context = useContext(noteContext);
+    const { specificPost, sdata } = context;
+    // const queryParameters = new URLSearchParams(window.location.pathname)
+    // const postId = queryParameters.get("postId")
+    const location = useLocation();
+    let postId ;
+    function getPostId(){
+        let temp = location.pathname;
+        let i=1;
+        for( i=1;i<temp.length;i++){
+            if(temp.charAt(i)==='/'){
+                break;
+            }
+        }
+        postId = temp.substring(i+1,temp.length);
+      specificPost(postId);
+
+    }
+  
+  
+    useEffect(() => {
+        getPostId();
+    // console.log(sdata && sdata.userId)
+
+    
+    }, [sdata]); // Added postId as a dependency for useEffect
   return (
     <>
       <div className="container col-lg-6 shadow-lg p-3 mt-5 bg-body rounded">
-        <h2>Title</h2>
+        <h2>{sdata && sdata.title}</h2>
         <p className="mt-4 text-align" style={{ color: "#505050" }}>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eveniet
-          nobis quod architecto dolorum. Magnam aliquid deserunt, quasi aut
-          nesciunt quam est quo sapiente consequuntur laborum optio distinctio
-          perspiciatis mollitia ducimus odio debitis tempore modi quod velit
-          voluptas iste autem. Voluptas odit, amet laboriosam similique
-          accusamus voluptates incidunt. Quos magnam quas facere fugit
-          asperiores. Dolore vitae est consequatur facere debitis et, possimus
-          molestiae dolor aliquam unde itaque, accusamus sequi placeat odio.
+         
+         {sdata && sdata.description}
         </p>
         <div className="mt-1">
           Related Topics:

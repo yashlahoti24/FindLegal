@@ -6,8 +6,9 @@ const NoteState = (props) => {
   const host = "http://localhost:5000";
 
   // const [notes, setNotes] = useState();
-  let [post,setPost] = useState([]);
-  let arr=[];
+  let [data,setData] = useState([]);
+  let [sdata,setSdata] = useState();
+
   let [likes, setLikes]  = useState();
   let [comment,setComments]  =useState();
   
@@ -57,10 +58,12 @@ const NoteState = (props) => {
       },
     });
     const json =  await response.json();
-    console.log(json.post);
-  return json.post;
+    // console.log(json.post);
+    setData(json.post);
+    // arr=json.post;
+    // console.log(data,'data');
      }
-  //add a post
+  //add a post | authentication requried
   const addPost =  async(title,description,tag)=>{
     const response = await fetch(`${host}/discussion-forum/addpost`, {
       method: "POST", 
@@ -72,19 +75,20 @@ const NoteState = (props) => {
       body: JSON.stringify({title,description,tag}), 
     });
   const json =  await response.json();
-  setPost(post.concat(json));
   console.log(json);
+  setData(data.concat(json));
   }
   //view a specific post
   const specificPost  =async(id)=>{
-    const response = await fetch(`${host}/discussion-forum/id`, {
+    const response = await fetch(`${host}/discussion-forum/${id}`, {
         method: "POST", 
         headers: {
           "Content-Type": "application/json",    
         },
       });
     const json =  await response.json();
-    console.log(json);
+    // console.log(json.post[0]);
+    setSdata(json.post[0]);
   }
   //view  like on specific post
   const postLikes = async(id)=>{
@@ -128,7 +132,7 @@ const NoteState = (props) => {
     console.log(json);
   }
   const commentOnPos = async(id,description)=>{
-    const response = await fetch(`${host}/discussion-forum/comment/id`, {
+    const response = await fetch(`${host}/discussion-forum/comment/${id}`, {
         method: "POST", 
         headers: {
           "Content-Type": "application/json", 
@@ -158,7 +162,7 @@ const NoteState = (props) => {
     }
   
   return (
-    <NoteContext.Provider value={{ setUser , loginUser, addPost,getPost}}>
+    <NoteContext.Provider value={{ setUser , specificPost,loginUser,data,getPost,sdata,addPost}}>
       {props.children}
     </NoteContext.Provider>
   );
