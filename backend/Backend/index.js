@@ -1,9 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-app.use(cors({
-origin:'*'
-}));
+app.use(cors());
 const mongoose = require('mongoose');
 mongoose.connect("mongodb://localhost/findLegal")
 const db= mongoose.connection

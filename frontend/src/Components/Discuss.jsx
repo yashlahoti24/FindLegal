@@ -8,7 +8,8 @@ import Posts from "./Posts";
 function Discuss() {
   const context = useContext(noteContext);
   // const {  getPost } = context;
-let arr=[];
+// let arr=[];
+let [data,setData] = useState();
 const host = "http://localhost:5000";
 const getPost =  async()=>{
 
@@ -22,9 +23,10 @@ const getPost =  async()=>{
     },
   });
   const json =  await response.json();
-  arr=json.post;
-  console.log(arr);
-return json.post;
+  console.log(json.post);
+  setData(json.post);
+  // arr=json.post;
+  console.log(data,'data');
    }
   useEffect(() => {
       getPost();
@@ -42,9 +44,11 @@ return json.post;
   return (
    <>
     {
-       arr && Array.from(arr).map((p)=>{
-        console.log("tanmay");
-        return;
+      console.log("tanmay",data)
+    }{
+         data && Array.from( data).map((p)=>{
+        console.log(p)
+      return (<Posts key={p._id} post={p}/>);
         })
       } 
     
