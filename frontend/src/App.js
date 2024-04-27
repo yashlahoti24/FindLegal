@@ -13,19 +13,11 @@ import LawyerLogin from "./Components/LawyerLogin";
 import LawyerSignup from "./Components/LawyerSignup";
 import NoteState from "./context/notes/NotesState";
 // import ProfilePage from './Components/ProfileCard';
-
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuIndicator,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-  NavigationMenuViewport,
-} from "./Components/Menu";
 import ProfilePage from "./Components/ProfilePage";
-import Post from "./Components/Post";
+import CreatePost from "./Components/CreatePost";
+import Posts from "./Components/Posts";
+import CreateReply from "./Components/CreateReply";
+import PostPage from "./Components/PostPage";
 
 function App() {
   const [value, setValue] = useState("");
@@ -61,16 +53,7 @@ function App() {
       path: "/login",
       element: (
         <>
-          {/* <NavigationMenu>
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <NavigationMenuTrigger>Item One</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <NavigationMenuLink>Link</NavigationMenuLink>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu> */}
+          
         </>
       ),
       element: (
@@ -116,8 +99,16 @@ function App() {
       element: <ProfilePage />,
     },
     {
+      path: "/create-post",
+      element: <><Navbar/><CreatePost /></>,
+    },
+    {
       path: "/post",
-      element: <><Navbar/><Post /></>,
+      element: <><Navbar/><Posts /></>,
+    },
+    {
+      path: "/post-page",
+      element: <><Navbar/><PostPage /></>,
     },
   ]);
 
