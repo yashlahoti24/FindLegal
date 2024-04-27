@@ -6,7 +6,8 @@ const NoteState = (props) => {
   const host = "http://localhost:5000";
 
   // const [notes, setNotes] = useState();
-  let [post,setPost] = useState();
+  let [post,setPost] = useState([]);
+  let arr=[];
   let [likes, setLikes]  = useState();
   let [comment,setComments]  =useState();
   
@@ -56,7 +57,8 @@ const NoteState = (props) => {
       },
     });
     const json =  await response.json();
-    setPost(json.post)
+    console.log(json.post);
+  return json.post;
      }
   //add a post
   const addPost =  async(title,description,tag)=>{
@@ -156,7 +158,7 @@ const NoteState = (props) => {
     }
   
   return (
-    <NoteContext.Provider value={{ setUser , loginUser, addPost,getPost,post}}>
+    <NoteContext.Provider value={{ setUser , loginUser, addPost,getPost}}>
       {props.children}
     </NoteContext.Provider>
   );

@@ -36,7 +36,7 @@ return res.status(200).json({user});
 router.get("/",async(req,res)=>{
     try{
  let post = await Post.find();
- return res.status(200).json({post});
+ return res.status(200).json(post);
 }catch(err){
     return res.status(500).json({err:err.message});
 }
