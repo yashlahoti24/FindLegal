@@ -58,8 +58,9 @@ const NoteState = (props) => {
       },
     });
     const json =  await response.json();
-    // console.log(json.post);
-    setData(json.post);
+    console.log(json.post,json);
+    // setData(json.post);
+    setData(json)
     // arr=json.post;
     // console.log(data,'data');
      }
@@ -104,8 +105,8 @@ const NoteState = (props) => {
     console.log(json);
   }
   // view comment on specific post
-  const postComments = async(id,description)=>{
-    const response = await fetch(`${host}/discussion-forum/postComments/id`, {
+  const postComments = async(id)=>{
+    const response = await fetch(`${host}/discussion-forum/postComments/${id}`, {
         method: "POST", 
         headers: {
           "Content-Type": "application/json",    
@@ -114,7 +115,9 @@ const NoteState = (props) => {
       
     const json =  await response.json();
     setComments(json);
-    console.log(json);
+    // console.log(json);
+    return json;
+    
   }
 
   //like a post
@@ -142,8 +145,9 @@ const NoteState = (props) => {
       });
       
     const json =  await response.json();
-    setComments(comment.concat(json));
+    setComments(json);
     console.log(json);
+    return json;
   }
     //delete a post 
     const delPos  = async(id) =>{
@@ -162,7 +166,7 @@ const NoteState = (props) => {
     }
   
   return (
-    <NoteContext.Provider value={{ setUser , specificPost,loginUser,data,getPost,sdata,addPost}}>
+    <NoteContext.Provider value={{ setUser,postComments,comment , specificPost,loginUser,data,getPost,sdata,addPost,commentOnPos}}>
       {props.children}
     </NoteContext.Provider>
   );

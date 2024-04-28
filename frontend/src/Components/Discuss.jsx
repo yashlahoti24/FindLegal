@@ -1,4 +1,4 @@
-'use client'
+
 import React, {useContext, useState, useEffect} from "react";
 import "../css/Posts.css"
 import { Link } from "react-router-dom";
@@ -15,7 +15,8 @@ const host = "http://localhost:5000";
 
   useEffect(() => {
       getPost();
-  }, []);
+      console.log(data);
+  }, [data]);
   // const handleSubmit = async (e) => {
   //   e.preventDefault();
   //   await addPost(note.title, note.description, note.tag);

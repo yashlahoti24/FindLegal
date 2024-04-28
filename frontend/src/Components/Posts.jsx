@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import "../css/Posts.css";
+import { PersonCircle, HandThumbsUpFill } from "react-bootstrap-icons";
+
 import PostPage from "../Components/PostPage";
 import { Link } from "react-router-dom";
 
@@ -30,7 +32,7 @@ export default function Posts(props) {
                 </span>
               ))}
           </div>
-          <h6 className="mt-2 likes">1K Likes | 2.5K Views</h6>
+          <h6 className="mt-2 likes">1K Likes</h6>
         </div>
       </Link>
     </>
