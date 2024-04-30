@@ -44,7 +44,8 @@ const Home = ({ options, label, id, selectedVal, handleChange }) => {
   return (
     <>
       <div>
-        <h2 className="m-3 text">Your trusted legal partner</h2>
+        <h2 className="text">Your trusted legal partner</h2>
+        <h6 style={{color: "GrayText", paddingBottom: "20px"}}>Helping you resolve your legal problem</h6>
         <div id="carouselExample" className="carousel slide">
           <div className="carousel-inner">
             <div className="carousel-item active">

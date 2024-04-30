@@ -5,7 +5,7 @@ import noteContext from "../context/notes/NoteContext";
 
 
 function CreatePost() {
-    let Navigate = useNavigate();
+  let Navigate = useNavigate();
   const context = useContext(noteContext);
   const { addPost } = context;
   const [post,setPost] =useState({title: "", description: "", tag: ""});
@@ -23,10 +23,13 @@ function CreatePost() {
 
   function handleSubmit(e) {
     e.preventDefault();
-   addPost(post.title,post.description,post.tag);
+  let tags=post.tag.split(" ");
+   console.log(tags);
+   addPost(post.title,post.description,tags);
     setPost({title:"",description:"",tag:""});
     // console.log(json);
     console.log("done")
+    Navigate("/discuss")
   }
   return (
     <>

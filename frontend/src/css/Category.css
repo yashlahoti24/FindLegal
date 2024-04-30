@@ -1,0 +1,52 @@
+.title {
+    width: auto;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 35px auto 25px auto;
+    position: relative;
+    z-index: 10;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.background {
+    background: linear-gradient(to right, rgb(27, 27, 50) 50%, transparent 50%);
+    height: 200px;
+    width: 2400px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    left: 10px;
+    bottom: 10px;
+    z-index: -10;
+}
+
+.list{
+    color: rgb(78, 78, 78);
+}
+
+.list li::marker{
+    color: grey;
+    
+}
+
+.content
+{
+    padding: 5px;
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.col-card{
+    background-color: white;
+    padding: 20px;
+    position: fixed;
+    margin-top: 25px;
+    width: fit-content;
+    margin-right: 25px;
+    border-radius: 5px;
+    top: 170px;
+}

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import "../css/SignUp.css";
 import { Link } from "react-router-dom";
+import Logo from "./LogoLightModeNoBg.png";
 
 import noteContext from "../context/notes/NoteContext";
 import NoteState from "../context/notes/NotesState";
@@ -9,11 +10,11 @@ function SignUp(props) {
   const context = useContext(noteContext);
   const { setUser } = context;
 
-  const [note, setNote] = useState({ name: "",PhoneNo: "", DOB: "" , email: "", password: "", cpassword: "" });
+  const [note, setNote] = useState({ name: "",phoneNo: "", DOB: "" , email: "", password: "", cpassword: "" });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setUser(note.name, note.PhoneNo, note.DOB, note.email, note.password)
+    setUser(note.name, note.phoneNo, note.DOB, note.email, note.password)
     console.log(note);
     // const response = await fetch(`http://localhost:5000/auth/`, {
     //   method: "POST",
@@ -39,9 +40,14 @@ function SignUp(props) {
   };
 
   return (
-    <div className="bodyColor">
+    <div className="container">
       <div className="form-container">
-        <p className="title">Register</p>
+      <img
+            src={Logo}
+            alt="Logo"
+            className="login-image"
+          />
+        <h4 className="signup-title">Register</h4>
         <form className="form" onSubmit={handleSubmit}>
           <input
             type="input"

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import "../css/Login.css";
 import { Link, useNavigate } from "react-router-dom";
+import Logo from "./LogoLightModeNoBg.png";
 
 import noteContext from "../context/notes/NoteContext";
 
@@ -30,12 +31,12 @@ function Login(props) {
     //   props.showAlert("Invalid Credentials", "danger");
     // }
 
-    const suc =await loginUser(note.email, note.password);
-    if(suc.success === true){
-      console.log("login successfully")
+    const suc = await loginUser(note.email, note.password);
+    if (suc.success === true) {
+      console.log("login successfully");
       Navigate("/");
-    }else{
-      console.log("login failed");
+    } else {
+      alert("login failed");
       Navigate("/login");
     }
     console.log(note);
@@ -49,7 +50,12 @@ function Login(props) {
     <>
       <div className="bodyColor">
         <div className="form-container">
-          <p className="title">Welcome</p>
+          <img
+            src={Logo}
+            alt="Logo"
+            className="login-image"
+          />
+          <h4 className="login-title">Welcome Back!</h4>
           <form className="form" onSubmit={handleSubmit}>
             <input
               type="email"
@@ -65,9 +71,6 @@ function Login(props) {
               name="password"
               onChange={onChange}
             />
-            <p className="page-link">
-              <span className="page-link-label">Forgot Password?</span>
-            </p>
             <button type="submit" className="form-btn">
               Log in
             </button>

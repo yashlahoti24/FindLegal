@@ -15,16 +15,25 @@
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
 }
-
-.title {
-  text-align: center;
-  /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", */
-    /* "Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
-  margin: 10px 0 30px 0;
-  font-size: 28px;
-  font-weight: 800;
+.login-image{
+  width: 400px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin: auto;
 }
-
+.login-title {
+  width: auto;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px auto 0px auto;
+  position: relative;
+  z-index: 10;
+  border-radius: 5px;
+  background-color: white;
+}
 .form {
   width: 100%;
   display: flex;

@@ -1,12 +1,25 @@
-import React, { useContext, useEffect } from "react";
-import { PersonCircle, HandThumbsUpFill } from "react-bootstrap-icons";
+import React, { useState, useContext, useEffect } from "react";
+import { PersonCircle, HandThumbsUpFill, Heart } from "react-bootstrap-icons";
 import CreateReply from "./CreateReply";
 import noteContext from "../context/notes/NoteContext";
 import { useLocation } from "react-router-dom";
+import { AiFillHeart } from "react-icons/ai";
 
 function PostPage(props) {
   const context = useContext(noteContext);
-  const { postComments, specificPost, sdata, comment } = context;
+  const {
+    postComments,
+    specificPost,
+    sdata,
+    comment,
+    likes,
+    likeOnPost,
+    postLikes,
+    disLikePost,
+  } = context;
+  //if the post is liked dislike will be false
+  const [disLike, setDisLike] = useState(true);
+
   // const queryParameters = new URLSearchParams(window.location.pathname)
   // const postId = queryParameters.get("postId")
   const location = useLocation();
@@ -22,12 +35,25 @@ function PostPage(props) {
     postId = temp.substring(i + 1, temp.length);
     specificPost(postId);
   }
-
+  const handleLike = (e) => {
+    e.preventDefault();
+    getPostId();
+    if (disLike) {
+      setDisLike(false);
+      likeOnPost(postId);
+      console.log("liked a post successfully");
+    } else {
+      setDisLike(true);
+      disLikePost(postId);
+      console.log("dislike a post");
+    }
+  };
   useEffect(() => {
     getPostId();
     postComments(postId);
-    console.log(comment);
-    console.log(sdata && sdata.userId)
+    postLikes(postId);
+    // console.log(comment);
+    // console.log(sdata && sdata.userId)
 
     //box ke andar sdata aur comment tha
     //use re render hone ka uske vajah se undefine ka error nhi ata par out of resources ka error ata hai
@@ -41,20 +67,25 @@ function PostPage(props) {
         </p>
         <div className="mt-1">
           Related Topics:
+          {/* {
+            tag && Array.from(tag).map((e)=>{
+              return <span className="tag">{e}</span>
+            })
+          } */}
           <span className="tag">tag 1</span>
           <span className="tag">tag 2</span>
           <span className="tag">tag 3</span>
           <span className="tag">tag 4</span>
           <div className="d-flex w-100 justify-content-between mt-3 mb-3">
-            <button
-              // disabled={!user}
-              className={"btn btn-outline-primary"}
-              // onClick={this.handleUpvote}
-            >
-              <HandThumbsUpFill className="mr-2" />
-              1K
+            <button className={"btn btn-outline-primary"} onClick={handleLike}>
+              {disLike ? (
+                <Heart className="mr-2" />
+              ) : (
+                <AiFillHeart className="mr-2" />
+              )}
+
+               {" " + likes}
             </button>
-            <p>2.5K Views</p>
           </div>
           <div
             class="d-flex w-100 justify-content-between"
@@ -74,19 +105,19 @@ function PostPage(props) {
       </div>
       <div>
         {comment &&
-           Array.from(comment).map((e) => {
+          Array.from(comment).map((e) => {
             return (
-            <div className="container col-lg-6 shadow-lg p-3 mt-3 bg-body rounded">
-              <div className="ml-4">
-                <PersonCircle size={30} className="mr-3" />
-                posted by {e.userId}
+              <div className="container col-lg-6 shadow-lg p-3 mt-3 bg-body rounded">
+                <div className="ml-4">
+                  <PersonCircle size={30} className="mr-3" />
+                  posted by {e.userId}
+                </div>
+                <div className="m-4">{e.description}</div>
+                <div className="d-flex w-100 justify-content-between mt-3 mb-3">
+                  <p class="mb-1">2:43 PM 12/01/2022</p>
+                </div>
               </div>
-              <div className="m-4">{e.description}</div>
-              <div className="d-flex w-100 justify-content-between mt-3 mb-3">
-                
-                <p class="mb-1">2:43 PM 12/01/2022</p>
-              </div>
-            </div>);
+            );
           })}
       </div>
     </>

@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import DropdownMenu from "./Dropdown"; // Assuming the DropdownMenu component is in the same directory
 import '../css/Navbar.css';
 import { Link } from "react-router-dom";
 
@@ -32,7 +31,7 @@ class Navbar extends Component {
                   </Link>
                 </li>
                 <li className="nav-item mr-2">
-                  <Link className="nav-link" to="/lawyer-login">
+                  <Link className="nav-link" to="/bid">
                     For Lawyers
                   </Link>
                 </li>

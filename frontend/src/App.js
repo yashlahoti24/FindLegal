@@ -18,6 +18,9 @@ import CreatePost from "./Components/CreatePost";
 import Posts from "./Components/Posts";
 import CreateReply from "./Components/CreateReply";
 import PostPage from "./Components/PostPage";
+import PropertyPossessionDelayRERA from "./Components/Categories/Property PossessionDelay-RERA";
+import Bidding from "./Components/Bidding";
+import BidPage from "./Components/BidPage";
 
 function App() {
   const [value, setValue] = useState("");
@@ -45,7 +48,7 @@ function App() {
         <>
           <Navbar />
           <Discuss />
-          {/* <Footer /> */}
+          <Footer />
         </>
       ),
     },
@@ -75,13 +78,7 @@ function App() {
       element: (
         <>
           <Navbar />
-          <Services
-            options={location}
-            label="name"
-            id="id"
-            selectedVal={value}
-            handleChange={(val) => setValue(val)}
-          />
+          <Services/>
           <Footer />
         </>
       ),
@@ -96,7 +93,7 @@ function App() {
     },
     {
       path: "/profile",
-      element: <ProfilePage />,
+      element: <><Navbar/><ProfilePage /><Footer/></>,
     },
     {
       path: "/create-post",
@@ -109,6 +106,18 @@ function App() {
     {
       path: "/post-page/:id",
       element: <><Navbar/><PostPage /></>,
+    },
+    {
+      path: "/bid",
+      element: <><Navbar/><Bidding /></>,
+    },
+    {
+      path: "/bid-page",
+      element: <><Navbar/><BidPage /></>,
+    },
+    {
+      path: "/property-posession-delay-rera",
+      element: <><Navbar/><PropertyPossessionDelayRERA /><Footer/></>,
     },
   ]);
 

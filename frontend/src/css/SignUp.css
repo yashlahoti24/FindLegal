@@ -1,5 +1,5 @@
-.bodyColor{
-    background-color: #0e0c11;
+.container{
+    /* background-color: #0e0c11; */
 }
 /* .form-container{
     background: url('../images/bg-image.jpg');
@@ -11,7 +11,7 @@
 .form-container {
     width: 600px; /* Increased width to accommodate two columns */
     height: auto;
-    color: white;
+    /* color: white; */
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     border-radius: 10px;
     box-sizing: border-box;
@@ -25,13 +25,17 @@
     border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-.title {
-    text-align: center;
-    /* font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-        "Lucida Sans Unicode", Geneva, Verdana, sans-serif; */
-    margin: 10px 0 30px 0;
-    font-size: 28px;
-    font-weight: 800;
+.signup-title {
+    width: auto;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0px auto 0px auto;
+    position: relative;
+    z-index: 10;
+    border-radius: 5px;
+    background-color: white;
 }
 
 .form {

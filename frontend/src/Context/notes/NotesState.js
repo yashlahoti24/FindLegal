@@ -8,8 +8,8 @@ const NoteState = (props) => {
   // const [notes, setNotes] = useState();
   let [data,setData] = useState([]);
   let [sdata,setSdata] = useState();
-
-  let [likes, setLikes]  = useState();
+  let [name,setName] = useState("");
+  let [likes, setLikes]  = useState(0);
   let [comment,setComments]  =useState();
   
   const setUser = async (name, phoneNo, DOB, email, password) => {
@@ -23,9 +23,33 @@ const NoteState = (props) => {
     const json = await response.json();
     console.log(json);
   };
-
+  const getUserById =async(id)=>{
+    const response = await fetch(`${host}/discussion-forum/get/${id}`, {
+      method: "POST", 
+      // headers: {
+      //   // "Content-Type": "application/json",
+      //   "auth-token" : localStorage.getItem('token')
+      // },
+    });
+    const json = await response.json();
+    console.log(json);
+    // setName(json[0].name);
+    // console.log(name);
+  }
+  const getUser = async()=>{
+    const response = await fetch(`${host}/discussion-forum/getuser`, {
+      method: "POST", 
+      headers: {
+        // "Content-Type": "application/json",
+        "auth-token" : localStorage.getItem('token')
+      },
+    });
+    let json =await response.json();
+    console.log(json[0].name);
+    
+  }
   const loginUser = async(email,password)=>{
-    const response = await fetch(`${host}/auth/login`,{
+    const response = await fetch(`${host}/auth/login/user`,{
       method:'POST',
       headers:{
         "Content-Type":"application/json"
@@ -58,7 +82,7 @@ const NoteState = (props) => {
       },
     });
     const json =  await response.json();
-    console.log(json.post,json);
+    // console.log(json.post,json);
     // setData(json.post);
     setData(json)
     // arr=json.post;
@@ -93,7 +117,7 @@ const NoteState = (props) => {
   }
   //view  like on specific post
   const postLikes = async(id)=>{
-    const response = await fetch(`${host}/discussion-forum/postlikes/id`, {
+    const response = await fetch(`${host}/discussion-forum/postlikes/${id}`, {
         method: "POST", 
         headers: {
           "Content-Type": "application/json",    
@@ -102,7 +126,7 @@ const NoteState = (props) => {
     const json =  await response.json();
     let number= json.length;
     setLikes(number);
-    console.log(json);
+    // console.log(json);
   }
   // view comment on specific post
   const postComments = async(id)=>{
@@ -122,7 +146,7 @@ const NoteState = (props) => {
 
   //like a post
   const likeOnPost = async(id)=>{
-    const response = await fetch(`${host}/discussion-forum/like/id`, {
+    const response = await fetch(`${host}/discussion-forum/like/${id}`, {
         method: "POST", 
         headers: {
           "Content-Type": "application/json", 
@@ -132,6 +156,20 @@ const NoteState = (props) => {
       
     const json =  await response.json();
     setLikes(likes +1);
+    console.log(json);
+  }
+  //dislike a post
+  const disLikePost = async(id)=>{
+    const response = await fetch(`${host}/discussion-forum/dislike/${id}`, {
+        method: "DELETE", 
+        headers: {
+          "Content-Type": "application/json", 
+          'auth-token':localStorage.getItem('token')  
+        },
+      });
+      
+    const json =  await response.json();
+    setLikes(likes -1);
     console.log(json);
   }
   const commentOnPos = async(id,description)=>{
@@ -166,7 +204,7 @@ const NoteState = (props) => {
     }
   
   return (
-    <NoteContext.Provider value={{ setUser,postComments,comment , specificPost,loginUser,data,getPost,sdata,addPost,commentOnPos}}>
+    <NoteContext.Provider value={{getUserById,getUser,name,disLikePost,postLikes,likes,likeOnPost, setUser,postComments,comment , specificPost,loginUser,data,getPost,sdata,addPost,commentOnPos}}>
       {props.children}
     </NoteContext.Provider>
   );

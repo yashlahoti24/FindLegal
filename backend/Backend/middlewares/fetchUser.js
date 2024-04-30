@@ -7,7 +7,7 @@ const fetchuser = (req,res,next)=>{
    try {
     const string = jwt.verify(token,JWT_SECRET);
     req.user = string.user;
-    console.log(req.user + ' fetchuser')
+    // console.log(req.user + ' fetchuser')
     next();
    }catch(err){
     res.status(500).json({err:err.message});

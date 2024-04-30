@@ -51,7 +51,7 @@ return res.status(200).json({success,authToken,user});
 router.post('/laywer-registration/',
 [
     body('password',"password length should be atleast 6 characters").isLength({min:5}),
-    body("phoneNo","please enter valid phone no").isLength(10),
+    // body("phoneNo","please enter valid phone no").isLength(10),
     body('bio',"please enter the valid bio").isLength({min:5}),
 ],
 async (req,res)=>{
@@ -83,56 +83,20 @@ return res.status(200).json({success,authToken});
 })
 
 //api for login of lawyer
-// router.post('/login/user',[
-//     body('email',"please ente valid email").isEmail(),
-//     body('password',"please enter valid password").exists()
-// ],async(req,res)=>{
-// let {email,password} = req.body;
-// try {
-//     let success =false;
-//     let results  =validationResult(req);
-//     if(!results.isEmpty()) {
-//         return res.status(400).json({err:results.array()});
-//     }
-//     const user =await Client.findOne({email});
-//     if(!user) {
-//         return res.status(404).json({success,err:'please enter valid credentials email'});
-//     }
-    
-//     const passwordCompare = bcrypt.compare(password,user.password);
-//         if(!passwordCompare){
-//             return res.status(404).json({success,msg:"please try to login with correct creditenials"})
-//         }
-//         const payLoad = {
-//             user:{
-//                 id:user.id
-//             }
-//         }
-//         const authToken = jwt.sign(payLoad,JWT_SECRET);
-//         success=true;
-//         res.json({success,authToken});
-//     }catch(err){
-//         console.log(err.message);
-//         res.status(500).json({err:"internal server error"})
-//     }
-
-// })
-//api for login of lawyer
-
-router.post('/login',[
-    body('lawyerId',"please ente valid lawyerId").exists(),
+router.post('/login/user',[
+    body('email',"please ente valid email").isEmail(),
     body('password',"please enter valid password").exists()
 ],async(req,res)=>{
-let {lawyerId,password} = req.body;
+let {email,password} = req.body;
 try {
     let success =false;
     let results  =validationResult(req);
     if(!results.isEmpty()) {
         return res.status(400).json({err:results.array()});
     }
-    const user =await Lawyer.findOne({lawyerId});
+    const user =await Client.findOne({email});
     if(!user) {
-        return res.status(404).json({success,err:'please enter valid credentials lawyerId'});
+        return res.status(404).json({success,err:'please enter valid credentials email'});
     }
     
     const passwordCompare = bcrypt.compare(password,user.password);
@@ -153,5 +117,41 @@ try {
     }
 
 })
+//api for login of lawyer
+
+// router.post('/login',[
+//     body('lawyerId',"please ente valid lawyerId").exists(),
+//     body('password',"please enter valid password").exists()
+// ],async(req,res)=>{
+// let {lawyerId,password} = req.body;
+// try {
+//     let success =false;
+//     let results  =validationResult(req);
+//     if(!results.isEmpty()) {
+//         return res.status(400).json({err:results.array()});
+//     }
+//     const user =await Lawyer.findOne({lawyerId});
+//     if(!user) {
+//         return res.status(404).json({success,err:'please enter valid credentials lawyerId'});
+//     }
+    
+//     const passwordCompare = bcrypt.compare(password,user.password);
+//         if(!passwordCompare){
+//             return res.status(404).json({success,msg:"please try to login with correct creditenials"})
+//         }
+//         const payLoad = {
+//             user:{
+//                 id:user.id
+//             }
+//         }
+//         const authToken = jwt.sign(payLoad,JWT_SECRET);
+//         success=true;
+//         res.json({success,authToken});
+//     }catch(err){
+//         console.log(err.message);
+//         res.status(500).json({err:"internal server error"})
+//     }
+
+// })
 
 module.exports = router;

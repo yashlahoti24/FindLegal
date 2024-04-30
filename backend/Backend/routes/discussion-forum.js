@@ -2,13 +2,27 @@ const express =require("express");
 const Post = require("../models/Posts");
 const Like = require("../models/Likes");
 const Comment = require("../models/Comment");
+const Client = require("../models/Client");
+const Lawyer =require("../models/Lawyer");
 const router =express.Router();
 const {body,validationResult} = require('express-validator')
 const bcrypt  = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'Tanmayisagoodboy';
 const fetchUser = require('../middlewares/fetchUser');
-
+//get user;
+router.post("/getuser",fetchUser,async(req,res)=>{
+    try{
+        let id= req.user.id;
+        let user = await Client.find({_id:id});
+        if(user===null){
+            user= await Lawyer.findById({_id:id});
+        }
+        return res.status(200).json(user);
+    }catch(err){
+        return res.status(500).json({err:err.message});
+    }
+})
 //add a post  | login required 
 router.post("/addpost/",fetchUser,[
     body("title","please enter valid title").exists().notEmpty(),
@@ -63,6 +77,19 @@ router.post("/like/:id",fetchUser, async(req,res)=>{
         return res.status(500).json({err:err.message});
     }
 })
+//dislike a post
+router.delete("/dislike/:id",fetchUser,async(req,res)=>{
+    try{
+        let dislike = await Like.deleteOne({
+            postId:req.params.id,
+            userId:req.user.id
+        })
+        return res.status(200).json({dislike});
+    }catch(err) {
+        return res.status(500).json({err:err.message});
+    }
+})
+//how to 
 //comment a post
 router.post("/comment/:id",fetchUser,[
     body("description","please enter a valid description").exists()
@@ -113,6 +140,21 @@ router.delete("/delete/:id",fetchUser,async(req,res)=>{
         return res.status(500).json({err:err.message});
     }
     
+})
+
+//get user by id
+router.post("/get/:id",async(req,res)=>{
+    try{
+        let id =req.params.id;
+        let user = await Client.find({_id:id});
+        if(user===null){
+            user= await Lawyer.find({_id:id});
+        }
+        return res.status(200).json(user);
+    }catch(err){
+        return res.status(500).json({err:err.message})
+
+    }
 })
 //filter a post based on tags
 // router.post("/",async(req,res)=>{
