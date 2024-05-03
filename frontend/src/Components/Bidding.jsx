@@ -7,15 +7,16 @@ import Bids from "./Bids";
 
 function Bidding() {
   const context = useContext(noteContext);
-  const {  getPost,data } = context;
+  const {  showBids,bid } = context;
 
 const host = "http://localhost:5000";
 
 
   useEffect(() => {
-      getPost();
-      console.log(data);
-  }, [data]);
+      // getPost();
+      showBids();
+      // console.log();
+  }, []);
 
   return (
    <>
@@ -23,7 +24,7 @@ const host = "http://localhost:5000";
    {/* <button>Add</button> */}
    </Link>
     {
-         data && Array.from( data).map((p)=>{
+         bid && Array.from( bid).map((p)=>{
         // console.log(p)
       return (<Bids key={p._id} post={p}/>);
         })

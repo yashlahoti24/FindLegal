@@ -11,6 +11,21 @@ const NoteState = (props) => {
   let [name,setName] = useState("");
   let [likes, setLikes]  = useState(0);
   let [comment,setComments]  =useState();
+  let [bid,setBid] = useState();
+  let [lawyer,setLawyer] = useState();
+  const getLawyer =async(id)=>{
+    const response = await fetch(`${host}/auth/getlawyer/${id}`, {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json",
+        "auth-token":localStorage.getItem('token')
+      },
+      // body: JSON.stringify({ name, phoneNo, DOB, email, password }),
+    });
+    const json = await response.json();
+    setLawyer(json);
+    console.log(json);
+  };
   
   const setUser = async (name, phoneNo, DOB, email, password) => {
     const response = await fetch(`${host}/auth/user-registration`, {
@@ -45,7 +60,8 @@ const NoteState = (props) => {
       },
     });
     let json =await response.json();
-    console.log(json[0].name);
+    // console.log(json[0]._id);
+    return json[0]._id;
     
   }
   const loginUser = async(email,password)=>{
@@ -202,9 +218,121 @@ const NoteState = (props) => {
         //here we need to write a code to remove the post from the posts 
         console.log(json);
     }
-  
+  // show all bids
+  const showBids = async()=>{
+    const response = await fetch(`${host}/bid/bids`, {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json", 
+        'auth-token':localStorage.getItem('token')  
+      },
+      // body: JSON.stringify({practise})
+    });
+    let json = await response.json();
+    console.log(json);
+    setBid(json);
+  }
+  //req for a bid
+  const reqForBid = async(practise)=>{
+    const response = await fetch(`${host}/bid/req`, {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json", 
+        'auth-token':localStorage.getItem('token')  
+      },
+      body: JSON.stringify({practise})
+    });
+    let json =await response.json();
+    console.log(json);
+  }
+  //lawyer applying for a bd
+  const lawyerApplyingBid = async(id,description,price)=>{
+    const response = await fetch(`${host}/bid/bids/apply/${id}`, {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json", 
+        'auth-token':localStorage.getItem('token')  
+      },
+      body: JSON.stringify({description,price})
+    });
+    let json =await response.json();
+    console.log(json);
+  }
+  let [showUserBid,setUserBid] =useState();
+  //user seeing all its bids that lawyer had applied
+  const usersBid=async()=>{
+    let id  =  await getUser();
+    // console.log(id,"this is the id of the user");
+    const response = await fetch(`${host}/bid/bids/show/${id}`, {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json", 
+        'auth-token':localStorage.getItem('token')  
+      },
+      // body: JSON.stringify({description,price})
+    });
+    let json =await response.json();
+    // console.log(json);
+    setUserBid(json);
+  return json;    
+  } 
+  //bid acceptance
+  const bidAcceptance=async(id,lawyerId,practise)=>{
+    const response = await fetch(`${host}/bid/bid-acceptance/${id}`, {
+      method: "DELETE", 
+      headers: {
+        "Content-Type": "application/json", 
+        'auth-token':localStorage.getItem('token')  
+      },
+      body: JSON.stringify({lawyerId,practise})
+    });
+    let json = await response.json();
+    console.log(json);
+  }
+  //bring all lawyers
+  const[displayLaw,setAllLawyer] = useState();
+  const displayAllLawyer=async(a,b)=>{
+    if(b!==null){
+      const response = await fetch(`${host}/search/${a}/${b}`, {
+        method: "POST", 
+        headers: {
+          "Content-Type": "application/json", 
+          // 'auth-token':localStorage.getItem('token')  
+        },
+        // body: JSON.stringify({lawyerId,practise})
+      });
+      let json = await response.json();
+      // console.log(json.lawyer);
+      setAllLawyer(json.lawyer);
+    }else if(a!==null){
+
+    const response = await fetch(`${host}/search/${a}`, {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json", 
+        // 'auth-token':localStorage.getItem('token')  
+      },
+      // body: JSON.stringify({lawyerId,practise})
+    });
+    let json = await response.json();
+    // console.log(json.lawyer);
+    setAllLawyer(json.lawyer);
+  }else{
+    const response = await fetch(`${host}/search`, {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json", 
+        // 'auth-token':localStorage.getItem('token')  
+      },
+      // body: JSON.stringify({lawyerId,practise})
+    });
+    let json = await response.json();
+    // console.log(json.lawyer);
+    setAllLawyer(json.lawyer);
+  }
+  }
   return (
-    <NoteContext.Provider value={{getUserById,getUser,name,disLikePost,postLikes,likes,likeOnPost, setUser,postComments,comment , specificPost,loginUser,data,getPost,sdata,addPost,commentOnPos}}>
+    <NoteContext.Provider value={{lawyer,getLawyer,displayAllLawyer,displayLaw,showUserBid,bidAcceptance,usersBid,lawyerApplyingBid,bid,showBids,reqForBid,getUserById,getUser,name,disLikePost,postLikes,likes,likeOnPost, setUser,postComments,comment , specificPost,loginUser,data,getPost,sdata,addPost,commentOnPos}}>
       {props.children}
     </NoteContext.Provider>
   );

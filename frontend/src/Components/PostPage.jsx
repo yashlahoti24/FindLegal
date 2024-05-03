@@ -16,6 +16,7 @@ function PostPage(props) {
     likeOnPost,
     postLikes,
     disLikePost,
+    getUserById
   } = context;
   //if the post is liked dislike will be false
   const [disLike, setDisLike] = useState(true);
@@ -52,6 +53,8 @@ function PostPage(props) {
     getPostId();
     postComments(postId);
     postLikes(postId);
+    // you have to do get user by id by using post id
+    // getUserById();
     // console.log(comment);
     // console.log(sdata && sdata.userId)
 

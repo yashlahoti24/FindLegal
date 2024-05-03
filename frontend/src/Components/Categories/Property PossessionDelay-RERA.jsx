@@ -1,4 +1,6 @@
-import React from "react";
+import React, {useContext} from "react";
+import noteContext from "../../context/notes/NoteContext";
+
 import { Link } from "react-router-dom";
 import "../../css/Category.css";
 import Container from "react-bootstrap/Container";
@@ -9,11 +11,18 @@ import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
 
 function PropertyPossessionDelayRERA() {
+  const context = useContext(noteContext);
+  const { reqForBid } = context;
+  
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     section.scrollIntoView({ behavior: "smooth" });
   };
-
+const handleReq=(e)=>{
+e.preventDefault();
+reqForBid("Property Possession Delay-RERA");
+console.log("requested for a certificate successfully")
+}
   return (
     <>
       <Container>
@@ -188,7 +197,8 @@ function PropertyPossessionDelayRERA() {
                 Pay securely with major Credit and Debit cards, online Wallets
                 and UPI
               </p>
-              <Button variant="success">Book a Lawyer</Button>
+              <Button variant="success"
+              onClick={handleReq}>Book a Lawyer</Button>
               <p
                 style={{
                   color: "GrayText",

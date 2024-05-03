@@ -153,5 +153,17 @@ try {
 //     }
 
 // })
-
+//api get lawyer by id | authtoken required
+router.post("/getlawyer/:id",fetchUser,async(req,res)=>{
+    try{
+    let id = req.params.id;
+    let lawyer = await Lawyer.find({lawyerId:id});
+    if(lawyer===null || lawyer ===undefined){
+        return res.status(404).json({err:"lawyer not found"});
+    }
+    return res.status(200).json(lawyer);
+    }catch(err){
+        return res.status(500).json({err:err.message});
+    }
+    })
 module.exports = router;

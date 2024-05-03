@@ -21,6 +21,7 @@ import PostPage from "./Components/PostPage";
 import PropertyPossessionDelayRERA from "./Components/Categories/Property PossessionDelay-RERA";
 import Bidding from "./Components/Bidding";
 import BidPage from "./Components/BidPage";
+import Page from "./Components/Page";
 
 function App() {
   const [value, setValue] = useState("");
@@ -92,7 +93,11 @@ function App() {
       element: <LawyerSignup />,
     },
     {
-      path: "/profile",
+      path: "/lawyer-profile",
+      element: <><Navbar/><ProfilePage /><Footer/></>,
+    },
+    {
+      path: "/lawyer-profile/:id",
       element: <><Navbar/><ProfilePage /><Footer/></>,
     },
     {
@@ -112,12 +117,17 @@ function App() {
       element: <><Navbar/><Bidding /></>,
     },
     {
-      path: "/bid-page",
+      path: "/bid/:id",
       element: <><Navbar/><BidPage /></>,
     },
     {
-      path: "/property-posession-delay-rera",
+      path: "/pro",
+      // path: "/property-posession-delay-rera",
       element: <><Navbar/><PropertyPossessionDelayRERA /><Footer/></>,
+    },
+    {
+      path: "/page",
+      element: <><Navbar/><Page /></>,
     },
   ]);
 

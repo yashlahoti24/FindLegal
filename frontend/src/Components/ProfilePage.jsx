@@ -1,12 +1,37 @@
-import React from "react";
+import React, {useEffect,useContext} from "react";
+import { useLocation } from "react-router-dom";
 import "../css/ProfilePage.css"; // Import CSS for styling
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Posts from "./Posts";
 import Bids from "./Bids";
+import noteContext from "../context/notes/NoteContext";
+
 
 const ProfilePage = () => {
+  const context = useContext(noteContext);
+  const {getLawyer,lawyer} = context;
+  const location = useLocation();
+  let lawyerId;
+  function getLawyerId() {
+    let temp = location.pathname;
+    let i = 1;
+    for (i = 1; i < temp.length; i++) {
+      if (temp.charAt(i) === "/") {
+        break;
+      }
+    }
+    lawyerId = temp.substring(i + 1, temp.length);
+    // specificPost(postId);
+    getLawyer(lawyerId); 
+    console.log(lawyer) 
+  }
+  useEffect(()=>{
+    getLawyerId();
+    // console.log(lawyerId);
+   
+  },[lawyer]);
   return (
     <>
       <div className="profile-page">
@@ -26,8 +51,8 @@ const ProfilePage = () => {
               {/* User information */}
               <div className="details">
                 <div className="user-info">
-                  <h1 className="name">John Doe</h1>
-                  <p className="headline">Pune</p>
+                  <h1 className="name">{}</h1>
+                  <p className="headline">{lawyer && lawyer.city}</p>
                   {/* Add more information such as connections, activity, etc. */}
                 </div>
               </div>
@@ -35,10 +60,7 @@ const ProfilePage = () => {
               {/* Profile Summary */}
               <div className="profile-summary">
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  et leo eget massa facilisis interdum. Proin non fringilla
-                  nulla. Sed mattis risus et magna dictum, vel lacinia tortor
-                  vehicula.
+                  {lawyer && lawyer.description}
                 </p>
               </div>
             </Col>
@@ -46,7 +68,7 @@ const ProfilePage = () => {
           <Row>
             <Col md={3}>
               <div className="skills">
-                <h2>Practise Areas</h2>
+                <h2>{}</h2>
                 {/* Display user's skills */}
                 <ul>
                   <li>Skill 1</li>

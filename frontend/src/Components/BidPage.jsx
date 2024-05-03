@@ -6,12 +6,12 @@ import CreateBid from "./CreateBid";
 
 function BidPage(props) {
   const context = useContext(noteContext);
-  const { postComments, specificPost, sdata, comment } = context;
+  const {  } = context;
   // const queryParameters = new URLSearchParams(window.location.pathname)
-  // const postId = queryParameters.get("postId")
+  // const bidId = queryParameters.get("bidId")
   const location = useLocation();
-  let postId;
-  function getPostId() {
+  let bidId;
+  function getBidId() {
     let temp = location.pathname;
     let i = 1;
     for (i = 1; i < temp.length; i++) {
@@ -19,25 +19,19 @@ function BidPage(props) {
         break;
       }
     }
-    postId = temp.substring(i + 1, temp.length);
-    specificPost(postId);
+    bidId = temp.substring(i + 1, temp.length);
   }
+ 
 
   useEffect(() => {
-    getPostId();
-    postComments(postId);
-    console.log(comment);
-    console.log(sdata && sdata.userId)
-
-    //box ke andar sdata aur comment tha
-    //use re render hone ka uske vajah se undefine ka error nhi ata par out of resources ka error ata hai
-  }, [sdata]); // Added postId as a dependency for useEffect
+    
+  }, []); // Added bidId as a dependency for useEffect
   return (
     <>
       <div className="container col-lg-6 shadow-lg p-3 mt-5 bg-body rounded">
-        <h2>{sdata && sdata.title}</h2>
+        <h2>Title</h2>
         <p className="mt-4 text-align" style={{ color: "#505050" }}>
-          {sdata && sdata.description}
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat ipsum totam earum rem reiciendis quod laudantium ratione consequatur odio asperiores. Esse dolore cum provident repudiandae numquam molestias dicta doloremque ullam maxime laudantium vitae aperiam, ad illum minima ut nam enim quam obcaecati modi rerum ea expedita cupiditate perspiciatis veniam? Obcaecati.
         </p>
         <div className="mt-1">
           <div

@@ -9,10 +9,10 @@ export default function Bids(props) {
   }, []);
   return (
     <>
-      <Link to={`/bid-page`}>
+      <Link to={`/bid/${post._id}`}>
         <div className="list-group posts shadow-lg">
           <div className="d-flex w-100 justify-content-between">
-            <h5 className="mb-1">{post.title}</h5>
+            <h5 className="mb-1">{post.practise}</h5>
           </div>
           <small>Created by Lawyer Name</small>
           <br />

@@ -9,8 +9,8 @@ import InputGroup from "react-bootstrap/InputGroup";
 function CreateBid() {
   let Navigate = useNavigate();
   const context = useContext(noteContext);
-  const { commentOnPos } = context;
-  const [com, setComment] = useState({ description: "" });
+  const { lawyerApplyingBid } = context;
+  let [com,setCom] =useState({description:"",price:""});
   useEffect(() => {
     if (localStorage.getItem("token") === null) {
       //redirect to login sign up page;
@@ -18,12 +18,12 @@ function CreateBid() {
     }
   }, []);
   function handleChange(e) {
-    setComment({ ...com, [e.target.name]: e.target.value });
+    setCom({ ...com, [e.target.name]: e.target.value });
   }
 
   const location = useLocation();
-  let postId;
-  function getPostId() {
+  let bidId;
+  function getBidId() {
     let temp = location.pathname;
     let i = 1;
     for (i = 1; i < temp.length; i++) {
@@ -31,18 +31,16 @@ function CreateBid() {
         break;
       }
     }
-    postId = temp.substring(i + 1, temp.length);
+    bidId = temp.substring(i + 1, temp.length);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    getPostId();
-    console.log(postId);
-    commentOnPos(postId, com.description);
-    console.log(com.description);
-    setComment({ description: "" });
-    // console.log(json);
+    getBidId();
+    console.log(bidId);
+    lawyerApplyingBid(bidId,com.description,com.price);
     console.log("done");
+    
   }
 
   return (
@@ -60,9 +58,10 @@ function CreateBid() {
                 type="text"
                 id="description"
               />
-              <input type="number" name="amount" value="" 
+              <input type="number" name="price" value="" 
               className="border border-primary form-control"
               style= {{marginTop: "5px"}}
+              onChange={handleChange}
               placeholder='Bid Amount(In Rupees)'/>
 
             <div className="text-center">

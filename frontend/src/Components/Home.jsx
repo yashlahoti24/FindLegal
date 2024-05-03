@@ -109,7 +109,7 @@ const Home = ({ options, label, id, selectedVal, handleChange }) => {
                 handleChange(null);
               }}
               onClick={toggle}
-              placeholder="Type to search..."
+              placeholder="Search by Location"
             />
             <div className={`arrow ${isOpen ? "open" : ""}`}></div>
           </div>
