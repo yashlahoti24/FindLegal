@@ -15,8 +15,9 @@ router.post("/getuser",fetchUser,async(req,res)=>{
     try{
         let id= req.user.id;
         let user = await Client.find({_id:id});
-        if(user===null){
-            user= await Lawyer.findById({_id:id});
+        if(user===null|| user.length===0){
+            console.log("Entered to search into lawyers database")
+            user= await Lawyer.find({_id:id});
         }
         return res.status(200).json(user);
     }catch(err){

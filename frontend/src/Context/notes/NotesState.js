@@ -60,7 +60,7 @@ const NoteState = (props) => {
       },
     });
     let json =await response.json();
-    // console.log(json[0]._id);
+    console.log(json[0]._id);
     return json[0]._id;
     
   }
@@ -262,7 +262,7 @@ const NoteState = (props) => {
   //user seeing all its bids that lawyer had applied
   const usersBid=async()=>{
     let id  =  await getUser();
-    // console.log(id,"this is the id of the user");
+    console.log(id,"this is the id of the user");
     const response = await fetch(`${host}/bid/bids/show/${id}`, {
       method: "POST", 
       headers: {

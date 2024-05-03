@@ -19,6 +19,9 @@ import Posts from "./Components/Posts";
 import CreateReply from "./Components/CreateReply";
 import PostPage from "./Components/PostPage";
 import PropertyPossessionDelayRERA from "./Components/Categories/Property PossessionDelay-RERA";
+import Apostile_Certificate from "./Components/Categories/Apostille_Certificate";
+import Trademark_Registration from "./Components/Categories/Trademark_Registration";
+import Divorce from "./Components/Categories/Mutual_Consent_Divorce";
 import Bidding from "./Components/Bidding";
 import BidPage from "./Components/BidPage";
 import Page from "./Components/Page";
@@ -124,6 +127,21 @@ function App() {
       path: "/pro",
       // path: "/property-posession-delay-rera",
       element: <><Navbar/><PropertyPossessionDelayRERA /><Footer/></>,
+    },
+    {
+      path: "/apostile",
+      // path: "/property-posession-delay-rera",
+      element: <><Navbar/><Apostile_Certificate /><Footer/></>,
+    },
+    {
+      path: "/trademark",
+      // path: "/property-posession-delay-rera",
+      element: <><Navbar/><Trademark_Registration /><Footer/></>,
+    },
+    {
+      path: "/divorce",
+      // path: "/property-posession-delay-rera",
+      element: <><Navbar/><Divorce /><Footer/></>,
     },
     {
       path: "/page",

@@ -81,6 +81,10 @@ function Login(props) {
               Sign up
             </Link>
           </p>
+          <p className="sign-up-label">
+            Join as Lawyer {" "} 
+          <Link to="/lawyer-signup" className="sign-up-link">Sign Up</Link>
+          </p>
         </div>
       </div>
     </>

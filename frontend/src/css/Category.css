@@ -50,3 +50,7 @@
     border-radius: 5px;
     top: 170px;
 }
+
+.content-list li{
+    margin-left: 10px;
+}

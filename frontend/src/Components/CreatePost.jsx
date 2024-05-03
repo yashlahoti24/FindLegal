@@ -33,11 +33,16 @@ function CreatePost() {
   }
   return (
     <>
-      <div className="container-lg">
-        <h1 className="text-center m-2">Create a New Discussion</h1>
+      <div className="container">
+        <h1 className=" container text-center m-2">Create a New Discussion</h1>
         <div
-          className="container m-4 p-4 rounded"
-          style={{ backgroundColor: "#F1F1F1" }}
+          className="container m-4 p-4 rounded shadow-lg"
+          style={{ backgroundColor: "#F1F1F1",
+            width: "600px",
+            borderRadius: "10px",
+            left:"280px",
+            position:"absolute"
+           }}
         >
           <form>
             <Input

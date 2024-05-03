@@ -3,3 +3,23 @@
     justify-content: space-around;
     align-items: center;
 }
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin: 35px;
+    background-color: aliceblue;
+    border-radius: 15px;
+  }
+  
+  .heading {
+    margin: 0;
+
+  }
+  
+  .btn {
+    margin-right: 20px;
+  }
+  

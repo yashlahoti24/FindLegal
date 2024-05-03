@@ -1,14 +1,15 @@
 .posts{
-    /* border: 2px solid whitesmoke; */
-    border-radius: 10px;
+    border: 1px solid black;
+    /* border-radius: 10px; */
     padding: 10px;
-    margin: 25px 100px 25px 100px;
+    margin: 25px 0px 25px 60px;
     /* background-color: rgb(237, 237, 237); */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     color: black;
     /* box-shadow: 5px 5px 10px 10px rgb(228, 223, 223); */
+    /* border-bottom: 1px solid black; */
 }
 
 .description{
@@ -25,5 +26,5 @@
     padding: 2px;
     margin: 2px;
     border-radius: 5px;
-    background-color: greenyellow;
+    background-color: #afface;
 }

@@ -94,8 +94,10 @@ try {
     if(!results.isEmpty()) {
         return res.status(400).json({err:results.array()});
     }
-    const user =await Client.findOne({email});
+    let user =await Client.findOne({email});
     if(!user) {
+        user = await Lawyer.findOne({email});
+        if(!user)
         return res.status(404).json({success,err:'please enter valid credentials email'});
     }
     
@@ -119,40 +121,40 @@ try {
 })
 //api for login of lawyer
 
-// router.post('/login',[
-//     body('lawyerId',"please ente valid lawyerId").exists(),
-//     body('password',"please enter valid password").exists()
-// ],async(req,res)=>{
-// let {lawyerId,password} = req.body;
-// try {
-//     let success =false;
-//     let results  =validationResult(req);
-//     if(!results.isEmpty()) {
-//         return res.status(400).json({err:results.array()});
-//     }
-//     const user =await Lawyer.findOne({lawyerId});
-//     if(!user) {
-//         return res.status(404).json({success,err:'please enter valid credentials lawyerId'});
-//     }
-    
-//     const passwordCompare = bcrypt.compare(password,user.password);
-//         if(!passwordCompare){
-//             return res.status(404).json({success,msg:"please try to login with correct creditenials"})
-//         }
-//         const payLoad = {
-//             user:{
-//                 id:user.id
-//             }
-//         }
-//         const authToken = jwt.sign(payLoad,JWT_SECRET);
-//         success=true;
-//         res.json({success,authToken});
-//     }catch(err){
-//         console.log(err.message);
-//         res.status(500).json({err:"internal server error"})
-//     }
+    // router.post('/login',[
+    //     body('lawyerId',"please ente valid lawyerId").exists(),
+    //     body('password',"please enter valid password").exists()
+    // ],async(req,res)=>{
+    // let {lawyerId,password} = req.body;
+    // try {
+    //     let success =false;
+    //     let results  =validationResult(req);
+    //     if(!results.isEmpty()) {
+    //         return res.status(400).json({err:results.array()});
+    //     }
+    //     const user =await Lawyer.findOne({lawyerId});
+    //     if(!user) {
+    //         return res.status(404).json({success,err:'please enter valid credentials lawyerId'});
+    //     }
+        
+    //     const passwordCompare = bcrypt.compare(password,user.password);
+    //         if(!passwordCompare){
+    //             return res.status(404).json({success,msg:"please try to login with correct creditenials"})
+    //         }
+    //         const payLoad = {
+    //             user:{
+    //                 id:user.id
+    //             }
+    //         }
+    //         const authToken = jwt.sign(payLoad,JWT_SECRET);
+    //         success=true;
+    //         res.json({success,authToken});
+    //     }catch(err){
+    //         console.log(err.message);
+    //         res.status(500).json({err:"internal server error"})
+    //     }
 
-// })
+    // })
 //api get lawyer by id | authtoken required
 router.post("/getlawyer/:id",fetchUser,async(req,res)=>{
     try{

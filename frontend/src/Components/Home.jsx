@@ -45,7 +45,9 @@ const Home = ({ options, label, id, selectedVal, handleChange }) => {
     <>
       <div>
         <h2 className="text">Your trusted legal partner</h2>
-        <h6 style={{color: "GrayText", paddingBottom: "20px"}}>Helping you resolve your legal problem</h6>
+        <h6 style={{ color: "GrayText", paddingBottom: "20px" }}>
+          Helping you resolve your legal problem
+        </h6>
         <div id="carouselExample" className="carousel slide">
           <div className="carousel-inner">
             <div className="carousel-item active">
@@ -128,12 +130,20 @@ const Home = ({ options, label, id, selectedVal, handleChange }) => {
           </div>
         </div>
       </div>
-      <h2 className="m-3 text">Top Rated Lawyers in India</h2>
+      <h2 className="m-3 text">Legal Services</h2>
       <div className="profileCard">
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
-        <ProfileCard />
+        <Link to="/pro">
+          <ProfileCard title="Property Possession Delay - RERA" />
+        </Link>
+        <Link to="/apostile">
+          <ProfileCard title="Apostille Certificate" />
+        </Link>
+        <Link to ="/divorce">
+        <ProfileCard title="Mutual Consent Divorce" />
+        </Link>
+        <Link to ="trademark">
+        <ProfileCard title="TradeMark registration" />
+        </Link>
       </div>
     </>
   );

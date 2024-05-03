@@ -46,13 +46,14 @@ const ProfilePage = () => {
                   className="profile-picture"
                 />
               </div>
+              <button className="btn btn-outline-primary" type="button">Contact</button>
             </Col>
             <Col>
               {/* User information */}
               <div className="details">
                 <div className="user-info">
-                  <h1 className="name">{}</h1>
-                  <p className="headline">{lawyer && lawyer.city}</p>
+                  <h1 className="name">Yash Lahoti</h1>
+                  <p className="headline">High Court | Pune</p>
                   {/* Add more information such as connections, activity, etc. */}
                 </div>
               </div>
@@ -60,9 +61,11 @@ const ProfilePage = () => {
               {/* Profile Summary */}
               <div className="profile-summary">
                 <p>
-                  {lawyer && lawyer.description}
+                Experienced attorney specializing in Business, offers tailored legal solutions with a client-centered approach. With a track record of success in Business, provide strategic advocacy and personalized attention to achieve favorable outcomes. Committed to justice both in and out of the courtroom, is dedicated to serving clients and community.
                 </p>
               </div>
+              {/* Contact Information */}
+              
             </Col>
           </Row>
           <Row>
@@ -71,12 +74,6 @@ const ProfilePage = () => {
                 <h2>{}</h2>
                 {/* Display user's skills */}
                 <ul>
-                  <li>Skill 1</li>
-                  <li>Skill 2</li>
-                  <li>Skill 3</li>
-                  <li>Skill 4</li>
-                  <li>Skill 5</li>
-                  <li>Skill 6</li>
                   {/* Add more skills */}
                 </ul>
               </div>
@@ -88,8 +85,7 @@ const ProfilePage = () => {
                 <h2>Latest Posts</h2>
                 {/* Display user's experience */}
                 <div className="experience-item">
-                  Post 1 <br/>
-                  Post 2
+                  No posts yet
                 </div>
               </div>
 

@@ -5,6 +5,7 @@ import noteContext from "../context/notes/NoteContext";
 
 import PostPage from "../Components/PostPage";
 import { Link } from "react-router-dom";
+import { Row, Col } from "react-bootstrap";
 
 export default function Posts(props) {
   const context = useContext(noteContext);
@@ -15,7 +16,7 @@ export default function Posts(props) {
   useEffect(() => {
     // console.log(post._id);
     getUser();
-
+    // console.log(name);
   }, [name]);
   return (
     <>
@@ -24,7 +25,7 @@ export default function Posts(props) {
           <div className="d-flex w-100 justify-content-between">
             <h5 className="mb-1">{post.title}</h5>
           </div>
-          <small>Created by {name}</small>
+          {/* <small>Created by {name}</small> */}
           <br />
           <small className="overflow-hidden description">
             {post.description}

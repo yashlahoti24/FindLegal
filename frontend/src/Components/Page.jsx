@@ -15,6 +15,9 @@ function Page() {
   return (
     <div>
       {/* <AppliedBids/> */}
+
+      
+      
       {showUserBid && showUserBid.length}
      {
       showUserBid && Array.from(showUserBid).map((e)=>{

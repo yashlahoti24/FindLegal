@@ -10,7 +10,7 @@ function CreateBid() {
   let Navigate = useNavigate();
   const context = useContext(noteContext);
   const { lawyerApplyingBid } = context;
-  let [com,setCom] =useState({description:"",price:""});
+  let [com, setCom] = useState({ description: "", price: "" });
   useEffect(() => {
     if (localStorage.getItem("token") === null) {
       //redirect to login sign up page;
@@ -38,9 +38,8 @@ function CreateBid() {
     e.preventDefault();
     getBidId();
     console.log(bidId);
-    lawyerApplyingBid(bidId,com.description,com.price);
+    lawyerApplyingBid(bidId, com.description, com.price);
     console.log("done");
-    
   }
 
   return (
@@ -49,20 +48,34 @@ function CreateBid() {
         <form>
           <div className="form-group">
             <label htmlFor="description">Description</label>
-              <textarea
-                className="border border-primary form-control"
-                style={{ height: 150 }}
-                // value={data.comment}
-                onChange={handleChange}
-                name="description"
-                type="text"
-                id="description"
-              />
-              <input type="number" name="price" value="" 
+            <textarea
               className="border border-primary form-control"
-              style= {{marginTop: "5px"}}
+              style={{ height: 150 }}
+              // value={data.comment}
               onChange={handleChange}
-              placeholder='Bid Amount(In Rupees)'/>
+              name="description"
+              type="text"
+              id="description"
+            />
+            <label htmlFor="description">Bid Amount</label>
+            <textarea
+              className="border border-primary form-control"
+              style={{ height: 50 }}
+              // value={data.comment}
+              onChange={handleChange}
+              name="price"
+              type="number"
+              id="price"
+            />
+            {/* <input
+              type="number"
+              name="price"
+              value="100"
+              className="border border-primary form-control"
+              style={{ marginTop: "5px" }}
+              onChange={handleChange}
+              placeholder="Bid Amount(In Rupees)"
+            /> */}
 
             <div className="text-center">
               <button

@@ -43,10 +43,10 @@ function LawyerLogin(props) {
             onChange={onChange}
           /> */}
           <input
-            type="Bar Number"
+            type="Email"
             className="input"
-            placeholder="Bar Number"
-            name="barnumber"
+            placeholder="Email"
+            name="email"
             onChange={onChange}
           />
           {/* <input

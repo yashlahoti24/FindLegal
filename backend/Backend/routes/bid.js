@@ -81,16 +81,16 @@ function sendMail(){
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'ketanyalmate@gmail.com',
-          pass: 'uqfdxmrgkujmumyo'
+            user: 'tanmay.yadav21@vit.edu',
+            pass: 'vipz rjmc pnwb khtb'
         }
       });
     
       const mailOptions = {
         from: 'lahotiyash24@gmail.com',
         to: 'tanmaydyadav2003@gmail.com',
-        subject: 'Your email title here',
-        text: 'your email body content here',
+        subject: 'FindLegal - Informing regarding Bid Acceptance ',
+        text: "Your bid has been accepted",
         //html: `
         //  <h1>Sample Heading Here</h1>
         //  <p>message here</p>

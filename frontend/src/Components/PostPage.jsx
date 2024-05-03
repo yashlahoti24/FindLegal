@@ -56,29 +56,29 @@ function PostPage(props) {
     // you have to do get user by id by using post id
     // getUserById();
     // console.log(comment);
-    // console.log(sdata && sdata.userId)
+    console.log(sdata && sdata.tag )
 
     //box ke andar sdata aur comment tha
     //use re render hone ka uske vajah se undefine ka error nhi ata par out of resources ka error ata hai
   }, [sdata]); // Added postId as a dependency for useEffect
   return (
     <>
-      <div className="container col-lg-6 shadow-lg p-3 mt-5 bg-body rounded">
+      <div className="container col-lg-6 shadow-lg p-3 mt-5 bg-body rounded" style = {{ width:"auto"}}>
         <h2>{sdata && sdata.title}</h2>
-        <p className="mt-4 text-align" style={{ color: "#505050" }}>
+        <p className="mt-4 text-align" style={{ color: "#505050" , textAlign: "justify"}}>
           {sdata && sdata.description}
         </p>
         <div className="mt-1">
           Related Topics:
-          {/* {
-            tag && Array.from(tag).map((e)=>{
+          {
+           sdata &&  sdata.tag && Array.from(sdata.tag).map((e)=>{
               return <span className="tag">{e}</span>
             })
-          } */}
-          <span className="tag">tag 1</span>
+          }
+          {/* <span className="tag">tag 1</span>
           <span className="tag">tag 2</span>
           <span className="tag">tag 3</span>
-          <span className="tag">tag 4</span>
+          <span className="tag">tag 4</span> */}
           <div className="d-flex w-100 justify-content-between mt-3 mb-3">
             <button className={"btn btn-outline-primary"} onClick={handleLike}>
               {disLike ? (
@@ -98,12 +98,12 @@ function PostPage(props) {
               <PersonCircle size={30} className="mr-2" />
               Posted by Yash Lahoti
             </div>
-            <p class="mb-1">12:00 PM, 12/01/2022</p>
+            <p class="mb-1">{sdata && sdata.date}</p>
           </div>
         </div>
       </div>
       <CreateReply />
-      <div className="container col-lg-6 shadow-lg p-3 mt-5 bg-body rounded">
+      <div className="container col-lg-6 shadow-lg p-3 mt-5 bg-body rounded" style={{width: "auto"}}>
         No of comments {comment && comment.length}
       </div>
       <div>
@@ -113,7 +113,7 @@ function PostPage(props) {
               <div className="container col-lg-6 shadow-lg p-3 mt-3 bg-body rounded">
                 <div className="ml-4">
                   <PersonCircle size={30} className="mr-3" />
-                  posted by {e.userId}
+                  posted by Yash Lahoti
                 </div>
                 <div className="m-4">{e.description}</div>
                 <div className="d-flex w-100 justify-content-between mt-3 mb-3">

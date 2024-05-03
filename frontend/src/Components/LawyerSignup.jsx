@@ -47,10 +47,12 @@ function LawyerLogin(props) {
         expierence: "",
         court: temp[i].court,
         practise: temp[i].practise})
+        alert("Bar number Verified! Continue Registration")
         return temp[i];
+
       }
     }
-    console.log("Null");
+    alert("Please enter valid bar number");
     return null;
   }
   const fill = async (name,lawyerId,court,practise, email, password, phoneNo, bio, expierence) => {
@@ -68,7 +70,7 @@ function LawyerLogin(props) {
         password,
         phoneNo,
         lawyerId,
-        bio:"tits your boy ",
+        bio:"Experienced attorney specializing in Business, offers tailored legal solutions with a client-centered approach. With a track record of success in Business, provide strategic advocacy and personalized attention to achieve favorable outcomes. Committed to justice both in and out of the courtroom, is dedicated to serving clients and community. ",
         expierence,
         court,
         practise,

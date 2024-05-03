@@ -46,7 +46,7 @@ function CreateReply() {
     
   return (
     <>
-        <div className="container col-lg-6 shadow-lg p-3 mt-5 bg-body rounded">
+        <div className="container col-lg-6 shadow-lg p-3 mt-5 bg-body rounded" style={{width: "auto"}}>
           <form>
             <div className="form-group">
               <label htmlFor="description">Post Reply</label>

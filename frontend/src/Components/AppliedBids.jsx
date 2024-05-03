@@ -19,7 +19,7 @@ function AppliedBids(props) {
       <div className="list-group posts shadow-lg">
           <div className="d-flex w-100 justify-content-between">
             <Link to="/profile">
-            <h5 className="mb-1">Lawyer Name</h5>
+            <h5 className="mb-1">Yash Lahoti</h5>
             </Link>
           </div>
           <small>Bid for : Rs 100</small>
