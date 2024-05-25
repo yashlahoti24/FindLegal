@@ -3,8 +3,7 @@ import "../css/SignUp.css";
 import { Link } from "react-router-dom";
 import Logo from "./LogoLightModeNoBg.png";
 
-import noteContext from "../context/notes/NoteContext";
-import NoteState from "../context/notes/NotesState";
+import noteContext from "../Context/notes/NoteContext"
 
 function SignUp(props) {
   const context = useContext(noteContext);

@@ -1,16 +1,26 @@
-import React, { useState, useEffect, Component } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import '../css/Navbar.css';
 import { Link } from "react-router-dom";
+import noteContext from '../Context/notes/NoteContext';
 
 
 
-// import React from "react";
+
 
 function Navbar() {
+  const context = useContext(noteContext);
+  const { usersBid,showUserBid } = context;
   let [signUp,setSignUp] = useState();
+  const handleSignIn=()=>{
+    if(!signUp){
+      localStorage.removeItem('token')
+      localStorage.removeItem('flag');
+    }
+  }
   useEffect(()=>{
     if(localStorage.getItem('token')!==null){
       setSignUp(false);
+      
     }else setSignUp(true);
   },[])
   return (
@@ -45,62 +55,44 @@ function Navbar() {
                   Discuss
                 </Link>
               </li>
+              {localStorage.getItem('flag')==='true'?(
+                <>
               <li className="nav-item mr-2">
                 <Link className="nav-link" to="/bid">
                   For Lawyers
                 </Link>
-              </li>
-              <li className="nav-item mr-2">
-                <Link className="nav-link" to="/find-lawyer">
-                  Find Lawyer
-                </Link>
-              </li>
-              <li className="nav-item mr-2">
-                <Link className="nav-link" to="/page">
-                  Bids
-                </Link>
-              </li>
-              <li className="nav-item mr-2">
+              </li>  <li className="nav-item mr-2">
                 <Link className="nav-link" to="/lawyer-profile">
                   Profile
                 </Link>
               </li>
-              {/* <li className="nav-item dropdown">
-                      <Link
-                        className="nav-link dropdown-toggle"
-                        to="/"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        IPC Section
-                      </Link>
-                      <ul className="dropdown-menu">
-                        <li>
-                          <Link className="dropdown-item" to="/">
-                            Action
-                          </Link>
-                        </li>
-                        <li>
-                          <Link className="dropdown-item" to="/">
-                            Another action
-                          </Link>
-                        </li>
-                        <li>
-                          <hr className="dropdown-divider" />
-                        </li>
-                        <li>
-                          <Link className="dropdown-item" to="/">
-                            Something else here
-                          </Link>
-                        </li>
-                      </ul>
-                    </li> */}
-            </ul>
+              </>
+              ): (
+                <>
+                <li className="nav-item mr-2">
+                               <Link className="nav-link" to="/find-lawyer">
+                                 Find Lawyer
+                               </Link>
+                             </li>
+                             <li className="nav-item mr-2">
+                               <Link className="nav-link" to="/page">
+                                 Bids
+                               </Link>
+                             </li>
+                 </>
+              )}
+              
+                
+
+              
+ 
+             
+            
+                        </ul>
             <Link to="/login">
               <button
                 type="button"
-                className="btn btn-outline-primary signInBtn"
+               onClick={handleSignIn} className="btn btn-outline-primary signInBtn"
               >
                 {signUp?"Sign Up":"Sign Out"}
               </button>

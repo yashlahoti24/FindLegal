@@ -7,6 +7,20 @@ const bcrypt  = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'Tanmayisagoodboy';
 const fetchUser = require('../middlewares/fetchUser');
+//api get lawyer by id | authtoken required
+router.post("/getlawyer/:id",fetchUser,async(req,res)=>{
+    try{
+    let id = req.params.id;
+    console.log(id)
+    let lawyer = await Lawyer.find({lawyerId:id});
+    if(lawyer===null || lawyer ===undefined){
+        return res.status(404).json({err:"lawyer not found"});
+    }
+    return res.status(200).json(lawyer);
+    }catch(err){
+        return res.status(500).json({err:err.message});
+    }
+    })
 //api for registration of client  | no authtoken required
 router.post('/user-registration',
 [
@@ -82,14 +96,14 @@ return res.status(200).json({success,authToken});
 }
 })
 
-//api for login of lawyer
+//api for login of user
 router.post('/login/user',[
     body('email',"please ente valid email").isEmail(),
     body('password',"please enter valid password").exists()
 ],async(req,res)=>{
 let {email,password} = req.body;
 try {
-    let success =false;
+    let success =false;let flag=false;
     let results  =validationResult(req);
     if(!results.isEmpty()) {
         return res.status(400).json({err:results.array()});
@@ -97,8 +111,10 @@ try {
     let user =await Client.findOne({email});
     if(!user) {
         user = await Lawyer.findOne({email});
+        flag=true;
         if(!user)
         return res.status(404).json({success,err:'please enter valid credentials email'});
+    
     }
     
     const passwordCompare = bcrypt.compare(password,user.password);
@@ -112,60 +128,48 @@ try {
         }
         const authToken = jwt.sign(payLoad,JWT_SECRET);
         success=true;
-        res.json({success,authToken});
+        res.json({flag,success,authToken});
     }catch(err){
         console.log(err.message);
         res.status(500).json({err:"internal server error"})
     }
 
 })
-//api for login of lawyer
+// api for login of lawyer
 
-    // router.post('/login',[
-    //     body('lawyerId',"please ente valid lawyerId").exists(),
-    //     body('password',"please enter valid password").exists()
-    // ],async(req,res)=>{
-    // let {lawyerId,password} = req.body;
-    // try {
-    //     let success =false;
-    //     let results  =validationResult(req);
-    //     if(!results.isEmpty()) {
-    //         return res.status(400).json({err:results.array()});
-    //     }
-    //     const user =await Lawyer.findOne({lawyerId});
-    //     if(!user) {
-    //         return res.status(404).json({success,err:'please enter valid credentials lawyerId'});
-    //     }
+    router.post('/login/lawyer',[
+        body('email',"please ente valid lawyerId").isEmail(),
+        body('password',"please enter valid password").exists()
+    ],async(req,res)=>{
+    let {email,password} = req.body;
+    try {
+        let success =false;
+        let results  =validationResult(req);
+        if(!results.isEmpty()) {
+            return res.status(400).json({err:results.array()});
+        }
+        const user =await Lawyer.findOne({email});
+        if(!user) {
+            return res.status(404).json({success,err:'please enter valid credentials lawyerId'});
+        }
         
-    //     const passwordCompare = bcrypt.compare(password,user.password);
-    //         if(!passwordCompare){
-    //             return res.status(404).json({success,msg:"please try to login with correct creditenials"})
-    //         }
-    //         const payLoad = {
-    //             user:{
-    //                 id:user.id
-    //             }
-    //         }
-    //         const authToken = jwt.sign(payLoad,JWT_SECRET);
-    //         success=true;
-    //         res.json({success,authToken});
-    //     }catch(err){
-    //         console.log(err.message);
-    //         res.status(500).json({err:"internal server error"})
-    //     }
+        const passwordCompare = bcrypt.compare(password,user.password);
+            if(!passwordCompare){
+                return res.status(404).json({success,msg:"please try to login with correct creditenials"})
+            }
+            const payLoad = {
+                user:{
+                    id:user.id
+                }
+            }
+            const authToken = jwt.sign(payLoad,JWT_SECRET);
+            success=true;
+            res.json({success,authToken});
+        }catch(err){
+            console.log(err.message);
+            res.status(500).json({err:"internal server error"})
+        }
 
-    // })
-//api get lawyer by id | authtoken required
-router.post("/getlawyer/:id",fetchUser,async(req,res)=>{
-    try{
-    let id = req.params.id;
-    let lawyer = await Lawyer.find({lawyerId:id});
-    if(lawyer===null || lawyer ===undefined){
-        return res.status(404).json({err:"lawyer not found"});
-    }
-    return res.status(200).json(lawyer);
-    }catch(err){
-        return res.status(500).json({err:err.message});
-    }
     })
+
 module.exports = router;

@@ -2,7 +2,7 @@ import React, { useEffect, useContext } from "react";
 import Location from "./Dropdowns/Location";
 import Types from "./Dropdowns/Types";
 import "../css/Services.css";
-import noteContext from "../context/notes/NoteContext";
+import noteContext from "../Context/notes/NoteContext";
 
 import Lawyer from "./Lawyer";
 const Services = () => {

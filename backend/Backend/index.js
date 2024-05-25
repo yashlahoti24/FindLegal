@@ -21,3 +21,4 @@ app.use("/bid",require("./routes/bid"));
 app.listen('5000',()=>{
     console.log("app listening on port 5000 for inotebook ")
 })
+

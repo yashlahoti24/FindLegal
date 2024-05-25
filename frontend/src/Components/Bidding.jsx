@@ -2,7 +2,7 @@
 import React, {useContext, useState, useEffect} from "react";
 import "../css/Posts.css"
 import { Link } from "react-router-dom";
-import noteContext from "../context/notes/NoteContext";
+import noteContext from "../Context/notes/NoteContext";
 import Bids from "./Bids";
 
 function Bidding() {

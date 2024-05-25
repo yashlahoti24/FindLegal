@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { PersonCircle, HandThumbsUpFill } from "react-bootstrap-icons";
-import noteContext from "../context/notes/NoteContext";
+import noteContext from "../Context/notes/NoteContext";
 import { useLocation } from "react-router-dom";
 import CreateBid from "./CreateBid";
 

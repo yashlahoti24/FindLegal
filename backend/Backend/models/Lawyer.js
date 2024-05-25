@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 const {Schema} = mongoose;
 const LawyerSchema= new Schema({
+    flag: {
+        type:Boolean,
+       default:true
+    },
     name:{
         type:String,
         require:true

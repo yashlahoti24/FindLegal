@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { PersonCircle, HandThumbsUpFill, Heart } from "react-bootstrap-icons";
 import CreateReply from "./CreateReply";
-import noteContext from "../context/notes/NoteContext";
+import noteContext from "../Context/notes/NoteContext";
 import { useLocation } from "react-router-dom";
 import { AiFillHeart } from "react-icons/ai";
 
@@ -16,7 +16,8 @@ function PostPage(props) {
     likeOnPost,
     postLikes,
     disLikePost,
-    getUserById
+    getUserById,name
+    
   } = context;
   //if the post is liked dislike will be false
   const [disLike, setDisLike] = useState(true);
@@ -24,8 +25,8 @@ function PostPage(props) {
   // const queryParameters = new URLSearchParams(window.location.pathname)
   // const postId = queryParameters.get("postId")
   const location = useLocation();
-  let postId;
-  function getPostId() {
+  let postId;let userId;
+ async function  getPostId() {
     let temp = location.pathname;
     let i = 1;
     for (i = 1; i < temp.length; i++) {
@@ -34,7 +35,11 @@ function PostPage(props) {
       }
     }
     postId = temp.substring(i + 1, temp.length);
-    specificPost(postId);
+  userId= await  specificPost(postId);
+  userId =userId.userId;
+  // console.log(name ,"this is the id of the user")
+    getUserById(userId);
+    // console.log(name && name)
   }
   const handleLike = (e) => {
     e.preventDefault();
@@ -53,10 +58,11 @@ function PostPage(props) {
     getPostId();
     postComments(postId);
     postLikes(postId);
+
     // you have to do get user by id by using post id
-    // getUserById();
+
     // console.log(comment);
-    console.log(sdata && sdata.tag )
+    // console.log(sdata && sdata.tag )
 
     //box ke andar sdata aur comment tha
     //use re render hone ka uske vajah se undefine ka error nhi ata par out of resources ka error ata hai
@@ -96,7 +102,7 @@ function PostPage(props) {
           >
             <div>
               <PersonCircle size={30} className="mr-2" />
-              Posted by Yash Lahoti
+              Posted by {name}
             </div>
             <p class="mb-1">{sdata && sdata.date}</p>
           </div>
@@ -109,15 +115,16 @@ function PostPage(props) {
       <div>
         {comment &&
           Array.from(comment).map((e) => {
+            // {console.log( getUserById(e.userId)) ,'hello'}
             return (
               <div className="container col-lg-6 shadow-lg p-3 mt-3 bg-body rounded">
                 <div className="ml-4">
                   <PersonCircle size={30} className="mr-3" />
-                  posted by Yash Lahoti
+                  posted by 
                 </div>
                 <div className="m-4">{e.description}</div>
                 <div className="d-flex w-100 justify-content-between mt-3 mb-3">
-                  <p class="mb-1">2:43 PM 12/01/2022</p>
+                  <p class="mb-1">{e.date}</p>
                 </div>
               </div>
             );

@@ -1,5 +1,5 @@
 import React from 'react';
-import noteContext from '../context/notes/NoteContext';
+import noteContext from '../Context/notes/NoteContext';
 import { useContext, useEffect } from 'react';
 import AppliedBids from './AppliedBids';
 
@@ -19,9 +19,10 @@ function Page() {
       
       
       {showUserBid && showUserBid.length}
+   {/* {   console.log(showUserBid && showUserBid.length)} */}
      {
       showUserBid && Array.from(showUserBid).map((e)=>{
-        console.log(e);
+        // console.log(e);
         return <AppliedBids key={e._id} bid ={e}/>
       })
      }

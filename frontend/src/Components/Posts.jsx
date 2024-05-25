@@ -1,7 +1,7 @@
 import React, { useEffect , useContext} from "react";
 import "../css/Posts.css";
 import { PersonCircle, HandThumbsUpFill } from "react-bootstrap-icons";
-import noteContext from "../context/notes/NoteContext";
+import noteContext from "../Context/notes/NoteContext";
 
 import PostPage from "../Components/PostPage";
 import { Link } from "react-router-dom";
@@ -15,8 +15,7 @@ export default function Posts(props) {
   const { post } = props;
   useEffect(() => {
     // console.log(post._id);
-    getUser();
-    // console.log(name);
+
   }, [name]);
   return (
     <>

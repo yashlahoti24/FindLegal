@@ -13,6 +13,7 @@ const NoteState = (props) => {
   let [comment,setComments]  =useState();
   let [bid,setBid] = useState();
   let [lawyer,setLawyer] = useState();
+  let [flag,setFlag]= useState(false);
   const getLawyer =async(id)=>{
     const response = await fetch(`${host}/auth/getlawyer/${id}`, {
       method: "POST",
@@ -23,8 +24,9 @@ const NoteState = (props) => {
       // body: JSON.stringify({ name, phoneNo, DOB, email, password }),
     });
     const json = await response.json();
-    setLawyer(json);
-    console.log(json);
+    // setLawyer("hello");
+    console.log(json[0]);
+      setLawyer(json[0]);
   };
   
   const setUser = async (name, phoneNo, DOB, email, password) => {
@@ -47,9 +49,10 @@ const NoteState = (props) => {
       // },
     });
     const json = await response.json();
-    console.log(json);
-    // setName(json[0].name);
-    // console.log(name);
+    console.log(json[0]);
+    setName(json[0] && json[0].name);
+
+    // return json[0].name;
   }
   const getUser = async()=>{
     const response = await fetch(`${host}/discussion-forum/getuser`, {
@@ -60,8 +63,8 @@ const NoteState = (props) => {
       },
     });
     let json =await response.json();
-    console.log(json[0]._id);
-    return json[0]._id;
+    // console.log(json ,json[0]._id);
+    return json[0];
     
   }
   const loginUser = async(email,password)=>{
@@ -78,13 +81,34 @@ const NoteState = (props) => {
     console.log(json)
     if(json.success) {
       localStorage.setItem('token',json.authToken)
+      localStorage.setItem('flag',json.flag);
     }else {
       //  props.showAlert('Invalid Creditianls', 'danger');
       console.log("invalid credentials");
     }
     return json;
   }
-
+//login lawyer
+const loginLawyer = async(email,password)=>{
+  const response = await fetch(`${host}/auth/login/lawyer`,{
+    method:'POST',
+    headers:{
+      "Content-Type":"application/json"
+    }
+    ,
+    body:JSON.stringify({email,password})
+  })
+  const json = await response.json();
+  console.log(json,"successs");
+  console.log(json)
+  if(json.success) {
+    localStorage.setItem('token',json.authToken)
+  }else {
+    //  props.showAlert('Invalid Creditianls', 'danger');
+    console.log("invalid credentials");
+  }
+  return json;
+}
   //get all post
   const getPost =  async()=>{
 
@@ -130,6 +154,7 @@ const NoteState = (props) => {
     const json =  await response.json();
     // console.log(json.post[0]);
     setSdata(json.post[0]);
+    return json.post[0];
   }
   //view  like on specific post
   const postLikes = async(id)=>{
@@ -262,8 +287,8 @@ const NoteState = (props) => {
   //user seeing all its bids that lawyer had applied
   const usersBid=async()=>{
     let id  =  await getUser();
-    console.log(id,"this is the id of the user");
-    const response = await fetch(`${host}/bid/bids/show/${id}`, {
+    // console.log(id._id,"this is the id of the user");
+    const response = await fetch(`${host}/bid/bids/show/${id._id}`, {
       method: "POST", 
       headers: {
         "Content-Type": "application/json", 

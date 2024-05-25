@@ -3,7 +3,7 @@ import "../css/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "./LogoLightModeNoBg.png";
 
-import noteContext from "../context/notes/NoteContext";
+import noteContext from "../Context/notes/NoteContext";
 
 function Login(props) {
   const context = useContext(noteContext);
@@ -13,25 +13,10 @@ function Login(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // const response = await fetch(`http://localhost:5000/api/auth/login`, {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ email: note.email, password: note.password }),
-    // });
-    // const json = await response.json();
-    // console.log(json);
-    // if (json.success) {
-    //   localStorage.setItem("token", json.authToken);
-    //   // Redirect to the home page or any other page after successful login
-    //   window.location.href = "/";
-    //   props.showAlert("Login in successfully", "success");
-    // } else {
-    //   props.showAlert("Invalid Credentials", "danger");
-    // }
+
 
     const suc = await loginUser(note.email, note.password);
+    
     if (suc.success === true) {
       console.log("login successfully");
       Navigate("/");

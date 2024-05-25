@@ -147,7 +147,9 @@ router.delete("/delete/:id",fetchUser,async(req,res)=>{
 router.post("/get/:id",async(req,res)=>{
     try{
         let id =req.params.id;
+        console.log(id);
         let user = await Client.find({_id:id});
+        console.log(user);
         if(user===null){
             user= await Lawyer.find({_id:id});
         }

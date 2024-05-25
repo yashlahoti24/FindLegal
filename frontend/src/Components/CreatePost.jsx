@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import Input from "./Common/Input";
 import { useNavigate } from "react-router-dom";
-import noteContext from "../context/notes/NoteContext";
+import noteContext from "../Context/notes/NoteContext";
 
 
 function CreatePost() {

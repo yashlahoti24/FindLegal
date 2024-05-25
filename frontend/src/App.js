@@ -11,7 +11,7 @@ import SignUp from "./Components/SignUp";
 import Services from "./Components/Services";
 import LawyerLogin from "./Components/LawyerLogin";
 import LawyerSignup from "./Components/LawyerSignup";
-import NoteState from "./context/notes/NotesState";
+import NoteState from "./Context/notes/NotesState";
 // import ProfilePage from './Components/ProfileCard';
 import ProfilePage from "./Components/ProfilePage";
 import CreatePost from "./Components/CreatePost";

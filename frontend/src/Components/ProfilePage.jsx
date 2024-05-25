@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Posts from "./Posts";
 import Bids from "./Bids";
-import noteContext from "../context/notes/NoteContext";
+import noteContext from "../Context/notes/NoteContext";
 
 
 const ProfilePage = () => {
@@ -31,7 +31,7 @@ const ProfilePage = () => {
     getLawyerId();
     // console.log(lawyerId);
    
-  },[lawyer]);
+  },[]);
   return (
     <>
       <div className="profile-page">
@@ -52,8 +52,8 @@ const ProfilePage = () => {
               {/* User information */}
               <div className="details">
                 <div className="user-info">
-                  <h1 className="name">Yash Lahoti</h1>
-                  <p className="headline">High Court | Pune</p>
+                  <h1 className="name">{lawyer && lawyer.name}</h1>
+                  <p className="headline">{lawyer && lawyer.court}</p>
                   {/* Add more information such as connections, activity, etc. */}
                 </div>
               </div>
@@ -61,7 +61,7 @@ const ProfilePage = () => {
               {/* Profile Summary */}
               <div className="profile-summary">
                 <p>
-                Experienced attorney specializing in Business, offers tailored legal solutions with a client-centered approach. With a track record of success in Business, provide strategic advocacy and personalized attention to achieve favorable outcomes. Committed to justice both in and out of the courtroom, is dedicated to serving clients and community.
+                {lawyer && lawyer.bio}
                 </p>
               </div>
               {/* Contact Information */}

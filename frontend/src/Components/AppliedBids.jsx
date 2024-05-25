@@ -1,15 +1,21 @@
 import React, {useEffect, useContext} from 'react';
 import { Link } from "react-router-dom";
-import noteContext from '../context/notes/NoteContext';
+import noteContext from '../Context/notes/NoteContext';
 import "../css/Posts.css";
 
 function AppliedBids(props) {
     const context = useContext(noteContext);
-    const { BidId,bidAcceptance } = context;
-    let {bid} =props 
+    const { BidId,bidAcceptance ,lawyer,getLawyer} = context;
+    let {bid} =props ;
+    useEffect(()=>{
+      // console.log(bid.lawyerId)
+      // getLawyer(bid.lawyerId);
+      getLawyer(bid.lawyerId)
+      console.log(lawyer && lawyer.name)
+    },[]);
   const handleAccept=(e)=>{
     e.preventDefault();
-    console.log(bid.bidId,bid.lawyerId,bid.userId,bid.practise);
+    // console.log(bid.bidId,bid.lawyerId,bid.userId,bid.practise);
     bidAcceptance(bid.bidId,bid.lawyerId,bid.practise);
     console.log("accepted successfuly")
     
@@ -19,10 +25,11 @@ function AppliedBids(props) {
       <div className="list-group posts shadow-lg">
           <div className="d-flex w-100 justify-content-between">
             <Link to="/profile">
-            <h5 className="mb-1">Yash Lahoti</h5>
+            <h5 className="mb-1">{bid.practise}</h5>
+
             </Link>
           </div>
-          <small>Bid for : Rs 100</small>
+          <small>{bid.price}</small>
           <br />
           <small className="overflow-hidden description">
            {bid.description}</small>

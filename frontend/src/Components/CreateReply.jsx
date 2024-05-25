@@ -1,7 +1,7 @@
 import React, {useState,useEffect, useContext} from 'react'
 import "../css/Posts.css"
 import { useNavigate } from 'react-router-dom';
-import noteContext from '../context/notes/NoteContext';
+import noteContext from '../Context/notes/NoteContext';
 import { useLocation } from 'react-router-dom';
 
 

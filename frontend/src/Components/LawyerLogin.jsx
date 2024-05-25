@@ -7,7 +7,7 @@ function LawyerLogin(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`http://localhost:5000/auth/`, {
+    const response = await fetch(`http://localhost:5000/auth/login/lawyer`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

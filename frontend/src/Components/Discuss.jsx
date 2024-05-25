@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import "../css/Posts.css";
 import "../css/Discuss.css";
 import { Link } from "react-router-dom";
-import noteContext from "../context/notes/NoteContext";
+import noteContext from "../Context/notes/NoteContext";
 import Posts from "./Posts";
 import { Row, Col, Container } from "react-bootstrap";
 import DiscussSide from "./DiscussSide";
@@ -45,7 +45,7 @@ function Discuss() {
           <Container>
           {data &&
             Array.from(data).map((p) => {
-              console.log(p)
+              // console.log(p)
               return <Posts key={p._id} post={p} />;
             })}
             </Container>

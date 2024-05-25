@@ -1,5 +1,5 @@
 import React, {useContext} from "react";
-import noteContext from "../../context/notes/NoteContext";
+import noteContext from "../../Context/notes/NoteContext";
 
 import { Link } from "react-router-dom";
 import "../../css/Category.css";
