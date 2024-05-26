@@ -4,9 +4,11 @@ const Like = require("../models/Likes");
 const Comment = require("../models/Comment");
 const Client = require("../models/Client");
 const Lawyer =require("../models/Lawyer");
+const Review = require("../models/Review");
 const router =express.Router();
 const {body,validationResult} = require('express-validator')
 const bcrypt  = require('bcryptjs')
+
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = 'Tanmayisagoodboy';
 const fetchUser = require('../middlewares/fetchUser');
@@ -56,6 +58,7 @@ router.get("/",async(req,res)=>{
     return res.status(500).json({err:err.message});
 }
 })
+
 // view a specific post | no registration no login required to view a specific post
 router.post("/:id",async(req,res)=>{
     try{
@@ -161,7 +164,37 @@ router.post("/get/:id",async(req,res)=>{
 })
 //filter a post based on tags
 // router.post("/",async(req,res)=>{
-
-// })
-
+    
+    // })
+    
+    //review a lawyer
+    router.post("/review/:id",fetchUser,async(req,res)=>{
+        let lawyerId = req.params.id;
+        let userId= req.user.id;
+        let {description,ratings} = req.body;
+        try{
+            let review = await Review.create({
+                lawyerId,userId,description,ratings
+            });
+            let length = (await Review.find({lawyerId})).length;
+            let sum = (await Review.find({lawyerId})).reduce((a,b)=>a+b.ratings,0);
+            let avg = sum/length;
+            console.log(length,sum,avg);
+            let lawyer = await Lawyer.updateOne({lawyerId},{ratings:avg});
+            return res.status(200).json({review,avg});
+    
+        }catch(err){
+            return res.status(500).json({err:err.message})
+        }
+        })
+        // view all reviews of a specific lawyer
+        router.post("/review/:id",fetchUser,async(req,res)=>{
+            let lawyerId = req.params.id;
+            try{
+                let reviews = await Review.find({lawyerId});
+                return res.status(200).json(reviews);
+            }catch(err){
+                return res.status(500).json(err);
+            }
+        })
 module.exports = router;

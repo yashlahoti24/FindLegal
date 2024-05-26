@@ -2,11 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import '../css/Navbar.css';
 import { Link } from "react-router-dom";
 import noteContext from '../Context/notes/NoteContext';
-
-
-
-
-
 function Navbar() {
   const context = useContext(noteContext);
   const { usersBid,showUserBid } = context;

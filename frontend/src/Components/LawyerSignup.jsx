@@ -5,7 +5,9 @@ import dummyDb from "../Data/dummyDb";
 
 function LawyerLogin(props) {
   let host= "http://localhost:5000";
+  const [flag,setFlag] = useState(false);
   const [info, setInfo] = useState({
+    name:"",
     email: "",
     password: "",
     phoneNo: "",
@@ -27,8 +29,10 @@ function LawyerLogin(props) {
     let temp =check(info.lawyerId);
     if(temp!==null){
       fill(info.name,info.lawyerId,info.court,info.practise,info.email,info.password,info.phoneNo,"tanmay",info.experience);
+    
     }else {
       console.log("enter valid barcode")
+ 
     }
   }
   function check() {
@@ -39,7 +43,8 @@ function LawyerLogin(props) {
       console.log(temp[i].barcode,info.lawyerId);
       if(temp[i].barcode ===Number(info.lawyerId)){
         console.log(temp[i]);
-        setInfo({ email: "",
+        setInfo({
+          name:temp[i].name, email: "",
         password: "",
         phoneNo: "",
         lawyerId: temp[i].barcode,
@@ -48,11 +53,16 @@ function LawyerLogin(props) {
         court: temp[i].court,
         practise: temp[i].practise})
         alert("Bar number Verified! Continue Registration")
+        setFlag(true);
+        console.log(flag);
         return temp[i];
 
       }
     }
     alert("Please enter valid bar number");
+    setFlag(false)
+    console.log(flag);
+
     return null;
   }
   const fill = async (name,lawyerId,court,practise, email, password, phoneNo, bio, expierence) => {
@@ -116,9 +126,10 @@ function LawyerLogin(props) {
           <input
             type="input"
             className="input"
-            placeholder="Name"
+            placeholder={info.name.length===0?"Name": `${info.name}`}
             name="name"
             onChange={onChange}
+            disabled
           />
 
           <input
@@ -152,16 +163,20 @@ function LawyerLogin(props) {
           <input
             type="text"
             className="input"
-            placeholder="Court"
+            placeholder={info.court.length===0?"Court": `${info.court}`}
             name="court"
             onChange={onChange}
+            disabled
           />
           <input
             type="text"
             className="input"
-            placeholder="Practise"
+            placeholder={info.practise.length===0?"Practise": `${info.practise}`}
             name="practise"
             onChange={onChange}
+
+            disabled
+
           />
           <input
             type="password"
@@ -177,7 +192,7 @@ function LawyerLogin(props) {
             name="cpassword"
             onChange={onChange}
           />
-          <button type="submit" className="form-btn" onClick={Verify}>
+          <button type="button" className="form-btn" disabled={flag?false:true}    onClick={Verify}>
             Register
           </button>
         </form>

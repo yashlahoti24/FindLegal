@@ -80,8 +80,10 @@ try{
     if(user){
         return res.status(400).json({err:"lawyer already exists"});
     }
+    let salt= await bcrypt.genSalt(10);
+let pass =await bcrypt.hash(password,salt);
  user = await Lawyer.create({
-  name,email,password,phoneNo,dob,lawyerId,bio,court,exp,city,ratings,practise
+  name,email,password:pass,phoneNo,dob,lawyerId,bio,court,exp,city,ratings,practise
 });
 const data = {
             user:{
@@ -111,13 +113,15 @@ try {
     let user =await Client.findOne({email});
     if(!user) {
         user = await Lawyer.findOne({email});
+        console.log(user.password, password);
         flag=true;
         if(!user)
         return res.status(404).json({success,err:'please enter valid credentials email'});
-    
+
     }
     
-    const passwordCompare = bcrypt.compare(password,user.password);
+    const passwordCompare =await bcrypt.compare(password,user.password);
+    // console.log(passwordCompare)
         if(!passwordCompare){
             return res.status(404).json({success,msg:"please try to login with correct creditenials"})
         }

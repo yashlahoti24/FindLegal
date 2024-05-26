@@ -140,5 +140,19 @@ return res.status(200).json({deleteFromBid,deleteFromBideRq,addToBidAcceptance})
 })
 
 
+// show lawyer all bid accepted
+router.post("/view-bid-acceptance-lawyer/:id",fetchUser,async(req,res)=>{
+    try{
+        let lawyerId = req.params.id;
+        let lawyer = await Lawyer.findOne({lawyerId});
+        let bidAcceptance = await BidAccept.find({lawyerId:lawyer._id});
+        return res.status(200).json({bidAcceptance});
+
+    }catch(err){
+        return res.status(500).json({err:err.message});
+    }
+
+})
+
 
 module.exports= router;
