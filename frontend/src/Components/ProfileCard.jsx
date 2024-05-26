@@ -24,7 +24,7 @@ export default function ProfileCard() {
                   <div className="flex-shrink-0">
                     <MDBCardImage
                       style={{ width: "180px", borderRadius: "50%", position:"relative", left:"-25px" }}
-                      src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngmart.com%2Ffiles%2F21%2FAdmin-Profile-PNG-Pic.png&f=1&nofb=1&ipt=13cf10cf23a2e6d2e2f8724498de54f1b826c2a989753387e17939b8be60aa60&ipo=images"
+                      src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F4d%2F4a%2F10%2F4d4a10e6edf74212a6317dc55559be30.jpg&f=1&nofb=1&ipt=60d9c71265a68c89d48d2a72069a78e07df7b3d43ae70e768103710f310d73e0&ipo=images"
                       alt="Balaji"
                       fluid
                     />
