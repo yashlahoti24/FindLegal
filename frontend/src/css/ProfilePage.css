@@ -1,4 +1,4 @@
-/* Profile Page */
+/* Profile Page
 .profile-page {
     max-width: fit-content;
     margin: 0 auto;
@@ -6,7 +6,6 @@
     font-family: Arial, sans-serif;
   }
   
-  /* Header */
   .header {
     display: flex;
     align-items: center;
@@ -44,13 +43,7 @@
     font-size: 18px;
     margin-bottom: 5px;
   }
-  
-  /* .location {
-    font-size: 16px;
-    color: #666;
-  } */
-  
-  /* Profile Summary */
+
   .profile-summary {
     margin-bottom: 30px;
     text-align: justify;
@@ -63,7 +56,6 @@
     color: #333;
   }
   
-  /* Experience */
 .experience{
   text-align: justify;
 }
@@ -88,7 +80,6 @@
     margin-top: 5px;
   }
   
-  /* Education */
   .education-item {
     margin-bottom: 30px;
   }
@@ -105,7 +96,6 @@
     color: #666;
   }
   
-  /* Skills */
   .skills {
     display: flex;
     flex-direction: row;
@@ -152,5 +142,19 @@
     background-color: #ddd;
   }
   
-  /* Add more custom styles as needed */
-  
+   */
+
+   /* .gradient-custom-2 {
+    background: white;
+    
+    background: -webkit-linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1));
+    
+    background: linear-gradient(to right, rgba(251, 194, 235, 1), rgba(166, 193, 238, 1))
+    } */
+
+    .profile{
+      width: 100%;
+    }
+    .review{
+      margin: 50px;
+    }

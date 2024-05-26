@@ -26,6 +26,7 @@ import Bidding from "./Components/Bidding";
 import BidPage from "./Components/BidPage";
 import Page from "./Components/Page";
 import ProfileCard from "./Components/ProfileCard";
+import CreateReview from "./Components/CreateReview";
 
 function App() {
   const [value, setValue] = useState("");
@@ -59,11 +60,7 @@ function App() {
     },
     {
       path: "/login",
-      element: (
-        <>
-          
-        </>
-      ),
+      element: <></>,
       element: (
         <>
           <Login />
@@ -83,7 +80,7 @@ function App() {
       element: (
         <>
           <Navbar />
-          <Services/>
+          <Services />
           <Footer />
         </>
       ),
@@ -98,66 +95,143 @@ function App() {
     },
     {
       path: "/lawyer-profile",
-      element: <><Navbar/><ProfilePage /><Footer/></>,
+      element: (
+        <>
+          <Navbar />
+          <ProfilePage />
+          <Footer />
+        </>
+      ),
     },
     {
       path: "/lawyer-profile/:id",
-      element: <><Navbar/><ProfilePage /><Footer/></>,
+      element: (
+        <>
+          <Navbar />
+          <ProfilePage />
+          <Footer />
+        </>
+      ),
     },
     {
       path: "/create-post",
-      element: <><Navbar/><CreatePost /></>,
+      element: (
+        <>
+          <Navbar />
+          <CreatePost />
+        </>
+      ),
     },
     {
       path: "/post",
-      element: <><Navbar/><Posts /></>,
+      element: (
+        <>
+          <Navbar />
+          <Posts />
+        </>
+      ),
     },
     {
       path: "/post-page/:id",
-      element: <><Navbar/><PostPage /></>,
+      element: (
+        <>
+          <Navbar />
+          <PostPage />
+        </>
+      ),
     },
     {
       path: "/bid",
-      element: <><Navbar/><Bidding /></>,
+      element: (
+        <>
+          <Navbar />
+          <Bidding />
+        </>
+      ),
     },
     {
       path: "/bid/:id",
-      element: <><Navbar/><BidPage /></>,
+      element: (
+        <>
+          <Navbar />
+          <BidPage />
+        </>
+      ),
     },
     {
       path: "/pro",
       // path: "/property-posession-delay-rera",
-      element: <><Navbar/><PropertyPossessionDelayRERA /><Footer/></>,
+      element: (
+        <>
+          <Navbar />
+          <PropertyPossessionDelayRERA />
+          <Footer />
+        </>
+      ),
     },
     {
       path: "/apostile",
       // path: "/property-posession-delay-rera",
-      element: <><Navbar/><Apostile_Certificate /><Footer/></>,
+      element: (
+        <>
+          <Navbar />
+          <Apostile_Certificate />
+          <Footer />
+        </>
+      ),
     },
     {
       path: "/trademark",
       // path: "/property-posession-delay-rera",
-      element: <><Navbar/><Trademark_Registration /><Footer/></>,
+      element: (
+        <>
+          <Navbar />
+          <Trademark_Registration />
+          <Footer />
+        </>
+      ),
     },
     {
       path: "/divorce",
       // path: "/property-posession-delay-rera",
-      element: <><Navbar/><Divorce /><Footer/></>,
+      element: (
+        <>
+          <Navbar />
+          <Divorce />
+          <Footer />
+        </>
+      ),
     },
     {
       path: "/page",
-      element: <><Navbar/><Page /></>,
+      element: (
+        <>
+          <Navbar />
+          <Page />
+        </>
+      ),
     },
     {
       path: "/card",
-      element: <ProfileCard/>,
+      element: <ProfileCard />,
+    },
+    {
+      path: "/create-review",
+      element: (
+        <>
+          {" "}
+          <Navbar />
+          <CreateReview />
+          <Footer />
+        </>
+      ),
     },
   ]);
 
   return (
     <div className="App">
       <NoteState>
-      <RouterProvider router={router} />
+        <RouterProvider router={router} />
       </NoteState>
     </div>
   );
