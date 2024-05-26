@@ -25,6 +25,7 @@ import Divorce from "./Components/Categories/Mutual_Consent_Divorce";
 import Bidding from "./Components/Bidding";
 import BidPage from "./Components/BidPage";
 import Page from "./Components/Page";
+import ProfileCard from "./Components/ProfileCard";
 
 function App() {
   const [value, setValue] = useState("");
@@ -146,6 +147,10 @@ function App() {
     {
       path: "/page",
       element: <><Navbar/><Page /></>,
+    },
+    {
+      path: "/card",
+      element: <ProfileCard/>,
     },
   ]);
 

@@ -6,6 +6,7 @@ import Birth from "../images/Birth.webp";
 import Divorce from "../images/Divorce.webp";
 import Name from "../images/Name.webp";
 import { Link } from "react-router-dom";
+import Certificates from "./Certificates";
 
 const Home = ({ options, label, id, selectedVal, handleChange }) => {
   const [query, setQuery] = useState("");
@@ -97,7 +98,7 @@ const Home = ({ options, label, id, selectedVal, handleChange }) => {
           </button>
         </div>
       </div>
-      <div className="location">
+      {/* <div className="location">
         <span className="search-text">Search for top-rated Lawyers: </span>
         <div className="dropdownHome">
           <div className="selected-value">
@@ -129,21 +130,66 @@ const Home = ({ options, label, id, selectedVal, handleChange }) => {
             ))}
           </div>
         </div>
+      </div> */}
+      <div className="profile-container">
+        <h2 className="m-3 text">Top Rated Lawyers</h2>
+        <div className="profileCard">
+          <Link to="/pro">
+            <ProfileCard />
+          </Link>
+          <Link to="/apostile">
+            <ProfileCard />
+          </Link>
+          <Link to="/divorce">
+            <ProfileCard />
+          </Link>
+          <Link to="/divorce">
+            <ProfileCard />
+          </Link>
+        </div>
       </div>
-      <h2 className="m-3 text">Legal Services</h2>
-      <div className="profileCard">
-        <Link to="/pro">
-          <ProfileCard title="Property Possession Delay - RERA" />
-        </Link>
-        <Link to="/apostile">
-          <ProfileCard title="Apostille Certificate" />
-        </Link>
-        <Link to ="/divorce">
-        <ProfileCard title="Mutual Consent Divorce" />
-        </Link>
-        <Link to ="trademark">
-        <ProfileCard title="TradeMark registration" />
-        </Link>
+      <div className="certificate-container">
+        <h2 className="container m-5 text">
+          Legal Services and Government Registrations
+        </h2>
+        <div className="certificate">
+          <Link to="/pro">
+            <Certificates title="Property Possession Delay" />
+          </Link>
+          <Link to="/pro">
+            <Certificates title="Apostile Certificate" />
+          </Link>
+          <Link to="/pro">
+            <Certificates title="Mutual Consent Divorce" />
+          </Link>
+          <Link to="/pro">
+            <Certificates title="Trademark Registration" />
+          </Link>
+          <Link to="/pro">
+            <Certificates title="Marriage Certificate" />
+          </Link>
+          <Link to="/pro">
+            <Certificates title="Birth Certificate" />
+          </Link>
+          <Link to="/pro">
+            <Certificates title="Name Change Certificate" />
+          </Link>
+          <Link to="/pro">
+            <Certificates title="GST Registration" />
+          </Link>
+          <Link to="/pro">
+            <Certificates title="FSSAI License" />
+          </Link>
+          <Link to="/pro">
+            <Certificates title="Legal Heir Certificate" />
+          </Link>
+          <Link to="/pro">
+            <Certificates title="Company Incorporation" />
+          </Link>
+          <Link to="/pro">
+            <Certificates title="Medical Negligence" />
+          </Link>
+        </div>
       </div>
     </>
   );

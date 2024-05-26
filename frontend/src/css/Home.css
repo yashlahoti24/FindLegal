@@ -152,8 +152,29 @@ img {
   align-items: center;
 }
 
-.profileCard {
+.profileCard{
   display: flex;
-  justify-content: space-around;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 5px;
+}
+
+.profile-container{
+  margin-top: 25px;
+}
+
+.certificate-container{
+  /* border: 1px solid black;
+  margin: 10px; */
+  padding: 1px;
+  margin-top: 80px;
+  background-color: rgba(232, 232, 232, 0.514);
+}
+
+.certificate {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 50px;
   margin: 40px;
 }
+

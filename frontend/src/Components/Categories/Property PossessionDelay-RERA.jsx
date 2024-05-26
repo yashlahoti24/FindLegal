@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import noteContext from "../../Context/notes/NoteContext";
 
 import { Link } from "react-router-dom";
@@ -9,20 +9,23 @@ import Col from "react-bootstrap/Col";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import Button from "react-bootstrap/Button";
+import { ToastContainer, toast, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function PropertyPossessionDelayRERA() {
   const context = useContext(noteContext);
   const { reqForBid } = context;
-  
+
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
     section.scrollIntoView({ behavior: "smooth" });
   };
-const handleReq=(e)=>{
-e.preventDefault();
-reqForBid("Property Possession Delay-RERA");
-console.log("requested for a certificate successfully")
-}
+  const handleReq = (e) => {
+    e.preventDefault();
+    reqForBid("Property Possession Delay-RERA");
+    console.log("requested for a certificate successfully");
+    toast.success('Requested for the Certificate!');
+  };
   return (
     <>
       <Container>
@@ -86,7 +89,7 @@ console.log("requested for a certificate successfully")
                   to protect the interests of home-Buyers in India.
                 </p>
                 <h5>Steps involved in a RERA complaint</h5>
-                
+
                 <ul className="custom-list">
                   <li>DOCUMENT VERIFICATON</li>
                   <li>COMPLAINT DRAFTING</li>
@@ -96,7 +99,6 @@ console.log("requested for a certificate successfully")
                   <li>JUDGMENT</li>
                   <li>EXECUTION</li>
                 </ul>
-              
               </section>
 
               <section
@@ -161,7 +163,6 @@ console.log("requested for a certificate successfully")
                     marginTop: "5px",
                     borderBottom: "1px solid grey",
                     paddingBottom: "10px",
-                    
                   }}
                 >
                   Payment Structure
@@ -197,8 +198,22 @@ console.log("requested for a certificate successfully")
                 Pay securely with major Credit and Debit cards, online Wallets
                 and UPI
               </p>
-              <Button variant="success"
-              onClick={handleReq}>Book a Lawyer</Button>
+              <Button variant="success" onClick={handleReq}>
+                Book a Lawyer
+              </Button>
+              <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Bounce}
+              />
               <p
                 style={{
                   color: "GrayText",

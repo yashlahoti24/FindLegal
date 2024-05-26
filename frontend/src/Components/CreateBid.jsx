@@ -5,6 +5,8 @@ import noteContext from "../Context/notes/NoteContext";
 import { useLocation } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
+import { ToastContainer, toast, Bounce } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function CreateBid() {
   let Navigate = useNavigate();
@@ -40,6 +42,7 @@ function CreateBid() {
     console.log(bidId);
     lawyerApplyingBid(bidId, com.description, com.price);
     console.log("done");
+    toast.success('Bid Applied Successfully!');
   }
 
   return (
@@ -86,6 +89,19 @@ function CreateBid() {
               >
                 Bid
               </button>
+              <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Bounce}
+              />
             </div>
           </div>
         </form>
