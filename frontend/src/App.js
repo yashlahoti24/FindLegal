@@ -27,6 +27,7 @@ import BidPage from "./Components/BidPage";
 import Page from "./Components/Page";
 import ProfileCard from "./Components/ProfileCard";
 import CreateReview from "./Components/CreateReview";
+import Marriage_Certificate from "./Components/Categories/Marriage_Certificate";
 
 function App() {
   const [value, setValue] = useState("");
@@ -176,6 +177,17 @@ function App() {
         <>
           <Navbar />
           <Apostile_Certificate />
+          <Footer />
+        </>
+      ),
+    },
+    {
+      path: "/marriage",
+      // path: "/property-posession-delay-rera",
+      element: (
+        <>
+          <Navbar />
+          <Marriage_Certificate />
           <Footer />
         </>
       ),

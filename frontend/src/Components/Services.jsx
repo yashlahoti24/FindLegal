@@ -67,7 +67,7 @@ const Services = () => {
       </div>
       {displayLaw &&
         displayLaw.map((e) => {
-          return <Lawyer key={e._id} law={e} />;
+          return<><Lawyer key={e._id} law={e} /></>;
         })}
     </>
   );

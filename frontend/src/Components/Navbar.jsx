@@ -57,7 +57,7 @@ function Navbar() {
                     </Link>
                   </li>{" "}
                   <li className="nav-item mr-2">
-                    <Link className="nav-link" to="lawyer-profile/123456789">
+                    <Link className="nav-link" to="lawyer-profile/345678912">
                       {/* <Link className="nav-link" to= {`/lawyer-profile/${post._id}`}> */}
                       Profile
                     </Link>

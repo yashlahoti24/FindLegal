@@ -26,11 +26,11 @@ function AppliedBids(props) {
     <>
       <div className="list-group posts shadow-lg">
         <div className="d-flex w-100 justify-content-between">
-          <Link to="/profile">
+          
             <h5 className="mb-1">{bid.practise}</h5>
-          </Link>
+
         </div>
-        <small>{bid.price}</small>
+        <small>Bid Amount: Rs {bid.price}</small>
         <br />
         <small className="overflow-hidden description">{bid.description}</small>
         <button className="btn btn-primary mt-2" onClick={handleAccept}>

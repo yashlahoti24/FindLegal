@@ -68,7 +68,7 @@ const Home = ({ options, label, id, selectedVal, handleChange }) => {
         <div id="carouselExample" className="carousel slide">
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <Link to="find-lawyer">
+              <Link to="marriage">
                 <img src={Marriage} className="d-block w-100" alt="..." />
               </Link>
             </div>
@@ -197,7 +197,7 @@ const Home = ({ options, label, id, selectedVal, handleChange }) => {
                             <MDBBtn outline className="me-1 flex-grow-1">
                               Chat
                             </MDBBtn>
-                            <Link to="/lawyer-profile/123456789">
+                            <Link to="/lawyer-profile/345678912">
                               <MDBBtn className="flex-grow-1">Profile</MDBBtn>
                             </Link>
                           </div>

@@ -19,13 +19,14 @@ function Types() {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item onClick={() => handleTypeClick("criminal")}>Criminal Lawyer</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleTypeClick("divorce")}>Business Lawyer</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleTypeClick("bankruptcy")}>Bankruptcy Lawyer</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleTypeClick("tax")}>Tax Lawyer</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleTypeClick("defence")}>Defence Lawyer</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleTypeClick("family")}>Family Lawyer</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleTypeClick("entertainment")}>Entertainment Lawyer</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleTypeClick("Criminal")}>Criminal Lawyer</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleTypeClick("Business")}>Business Lawyer</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleTypeClick("Property")}>Property Lawyer</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleTypeClick("Tax")}>Tax Lawyer</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleTypeClick("Defence")}>Defence Lawyer</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleTypeClick("Family")}>Family Lawyer</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleTypeClick("Politics")}>Politics Lawyer</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleTypeClick("Industrial")}>Industrial Lawyer</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </>

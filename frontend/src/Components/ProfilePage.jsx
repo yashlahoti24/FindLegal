@@ -89,7 +89,7 @@ const ProfilePage = () => {
                       {lawyer && lawyer.name}
                     </MDBTypography>
                     <MDBCardText>
-                      {lawyer && lawyer.practise} | {lawyer && lawyer.city}
+                      {lawyer && lawyer.practise} | Mumbai
                     </MDBCardText>
                   </div>
                 </div>
@@ -115,7 +115,7 @@ const ProfilePage = () => {
                       </MDBCardText>
                     </div>
                     <div className="px-3">
-                      <MDBCardText className="mb-1 h5">100+</MDBCardText>
+                      <MDBCardText className="mb-1 h5">1</MDBCardText>
                       <MDBCardText className="small text-muted mb-0">
                         Reviews
                       </MDBCardText>
@@ -124,7 +124,7 @@ const ProfilePage = () => {
                 </div>
                 <MDBCardBody className="text-black p-4">
                   <div className="mb-5">
-                    <p className="lead fw-normal mb-1">About</p>
+                    <p className="lead fw-normal mb-1">Bio</p>
                     <div
                       className="p-4"
                       style={{

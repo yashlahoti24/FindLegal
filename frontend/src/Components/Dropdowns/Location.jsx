@@ -19,13 +19,16 @@ function Location() {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item onClick={() => handleLocationClick("pune")}>Pune</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleLocationClick("mumbai")}>Mumbai</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleLocationClick("chennai")}>Chennai</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleLocationClick("bangalore")}>Bangalore</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleLocationClick("kolkata")}>Kolkata</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleLocationClick("hyderabad")}>Hyderabad</Dropdown.Item>
-          <Dropdown.Item onClick={() => handleLocationClick("nagpur")}>Nagpur</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleLocationClick("Pune")}>Pune</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleLocationClick("Mumbai")}>Mumbai</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleLocationClick("Nagpur")}>Nagpur</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleLocationClick("Parbani")}>Parbani</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleLocationClick("Ahmednagar")}>Ahmednagar</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleLocationClick("Nanded")}>Nanded</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleLocationClick("Nashik")}>Nashik</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleLocationClick("Virar")}>Virar</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleLocationClick("Indira Nagar")}>Indira Nagar</Dropdown.Item>
+          <Dropdown.Item onClick={() => handleLocationClick("Indore")}>Indore</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     </>

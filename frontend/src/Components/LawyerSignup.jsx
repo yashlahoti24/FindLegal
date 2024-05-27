@@ -13,9 +13,10 @@ function LawyerLogin(props) {
     phoneNo: "",
     lawyerId: "",
     bio: "",
-    experience: "",
+    exp: "",
     court: "",
     practise: "",
+    city: "",
   });
 
   const handleSubmit = async (e) => {
@@ -28,10 +29,10 @@ function LawyerLogin(props) {
   function Verify() {
     let temp =check(info.lawyerId);
     if(temp!==null){
-      fill(info.name,info.lawyerId,info.court,info.practise,info.email,info.password,info.phoneNo,"tanmay",info.experience);
+      fill(info.name,info.lawyerId,info.court,info.practise,info.email,info.password,info.phoneNo,"tanmay",info.exp, info.city);
     
     }else {
-      console.log("enter valid barcode")
+      alert("enter valid barcode")
  
     }
   }
@@ -49,7 +50,7 @@ function LawyerLogin(props) {
         phoneNo: "",
         lawyerId: temp[i].barcode,
         bio: "",
-        expierence: "",
+        exp: "",
         court: temp[i].court,
         practise: temp[i].practise})
         alert("Bar number Verified! Continue Registration")
@@ -65,7 +66,7 @@ function LawyerLogin(props) {
 
     return null;
   }
-  const fill = async (name,lawyerId,court,practise, email, password, phoneNo, bio, expierence) => {
+  const fill = async (name,lawyerId,court,practise, email, password, phoneNo, bio, exp) => {
     console.log(info);
 
     //registration user ki api call hogi ;
@@ -81,7 +82,7 @@ function LawyerLogin(props) {
         phoneNo,
         lawyerId,
         bio:"Experienced attorney specializing in Business, offers tailored legal solutions with a client-centered approach. With a track record of success in Business, provide strategic advocacy and personalized attention to achieve favorable outcomes. Committed to justice both in and out of the courtroom, is dedicated to serving clients and community. ",
-        expierence,
+        exp,
         court,
         practise,
       }),
@@ -133,10 +134,10 @@ function LawyerLogin(props) {
           />
 
           <input
-            type="Address"
+            type="City"
             className="textarea"
-            placeholder="Address"
-            name="address"
+            placeholder="City"
+            name="city"
             onChange={onChange}
           />
           <input
@@ -157,7 +158,7 @@ function LawyerLogin(props) {
             type="number"
             className="input"
             placeholder="Experience"
-            name="experience"
+            name="exp"
             onChange={onChange}
           />
           <input
@@ -185,13 +186,13 @@ function LawyerLogin(props) {
             name="password"
             onChange={onChange}
           />
-          <input
+          {/* <input
             type="password"
             className="input"
             placeholder="Confirm Password"
             name="cpassword"
             onChange={onChange}
-          />
+          /> */}
           <button type="button" className="form-btn" disabled={flag?false:true}    onClick={Verify}>
             Register
           </button>
