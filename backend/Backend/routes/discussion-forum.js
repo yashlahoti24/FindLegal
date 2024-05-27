@@ -188,7 +188,7 @@ router.post("/get/:id",async(req,res)=>{
         }
         })
         // view all reviews of a specific lawyer
-        router.post("/review/:id",fetchUser,async(req,res)=>{
+        router.post("/view-all-review/:id",fetchUser,async(req,res)=>{
             let lawyerId = req.params.id;
             try{
                 let reviews = await Review.find({lawyerId});

@@ -12,7 +12,7 @@ export default function Reviews(props) {
   const {
     likes,name,getUser
   } = context;
-  const { post } = props;
+  const { id,rev} = props;
   useEffect(() => {
     // console.log(post._id);
 
@@ -21,14 +21,14 @@ export default function Reviews(props) {
     <>
         <div className="list-group posts shadow-lg">
           <div className="d-flex w-100 justify-content-between">
-            <h5 className="mb-1">Tanmay Yadav</h5>
+            <h5 className="mb-1">{rev.userId}</h5>
           </div>
           <div className="d-flex w-100 justify-content-between">
             <h6 className="mb-1 star"><Star/><Star/><Star/><Star/><Star/></h6>
           </div>
           <br />
           <small className="overflow-hidden description">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur, repellendus.
+          {rev.description}
           </small>
           <br />
         </div>

@@ -24,7 +24,7 @@ import Reviews from "./Reviews";
 
 const ProfilePage = () => {
   const context = useContext(noteContext);
-  const { getLawyer, lawyer } = context;
+  const { getLawyer, lawyer,fetchReviewsOfSpecificLawyer,lawyerReview } = context;
   const location = useLocation();
   let lawyerId;
   function getLawyerId() {
@@ -42,7 +42,8 @@ const ProfilePage = () => {
   }
   useEffect(() => {
     getLawyerId();
-    // console.log(lawyerId);
+    fetchReviewsOfSpecificLawyer(lawyerId);
+    console.log(lawyerReview);
   }, []);
   return (
     <>
@@ -130,8 +131,8 @@ const ProfilePage = () => {
                     </MDBBtn>
                   </div>
                   <div className="ms-3" style={{ marginTop: "130px" }}>
-                    <MDBTypography tag="h5">Yash Lahoti</MDBTypography>
-                    <MDBCardText>Business | Pune</MDBCardText>
+                    <MDBTypography tag="h5">{lawyer && lawyer.name}</MDBTypography>
+                    <MDBCardText>{lawyer && lawyer.practise}| {lawyer && lawyer.city}</MDBCardText>
                   </div>
                 </div>
                 <div
@@ -140,13 +141,13 @@ const ProfilePage = () => {
                 >
                   <div className="d-flex justify-content-end text-center py-1">
                     <div className="px-3">
-                      <MDBCardText className="mb-1 h5">2 years</MDBCardText>
+                      <MDBCardText className="mb-1 h5">{lawyer && lawyer.exp}</MDBCardText>
                       <MDBCardText className="small text-muted mb-0">
                         Experience
                       </MDBCardText>
                     </div>
                     <div className="px-3">
-                      <MDBCardText className="mb-1 h5">4.5</MDBCardText>
+                      <MDBCardText className="mb-1 h5">{lawyer && lawyer.ratings}</MDBCardText>
                       <MDBCardText className="small text-muted mb-0">
                         Rating
                       </MDBCardText>
@@ -171,21 +172,7 @@ const ProfilePage = () => {
                       }}
                     >
                       <MDBCardText className="font-italic mb-1">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing
-                        elit. Non laudantium numquam dicta, soluta explicabo
-                        beatae eligendi maxime placeat cum animi fugit quo?
-                        Voluptate eveniet cupiditate at inventore amet illo ut
-                        ipsum quaerat, quod, nobis rem magnam. Blanditiis,
-                        deleniti iure provident inventore corporis explicabo
-                        earum aspernatur. Tempore debitis aliquid, facere
-                        assumenda deserunt facilis, mollitia magni quasi esse
-                        provident nesciunt! Dignissimos voluptate quo sunt
-                        laboriosam quae dolor, amet corporis! Repudiandae quod
-                        qui perferendis quibusdam iure itaque reprehenderit
-                        repellat minima dolor recusandae necessitatibus sit
-                        aliquam, vitae, obcaecati similique labore numquam quo
-                        eligendi iusto quaerat! Ad ab molestias maiores neque
-                        saepe, doloribus earum perspiciatis?
+                    {lawyer && lawyer.bio}
                       </MDBCardText>
                     </div>
                   </div>
@@ -245,10 +232,13 @@ const ProfilePage = () => {
                       </div>
                       <h4 className="review">All Reviews</h4>
                     </MDBCardText>
-                  <Reviews />
-                  <Reviews />
-                  <Reviews />
-                  <Reviews />
+                 {
+                  lawyerReview && Array.from(lawyerReview).map((e)=>{
+                    return(
+                      <Reviews id={e._id} rev={e}/>
+                    )
+                  })
+                 }
                   </div>
                 </MDBCardBody>
               </MDBCard>

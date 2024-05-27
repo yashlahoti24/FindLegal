@@ -356,8 +356,27 @@ const loginLawyer = async(email,password)=>{
     setAllLawyer(json.lawyer);
   }
   }
+  //fetching reviews of a lawyer 
+  const [lawyerReview,setLawyerReview] =useState({});
+  const fetchReviewsOfSpecificLawyer=async(id)=>{
+      const response = await fetch(`${host}/discussion-forum/view-all-review/${id}`, {
+        method: "POST", 
+        headers: {
+          "Content-Type": "application/json", 
+          'auth-token':localStorage.getItem('token')  
+        },
+        // body: JSON.stringify({lawyerId,practise})
+      });
+      let json = await response.json();
+      console.log(json);
+      setLawyerReview(json);
+    
+  }
+  //writing a review
+
+  //fetching all bid acceptance of a single lawyer
   return (
-    <NoteContext.Provider value={{lawyer,getLawyer,displayAllLawyer,displayLaw,showUserBid,bidAcceptance,usersBid,lawyerApplyingBid,bid,showBids,reqForBid,getUserById,getUser,name,disLikePost,postLikes,likes,likeOnPost, setUser,postComments,comment , specificPost,loginUser,data,getPost,sdata,addPost,commentOnPos}}>
+    <NoteContext.Provider value={{fetchReviewsOfSpecificLawyer,lawyerReview,lawyer,getLawyer,displayAllLawyer,displayLaw,showUserBid,bidAcceptance,usersBid,lawyerApplyingBid,bid,showBids,reqForBid,getUserById,getUser,name,disLikePost,postLikes,likes,likeOnPost, setUser,postComments,comment , specificPost,loginUser,data,getPost,sdata,addPost,commentOnPos}}>
       {props.children}
     </NoteContext.Provider>
   );

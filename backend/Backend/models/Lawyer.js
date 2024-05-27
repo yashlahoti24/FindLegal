@@ -61,7 +61,7 @@ const LawyerSchema= new Schema({
         default:0
     },
     exp:{
-        type:Number
+        type:Number,default:0
     },
     court:{
         type:String,
