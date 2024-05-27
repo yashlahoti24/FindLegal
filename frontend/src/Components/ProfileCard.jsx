@@ -10,7 +10,8 @@ import {
   MDBCardImage,
   MDBBtn,
 } from "mdb-react-ui-kit";
-import "../css/ProfileCard.css"
+import "../css/ProfileCard.css";
+import image from "../images/image.png";
 
 export default function ProfileCard() {
   return (
@@ -23,8 +24,13 @@ export default function ProfileCard() {
                 <div className="d-flex text-black">
                   <div className="flex-shrink-0">
                     <MDBCardImage
-                      style={{ width: "180px", borderRadius: "50%", position:"relative", left:"-25px" }}
-                      src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.pinimg.com%2F736x%2F4d%2F4a%2F10%2F4d4a10e6edf74212a6317dc55559be30.jpg&f=1&nofb=1&ipt=60d9c71265a68c89d48d2a72069a78e07df7b3d43ae70e768103710f310d73e0&ipo=images"
+                      style={{
+                        width: "160px",
+                        borderRadius: "0%",
+                        position: "relative",
+                        left: "-25px",
+                      }}
+                      src={image}
                       alt="Balaji"
                       fluid
                     />

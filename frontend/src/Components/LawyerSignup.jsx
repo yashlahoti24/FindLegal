@@ -90,7 +90,7 @@ function LawyerLogin(props) {
     if (json.success) {
       localStorage.setItem("token", json.authToken);
       // Redirect to home page or any other page after successful sign up
-      window.location.href = "/";
+      window.location.href = "/login";
       // props.showAlert("Account created successfully", "success");
     } else {
       // props.showAlert("Invalid Credentials", "danger");

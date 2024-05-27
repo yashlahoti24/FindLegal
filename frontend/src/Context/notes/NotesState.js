@@ -49,7 +49,7 @@ const NoteState = (props) => {
       // },
     });
     const json = await response.json();
-    console.log(json[0]);
+    // console.log(json[0]);
     setName(json[0] && json[0].name);
 
     // return json[0].name;

@@ -1,11 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect,useContext } from "react";
 import "../css/Posts.css";
 import { Link } from "react-router-dom";
+import noteContext from "../Context/notes/NoteContext";
 
 export default function Bids(props) {
-  const { post } = props;
+  const context = useContext(noteContext);
+  
+  const {getUserById,name }  = context;
+  const { post} = props;
   useEffect(() => {
-    console.log(post._id);
+    getUserById(post.userId);
+    console.log(name)
+    // console.log(post._id);
   }, []);
   return (
     <>
@@ -14,7 +20,7 @@ export default function Bids(props) {
           <div className="d-flex w-100 justify-content-between">
             <h5 className="mb-1">{post.practise}</h5>
           </div>
-          <small>Created by Lawyer Name</small>
+          <small>Created by {name}</small>
           <br />
           <small className="overflow-hidden description">
             {post.description}
