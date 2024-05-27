@@ -73,7 +73,11 @@ const LawyerSchema= new Schema({
     },
     city:{
         type:String,require:true
+    },
+    img:{
+        type:String
     }
+    
 })
 const Lawyer = mongoose.model('lawyer',LawyerSchema);
 module.exports = Lawyer

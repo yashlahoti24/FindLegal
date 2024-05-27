@@ -69,13 +69,13 @@ function SignUp(props) {
             name="phoneNo"
             onChange={onChange}
           />
-          <input
+          {/* <input
             type="Number"
             className="textarea"
             placeholder="DOB"
             name="DOB"
             onChange={onChange}
-          />
+          /> */}
           <input
             type="email"
             className="input"
@@ -88,13 +88,6 @@ function SignUp(props) {
             className="input"
             placeholder="Password"
             name="password"
-            onChange={onChange}
-          />
-          <input
-            type="password"
-            className="input"
-            placeholder="Confirm Password"
-            name="cpassword"
             onChange={onChange}
           />
           <button type="submit" className="form-btn" onClick={handleSubmit}>

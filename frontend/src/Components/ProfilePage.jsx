@@ -10,6 +10,7 @@ import Bids from "./Bids";
 import noteContext from "../Context/notes/NoteContext";
 import { Star } from "react-bootstrap-icons";
 import image from "../images/image.png";
+import ketan from "../images/ketan.jpg"
 import {
   MDBCol,
   MDBContainer,
@@ -23,13 +24,14 @@ import {
 import Reviews from "./Reviews";
 
 const ProfilePage = () => {
+  const arr= [image,ketan];
   const context = useContext(noteContext);
-  const { getLawyer, lawyer, fetchReviewsOfSpecificLawyer, lawyerReview } =
+  const { getLawyer, lawyer, fetchReviewsOfSpecificLawyer, lawyerReview,writeReview } =
     context;
   const location = useLocation();
   const [rating, setRating] = useState(0);
+  const [description,setDescription] = useState("");
   let lawyerId;
-  // let [x,setX] = description:"",ratings:""
   function getLawyerId() {
     let temp = location.pathname;
     let i = 1;
@@ -46,20 +48,27 @@ const ProfilePage = () => {
   useEffect(() => {
     getLawyerId();
     fetchReviewsOfSpecificLawyer(lawyerId);
-    console.log(lawyerReview);
+    // console.log(lawyer.img);
   }, []);
 
   const handleStarClick = (value) => {
     setRating(value);
-    console.log(rating);
+  };
+  const onChange = (e) => {
+    setDescription({ ...description, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(rating);
+    getLawyerId();
+    writeReview(lawyerId,description.description,rating);
+    setDescription({description:""});
+    setRating(0);
   };
 
   return (
     <>
+    {/* error */}
+    {/* <img src={arr[1]} alt="this is an image" /> */}
       <div
         className="profile gradient-custom-2"
         style={{ backgroundColor: "white" }}
@@ -77,7 +86,7 @@ const ProfilePage = () => {
                     style={{ width: "150px" }}
                   >
                     <MDBCardImage
-                      src={image}
+                        src={image}
                       alt="Generic placeholder image"
                       className="mt-4 mb-2 img-thumbnail"
                       fluid
@@ -108,14 +117,14 @@ const ProfilePage = () => {
                     </div>
                     <div className="px-3">
                       <MDBCardText className="mb-1 h5">
-                        {lawyer && lawyer.ratings}
+                        {lawyer && (lawyer.ratings).toFixed(2)}
                       </MDBCardText>
                       <MDBCardText className="small text-muted mb-0">
                         Rating
                       </MDBCardText>
                     </div>
                     <div className="px-3">
-                      <MDBCardText className="mb-1 h5">1</MDBCardText>
+                      <MDBCardText className="mb-1 h5">{lawyerReview && lawyerReview.length}+</MDBCardText>
                       <MDBCardText className="small text-muted mb-0">
                         Reviews
                       </MDBCardText>
@@ -193,6 +202,7 @@ const ProfilePage = () => {
                               className="border border-primary form-control"
                               style={{ height: 150 }}
                               name="description"
+                              onChange={onChange}
                               type="text"
                               id="description"
                             />

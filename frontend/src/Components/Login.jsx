@@ -2,8 +2,9 @@ import React, { useState, useContext } from "react";
 import "../css/Login.css";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "./LogoLightModeNoBg.png";
-
 import noteContext from "../Context/notes/NoteContext";
+import { Bounce, toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function Login(props) {
   const context = useContext(noteContext);
@@ -14,14 +15,13 @@ function Login(props) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-
     const suc = await loginUser(note.email, note.password);
     
     if (suc.success === true) {
-      console.log("login successfully");
+      toast.success("Login successfully");
       Navigate("/");
     } else {
-      alert("login failed");
+      toast.error("Invalid Credentials");
       Navigate("/login");
     }
     console.log(note);
@@ -33,6 +33,19 @@ function Login(props) {
 
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+        transition={Bounce}
+      />
       <div className="bodyColor">
         <div className="form-container">
           <img

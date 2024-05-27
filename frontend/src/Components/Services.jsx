@@ -10,7 +10,7 @@ const Services = () => {
   const { displayAllLawyer, displayLaw } = context;
   useEffect(() => {
     displayAllLawyer(null, null);
-    // console.log(displayLaw,"lawyers displayed")
+    console.log(displayLaw, "lawy?ers displayed");
   }, []);
   const handleFilter = (e) => {
     e.preventDefault();
@@ -65,10 +65,16 @@ const Services = () => {
           Filter
         </button>
       </div>
-      {displayLaw &&
-        displayLaw.map((e) => {
-          return<><Lawyer key={e._id} law={e} /></>;
-        })}
+      <div className="lawyer">
+        {displayLaw &&
+          displayLaw.map((e) => {
+            return (
+              <>
+                <Lawyer key={e._id} law={e} />
+              </>
+            );
+          })}
+      </div>
     </>
   );
 };

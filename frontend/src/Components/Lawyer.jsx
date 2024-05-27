@@ -33,7 +33,7 @@ function Lawyer(props) {
 
       <div className="pCard" style={{ backgroundColor: "#fefefe" }}>
         <MDBContainer>
-          <MDBRow className="justify-content-center">
+          <MDBRow className="justify-content-start">
             <MDBCol md="9" lg="7" xl="5" className="mt-5">
               <MDBCard style={{ borderRadius: "15px" }}>
                 <MDBCardBody className="p-4">
@@ -58,21 +58,21 @@ function Lawyer(props) {
                       </MDBCardText>
 
                       <div
-                        className="d-flex justify-content-start rounded-3 p-2 mb-2"
+                        className="d-flex justify-content-center rounded-3 p-2 mb-2"
                         style={{ backgroundColor: "#efefef" }}
                       >
                         <div>
                           <p className="small text-muted mb-1">Experience</p>
-                          <p className="mb-0">2+ Years</p>
+                          <p className="mb-0">{law.exp}</p>
                         </div>
                         <div className="px-3">
                           <p className="small text-muted mb-1">Ratings</p>
-                          <p className="mb-0">4.7</p>
+                          <p className="mb-0">{law.ratings} / 5</p>
                         </div>
-                        <div>
-                          <p className="small text-muted mb-1">Users</p>
-                          <p className="mb-0">100+</p>
-                        </div>
+                        {/* <div>
+                          <p className="small text-muted mb-1">Reviews</p>
+                          <p className="mb-0"></p>
+                        </div> */}
                       </div>
                       <div className="d-flex pt-1">
                         <MDBBtn outline className="me-1 flex-grow-1">
