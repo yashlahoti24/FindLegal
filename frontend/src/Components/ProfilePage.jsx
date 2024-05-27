@@ -24,7 +24,8 @@ import {
 import Reviews from "./Reviews";
 
 const ProfilePage = () => {
-  const arr= [image,ketan];
+  const [images, setImages] = useState([]);
+  const [upIm,setUpIm] =useState([]);
   const context = useContext(noteContext);
   const { getLawyer, lawyer, fetchReviewsOfSpecificLawyer, lawyerReview,writeReview } =
     context;
@@ -45,12 +46,30 @@ const ProfilePage = () => {
     console.log(lawyer);
   }
 
+ 
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/images`);
+        const data = await response.json();
+        setImages(data);
+      } catch (error) {
+        console.error('Error fetching images:', error);
+      }
+    };
+
+    fetchImages();
+    getLawyerId();
+    const filteredImages = images.filter(image => image.lawyerId === lawyerId);
+    // console.log(filteredImages,"filtered images")
+    setUpIm(filteredImages);
+    console.log(upIm[0],"uppma")
+  }, [images]);
   useEffect(() => {
     getLawyerId();
     fetchReviewsOfSpecificLawyer(lawyerId);
     // console.log(lawyer.img);
   }, []);
-
   const handleStarClick = (value) => {
     setRating(value);
   };
@@ -69,10 +88,12 @@ const ProfilePage = () => {
     <>
     {/* error */}
     {/* <img src={arr[1]} alt="this is an image" /> */}
+    
       <div
         className="profile gradient-custom-2"
         style={{ backgroundColor: "white" }}
       >
+
         <MDBContainer className="w-100 py-5 h-100">
           <MDBRow className="justify-content-center align-items-center h-100">
             <MDBCol lg="9" xl="7" className="w-100">
@@ -85,8 +106,9 @@ const ProfilePage = () => {
                     className="ms-4 mt-5 d-flex flex-column"
                     style={{ width: "150px" }}
                   >
+                    
                     <MDBCardImage
-                        src={image}
+                        src={`http://localhost:5000/image/${upIm[0] && upIm[0]._id}`}
                       alt="Generic placeholder image"
                       className="mt-4 mb-2 img-thumbnail"
                       fluid
@@ -98,7 +120,7 @@ const ProfilePage = () => {
                       {lawyer && lawyer.name}
                     </MDBTypography>
                     <MDBCardText>
-                      {lawyer && lawyer.practise} | Mumbai
+                      {lawyer && lawyer.practise} | {lawyer && lawyer.city}
                     </MDBCardText>
                   </div>
                 </div>

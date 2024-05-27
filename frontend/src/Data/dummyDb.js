@@ -13,5 +13,6 @@ const dummyDb = [
     {barcode:11111111,name:"Mark Patil",court:"Nashik court",practise:"Entertainment"},
     {barcode:12345678,name:"Wil Smith",court:"Nagpur court",practise:"Bankruptcy"},
     {barcode:12312312,name:"Hardik Kohli",court:"Mumbai court",practise:"Divorce"},
+    {barcode:987654321,name:"Pranav Kohli",court:"London court",practise:"Gym"},
 ]
 exports.module= dummyDb;

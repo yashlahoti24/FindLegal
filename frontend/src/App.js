@@ -28,6 +28,8 @@ import Page from "./Components/Page";
 import ProfileCard from "./Components/ProfileCard";
 import CreateReview from "./Components/CreateReview";
 import Marriage_Certificate from "./Components/Categories/Marriage_Certificate";
+import UploadImage from "./Components/UploadImage";
+import ImageGallery from "./Components/ImageGallery";
 
 function App() {
   const [value, setValue] = useState("");
@@ -188,6 +190,18 @@ function App() {
         <>
           <Navbar />
           <Marriage_Certificate />
+          <Footer />
+        </>
+      ),
+    },
+    {
+      path: "/image",
+      // path: "/property-posession-delay-rera",
+      element: (
+        <>
+          <Navbar />
+          <UploadImage/>
+          <ImageGallery/>
           <Footer />
         </>
       ),

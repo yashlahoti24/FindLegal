@@ -14,11 +14,15 @@ import dummyDb from "../Data/dummyDb";
 import Logo from "./LogoLightModeNoBg.png";
 import { Link } from "react-router-dom";
 import { Bounce, toast, ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   let host = "http://localhost:5000";
   const [flag, setFlag] = useState(false);
+  const [image, setImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState('');
+  const [uploading, setUploading] = useState(false);
+
   const [info, setInfo] = useState({
     name: "",
     email: "",
@@ -37,6 +41,46 @@ function App() {
     Verify();
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
+
+  const handleUpload = async () => {
+    if (!image) {
+      alert('Please select an image to upload.');
+      return;
+    }
+    const formData = new FormData();
+    formData.append('file', image);
+    formData.append('lawyerId',info.lawyerId)
+
+    try {
+      setUploading(true);
+
+      const response = await fetch('http://localhost:5000/upload', {
+        method: 'POST',
+        body:formData
+            // lawyerId:"123456789"
+        
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to upload image');
+      }
+
+      const data = await response.json();
+      console.log('Image uploaded successfully:', data);
+      setImageUrl(`http://localhost:5000/image/${data._id}`); // Set uploaded image URL
+      alert('Image uploaded successfully!');
+      setImage(null); // Clear selected image
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      alert('Failed to upload image.');
+    } finally {
+      setUploading(false);
+    }
+  };
   function Verify() {
     let temp = check(info.lawyerId);
     if (temp !== null) {
@@ -48,7 +92,7 @@ function App() {
         info.email,
         info.password,
         info.phoneNo,
-        "tanmay",
+        info.bio,
         info.exp,
         info.city
       );
@@ -114,7 +158,7 @@ function App() {
           password,
           phoneNo,
           lawyerId,
-          bio: "Experienced attorney specializing in Business, offers tailored legal solutions with a client-centered approach. With a track record of success in Business, provide strategic advocacy and personalized attention to achieve favorable outcomes. Committed to justice both in and out of the courtroom, is dedicated to serving clients and community. ",
+          bio,
           exp,
           court,
           practise,
@@ -178,11 +222,7 @@ function App() {
                 </MDBCol>
                 <MDBCol>
                   <div className="d-flex flex-row justify-content-center mb-4">
-                    <MDBRadio
-                      name="flexRadio"
-                      label="Verify"
-                      onClick={check}
-                    />
+                    <MDBRadio name="flexRadio" label="Verify" onClick={check} />
                   </div>
                 </MDBCol>
               </MDBRow>
@@ -190,7 +230,9 @@ function App() {
                 <MDBCol>
                   <MDBInput
                     wrapperClass="mb-4"
-                    placeholder={info.name.length === 0 ? "Name" : `${info.name}`}
+                    placeholder={
+                      info.name.length === 0 ? "Name" : `${info.name}`
+                    }
                     name="name"
                     id="form2"
                     type="text"
@@ -243,7 +285,9 @@ function App() {
                 <MDBCol>
                   <MDBInput
                     wrapperClass="mb-4"
-                    placeholder={info.court.length === 0 ? "Court" : `${info.court}`}
+                    placeholder={
+                      info.court.length === 0 ? "Court" : `${info.court}`
+                    }
                     id="form4"
                     type="text"
                     name="court"
@@ -256,7 +300,11 @@ function App() {
                 <MDBCol>
                   <MDBInput
                     wrapperClass="mb-4"
-                    placeholder={info.practise.length === 0 ? "Practise" : `${info.practise}`}
+                    placeholder={
+                      info.practise.length === 0
+                        ? "Practise"
+                        : `${info.practise}`
+                    }
                     id="form4"
                     type="text"
                     name="practise"
@@ -270,12 +318,18 @@ function App() {
                     placeholder="Password"
                     id="form4"
                     type="password"
+                    name="password"
                     onChange={onChange}
                   />
                 </MDBCol>
               </MDBRow>
               <MDBRow>
-                <MDBTextArea placeholder="Write about yourself" className="m-2" onChange={onChange}></MDBTextArea>
+                <MDBTextArea
+                  placeholder="Write about yourself"
+                  className="m-2"
+                  onChange={onChange}
+                  name="bio"
+                ></MDBTextArea>
               </MDBRow>
               <MDBBtn
                 className="mb-4 w-100 shadow-lg btn-success"
@@ -285,6 +339,11 @@ function App() {
               >
                 Register
               </MDBBtn>
+              <h2>Upload Image</h2>
+              <input type="file" onChange={handleImageChange} />
+              <button onClick={handleUpload} disabled={uploading}>
+                {uploading ? "Uploading..." : "Upload"}
+              </button>
               <p className="paragraph">
                 Already registered? <Link to="/login">Log in</Link>
               </p>
