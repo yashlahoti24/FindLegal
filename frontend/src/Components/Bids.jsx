@@ -14,7 +14,7 @@ export default function Bids(props) {
           <div className="d-flex w-100 justify-content-between">
             <h5 className="mb-1">{post.practise}</h5>
           </div>
-          <small>Created by Lawyer Name</small>
+          <small>Created by User Name</small>
           <br />
           <small className="overflow-hidden description">
             {post.description}

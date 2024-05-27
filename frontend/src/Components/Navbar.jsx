@@ -1,23 +1,22 @@
 import React, { useState, useEffect, useContext } from "react";
-import '../css/Navbar.css';
+import "../css/Navbar.css";
 import { Link } from "react-router-dom";
-import noteContext from '../Context/notes/NoteContext';
+import noteContext from "../Context/notes/NoteContext";
 function Navbar() {
   const context = useContext(noteContext);
-  const { usersBid,showUserBid } = context;
-  let [signUp,setSignUp] = useState();
-  const handleSignIn=()=>{
-    if(!signUp){
-      localStorage.removeItem('token')
-      localStorage.removeItem('flag');
+  const { usersBid, showUserBid } = context;
+  let [signUp, setSignUp] = useState();
+  const handleSignIn = () => {
+    if (!signUp) {
+      localStorage.removeItem("token");
+      localStorage.removeItem("flag");
     }
-  }
-  useEffect(()=>{
-    if(localStorage.getItem('token')!==null){
+  };
+  useEffect(() => {
+    if (localStorage.getItem("token") !== null) {
       setSignUp(false);
-      
-    }else setSignUp(true);
-  },[])
+    } else setSignUp(true);
+  }, []);
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -50,47 +49,42 @@ function Navbar() {
                   Discuss
                 </Link>
               </li>
-              {localStorage.getItem('flag')==='true'?(
+              {localStorage.getItem("flag") === "true" ? (
                 <>
-              <li className="nav-item mr-2">
-                <Link className="nav-link" to="/bid">
-                  For Lawyers
-                </Link>
-              </li>  <li className="nav-item mr-2">
-                <Link className="nav-link" to= "lawyer-profile">
-                {/* <Link className="nav-link" to= {`/lawyer-profile/${post._id}`}> */}
-                  Profile
-                </Link>
-              </li>
-              </>
-              ): (
+                  <li className="nav-item mr-2">
+                    <Link className="nav-link" to="/bid">
+                      For Lawyers
+                    </Link>
+                  </li>{" "}
+                  <li className="nav-item mr-2">
+                    <Link className="nav-link" to="lawyer-profile/123456789">
+                      {/* <Link className="nav-link" to= {`/lawyer-profile/${post._id}`}> */}
+                      Profile
+                    </Link>
+                  </li>
+                </>
+              ) : (
                 <>
-                <li className="nav-item mr-2">
-                               <Link className="nav-link" to="/find-lawyer">
-                                 Find Lawyer
-                               </Link>
-                             </li>
-                             <li className="nav-item mr-2">
-                               <Link className="nav-link" to="/page">
-                                 Bids
-                               </Link>
-                             </li>
-                 </>
+                  <li className="nav-item mr-2">
+                    <Link className="nav-link" to="/find-lawyer">
+                      Find Lawyer
+                    </Link>
+                  </li>
+                  <li className="nav-item mr-2">
+                    <Link className="nav-link" to="/page">
+                      Bids
+                    </Link>
+                  </li>
+                </>
               )}
-              
-                
-
-              
- 
-             
-            
-                        </ul>
+            </ul>
             <Link to="/login">
               <button
                 type="button"
-               onClick={handleSignIn} className="btn btn-outline-primary signInBtn"
+                onClick={handleSignIn}
+                className="btn btn-outline-primary signInBtn"
               >
-                {signUp?"Sign Up":"Sign Out"}
+                {signUp ? "Sign Up" : "Sign Out"}
               </button>
             </Link>
           </div>
