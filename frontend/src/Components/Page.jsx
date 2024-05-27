@@ -17,11 +17,9 @@ function Page() {
       {/* <AppliedBids/> */}
 
       
-      
-      {showUserBid && showUserBid.length}
-   {/* {   console.log(showUserBid && showUserBid.length)} */}
+      {showUserBid && showUserBid.length==0 && (<h1>No bids to display</h1>)}
      {
-      showUserBid && Array.from(showUserBid).map((e)=>{
+      showUserBid && showUserBid.length>0 && Array.from(showUserBid).map((e)=>{
         // console.log(e);
         return <AppliedBids key={e._id} bid ={e}/>
       })

@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { useLocation } from "react-router-dom";
 import "../css/ProfilePage.css";
 import { Link } from "react-router-dom";
@@ -10,6 +10,7 @@ import Bids from "./Bids";
 import noteContext from "../Context/notes/NoteContext";
 import { Star } from "react-bootstrap-icons";
 import image from "../images/image.png";
+
 import {
   MDBCol,
   MDBContainer,
@@ -25,7 +26,9 @@ import Reviews from "./Reviews";
 
 const ProfilePage = () => {
   const context = useContext(noteContext);
-  const { getLawyer, lawyer,fetchReviewsOfSpecificLawyer,lawyerReview } = context;
+
+  const { getLawyer, lawyer,fetchReviewsOfSpecificLawyer,lawyerReview,writeReview } = context;
+  const [rev,setRev] = useState({description:"hell world",ratings:1});
   const location = useLocation();
   let lawyerId;
   function getLawyerId() {
@@ -41,11 +44,21 @@ const ProfilePage = () => {
     getLawyer(lawyerId);
     console.log(lawyer);
   }
+  let onChange= (e)=>{
+    setRev({...rev,[e.target.name]:e.target.value});
+  }
+  const handleSubmit=(e)=>{
+    e.preventDefault();
+    console.log("hello world");
+    getLawyerId();
+    console.log(lawyerId);
+    writeReview(lawyerId,rev.description,rev.ratings);
+  }
   useEffect(() => {
     getLawyerId();
     fetchReviewsOfSpecificLawyer(lawyerId);
     console.log(lawyerReview);
-  }, []);
+  }, [lawyerReview]);
   return (
     <>
       {/* <div className="profile-page">
@@ -148,14 +161,14 @@ const ProfilePage = () => {
                       </MDBCardText>
                     </div>
                     <div className="px-3">
-                      <MDBCardText className="mb-1 h5">{lawyer && lawyer.ratings}</MDBCardText>
+                      <MDBCardText className="mb-1 h5">{lawyer && (lawyer.ratings).toFixed(2)}</MDBCardText>
                       <MDBCardText className="small text-muted mb-0">
                         Rating
                       </MDBCardText>
                     </div>
 
                     <div className="px-3">
-                      <MDBCardText className="mb-1 h5">100+</MDBCardText>
+                      <MDBCardText className="mb-1 h5">{lawyerReview && lawyerReview.length}+</MDBCardText>
                       <MDBCardText className="small text-muted mb-0">
                         Reviews
                       </MDBCardText>
@@ -194,7 +207,7 @@ const ProfilePage = () => {
                             <textarea
                               className="border border-primary form-control"
                               style={{ height: 150 }}
-                              // onChange={handleChange}
+                              onChange={onChange}
                               name="description"
                               type="text"
                               id="description"
@@ -222,8 +235,8 @@ const ProfilePage = () => {
                               <button
                                 className="btn btn-primary mt-4"
                                 //   disabled={this.validate(
-                                // onClick={handleSubmit}
-                                //   )}
+                                onClick={handleSubmit}
+                                  
                               >
                                 Post Review
                               </button>
