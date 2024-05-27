@@ -9,6 +9,7 @@ import Posts from "./Posts";
 import Bids from "./Bids";
 import noteContext from "../Context/notes/NoteContext";
 import { Star } from "react-bootstrap-icons";
+import image from "../images/image.png";
 import {
   MDBCol,
   MDBContainer,
@@ -115,19 +116,19 @@ const ProfilePage = () => {
                     style={{ width: "150px" }}
                   >
                     <MDBCardImage
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                      src={image}
                       alt="Generic placeholder image"
                       className="mt-4 mb-2 img-thumbnail"
                       fluid
                       style={{ width: "150px", zIndex: "1" }}
                     />
-                    <MDBBtn
+                    {/* <MDBBtn
                       outline
                       color="dark"
                       style={{ height: "36px", overflow: "visible",  zIndex:"5" }}
                     >
                       Edit profile
-                    </MDBBtn>
+                    </MDBBtn> */}
                   </div>
                   <div className="ms-3" style={{ marginTop: "130px" }}>
                     <MDBTypography tag="h5">Yash Lahoti</MDBTypography>
