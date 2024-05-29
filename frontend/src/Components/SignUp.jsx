@@ -23,8 +23,9 @@ function SignUp(props) {
     //   body: JSON.stringify({ email: note.email, password: note.password }),
     // });
     // const json = await response.json();
-    // console.log(json);
+    // console.log(json.success);
     // if (json.success) {
+      
     //   localStorage.setItem("token", json.authToken);
     //   // Redirect to home page or any other page after successful sign up
     //   window.location.href = "/";
@@ -32,6 +33,7 @@ function SignUp(props) {
     // } else {
     //   // props.showAlert("Invalid Credentials", "danger");
     // }
+    
   };
 
   const onChange = (e) => {

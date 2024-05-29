@@ -35,9 +35,9 @@ const UploadImage = () => {
       }
 
       const data = await response.json();
-      console.log('Image uploaded successfully:', data);
+      // console.log('Image uploaded successfully:', data);
       setImageUrl(`http://localhost:5000/image/${data._id}`); // Set uploaded image URL
-      alert('Image uploaded successfully!');
+      // alert('Image uploaded successfully!');
       setImage(null); // Clear selected image
     } catch (error) {
       console.error('Error uploading image:', error);

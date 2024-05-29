@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   MDBCol,
@@ -11,10 +11,33 @@ import {
   MDBCardImage,
   MDBBtn,
 } from "mdb-react-ui-kit";
-import "../css/Home.css"
+import "../css/Home.css";
 
 function Lawyer(props) {
   const { law } = props;
+  const [images, setImages] = useState([]);
+  const [upIm, setUpIm] = useState([]);
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/images`);
+        const data = await response.json();
+        setImages(data);
+      } catch (error) {
+        console.error("Error fetching images:", error);
+      }
+    };
+
+    fetchImages();
+    // console.log(String(law.lawyerId), typeof String(law.lawyerId));
+    console.log(images,"images");
+    const filteredImages = images.filter(
+      (image) => image.lawyerId === String(law.lawyerId)
+    );
+    console.log(filteredImages, "filtered images");
+    setUpIm(filteredImages);
+  }, [images]);
+
   return (
     <>
       {/* <div className="list-group posts shadow-lg">
@@ -33,7 +56,7 @@ function Lawyer(props) {
 
       <div className="pCard" style={{ backgroundColor: "#fefefe" }}>
         <MDBContainer>
-          <MDBRow className="justify-content-start">
+          <MDBRow className="justify-content-center">
             <MDBCol md="9" lg="7" xl="5" className="mt-5">
               <MDBCard style={{ borderRadius: "15px" }}>
                 <MDBCardBody className="p-4">
@@ -41,13 +64,12 @@ function Lawyer(props) {
                     <div className="flex-shrink-0">
                       <MDBCardImage
                         style={{
-                          width: "180px",
-                          borderRadius: "50%",
+                          width: "160px",
                           position: "relative",
                           left: "-25px",
                         }}
-                        src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.pngmart.com%2Ffiles%2F21%2FAdmin-Profile-PNG-Pic.png&f=1&nofb=1&ipt=13cf10cf23a2e6d2e2f8724498de54f1b826c2a989753387e17939b8be60aa60&ipo=images"
-                        alt="Balaji"
+                        src={`http://localhost:5000/image/${upIm[0] && upIm[0]._id}`}
+                        alt="Loading..."
                         fluid
                       />
                     </div>
@@ -75,9 +97,9 @@ function Lawyer(props) {
                         </div> */}
                       </div>
                       <div className="d-flex pt-1">
-                        <MDBBtn outline className="me-1 flex-grow-1">
+                        {/* <MDBBtn outline className="me-1 flex-grow-1">
                           Chat
-                        </MDBBtn>
+                        </MDBBtn> */}
                         <Link to={`/lawyer-profile/${law.lawyerId}`}>
                           <MDBBtn className="flex-grow-1">Profile</MDBBtn>
                         </Link>
@@ -93,5 +115,4 @@ function Lawyer(props) {
     </>
   );
 }
-
 export default Lawyer;

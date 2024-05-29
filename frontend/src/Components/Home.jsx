@@ -8,7 +8,7 @@ import Name from "../images/Name.webp";
 import { Link } from "react-router-dom";
 import Certificates from "./Certificates";
 import image from "../images/image.png";
-import tanmay from "../images/tanmay.jpg";
+import tanmay from "../images/4.jpg";
 import ketan from "../images/ketan.jpg";
 import samarth from "../images/samarth.png";
 import {
@@ -194,70 +194,10 @@ const Home = ({ options, label, id, selectedVal, handleChange }) => {
                             </div>
                           </div>
                           <div className="d-flex pt-1">
-                            <MDBBtn outline className="me-1 flex-grow-1">
+                            {/* <MDBBtn outline className="me-1 flex-grow-1">
                               Chat
-                            </MDBBtn>
+                            </MDBBtn> */}
                             <Link to="/lawyer-profile/345678912">
-                              <MDBBtn className="flex-grow-1">Profile</MDBBtn>
-                            </Link>
-                          </div>
-                        </div>
-                      </div>
-                    </MDBCardBody>
-                  </MDBCard>
-                </MDBCol>
-              </MDBRow>
-            </MDBContainer>
-          </div>
-
-          <div className="pCard" style={{ backgroundColor: "#fefefe" }}>
-            <MDBContainer>
-              <MDBRow className="justify-content-center">
-                <MDBCol md="9" lg="7" xl="5" className="mt-5">
-                  <MDBCard style={{ borderRadius: "15px" }}>
-                    <MDBCardBody className="p-4">
-                      <div className="d-flex text-black">
-                        <div className="flex-shrink-0">
-                          <MDBCardImage
-                            style={{
-                              width: "160px",
-                              borderRadius: "0%",
-                              position: "relative",
-                              left: "-25px",
-                            }}
-                            src={tanmay}
-                            alt="Balaji"
-                            fluid
-                          />
-                        </div>
-                        <div className="flex-grow-1 ms-3">
-                          <MDBCardTitle>Tanmay Yadav</MDBCardTitle>
-                          <MDBCardText>Criminal | Mumbai</MDBCardText>
-
-                          <div
-                            className="d-flex justify-content-start rounded-3 p-2 mb-2"
-                            style={{ backgroundColor: "#efefef" }}
-                          >
-                            <div>
-                              <p className="small text-muted mb-1">
-                                Experience
-                              </p>
-                              <p className="mb-0">2+ Years</p>
-                            </div>
-                            <div className="px-3">
-                              <p className="small text-muted mb-1">Ratings</p>
-                              <p className="mb-0">4.2</p>
-                            </div>
-                            <div>
-                              <p className="small text-muted mb-1">Reviews</p>
-                              <p className="mb-0">16</p>
-                            </div>
-                          </div>
-                          <div className="d-flex pt-1">
-                            <MDBBtn outline className="me-1 flex-grow-1">
-                              Chat
-                            </MDBBtn>
-                            <Link to="/lawyer-profile/123456789">
                               <MDBBtn className="flex-grow-1">Profile</MDBBtn>
                             </Link>
                           </div>
@@ -314,9 +254,9 @@ const Home = ({ options, label, id, selectedVal, handleChange }) => {
                             </div>
                           </div>
                           <div className="d-flex pt-1">
-                            <MDBBtn outline className="me-1 flex-grow-1">
+                            {/* <MDBBtn outline className="me-1 flex-grow-1">
                               Chat
-                            </MDBBtn>
+                            </MDBBtn> */}
                             <Link to="/lawyer-profile/123456789">
                               <MDBBtn className="flex-grow-1">Profile</MDBBtn>
                             </Link>
@@ -329,65 +269,124 @@ const Home = ({ options, label, id, selectedVal, handleChange }) => {
               </MDBRow>
             </MDBContainer>
           </div>
-            <div className="pCard" style={{ backgroundColor: "#fefefe" }}>
-              <MDBContainer>
-                <MDBRow className="justify-content-center">
-                  <MDBCol md="9" lg="7" xl="5" className="mt-5">
-                    <MDBCard style={{ borderRadius: "15px" }}>
-                      <MDBCardBody className="p-4">
-                        <div className="d-flex text-black">
-                          <div className="flex-shrink-0">
-                            <MDBCardImage
-                              style={{
-                                width: "160px",
-                                borderRadius: "0%",
-                                position: "relative",
-                                left: "-25px",
-                              }}
-                              src={samarth}
-                              alt="Balaji"
-                              fluid
-                            />
-                          </div>
-                          <div className="flex-grow-1 ms-3">
-                            <MDBCardTitle>Samarth Thosar</MDBCardTitle>
-                            <MDBCardText>Tax | Bangalore</MDBCardText>
+          <div className="pCard" style={{ backgroundColor: "#fefefe" }}>
+            <MDBContainer>
+              <MDBRow className="justify-content-center">
+                <MDBCol md="9" lg="7" xl="5" className="mt-5">
+                  <MDBCard style={{ borderRadius: "15px" }}>
+                    <MDBCardBody className="p-4">
+                      <div className="d-flex text-black">
+                        <div className="flex-shrink-0">
+                          <MDBCardImage
+                            style={{
+                              width: "160px",
+                              borderRadius: "0%",
+                              position: "relative",
+                              left: "-25px",
+                            }}
+                            src={tanmay}
+                            alt="Balaji"
+                            fluid
+                          />
+                        </div>
+                        <div className="flex-grow-1 ms-3">
+                          <MDBCardTitle>Tanmay Yadav</MDBCardTitle>
+                          <MDBCardText>Criminal | Mumbai</MDBCardText>
 
-                            <div
-                              className="d-flex justify-content-start rounded-3 p-2 mb-2"
-                              style={{ backgroundColor: "#efefef" }}
-                            >
-                              <div>
-                                <p className="small text-muted mb-1">
-                                  Experience
-                                </p>
-                                <p className="mb-0">2+ Years</p>
-                              </div>
-                              <div className="px-3">
-                                <p className="small text-muted mb-1">Ratings</p>
-                                <p className="mb-0">4.5</p>
-                              </div>
-                              <div>
-                                <p className="small text-muted mb-1">Reviews</p>
-                                <p className="mb-0">13</p>
-                              </div>
+                          <div
+                            className="d-flex justify-content-start rounded-3 p-2 mb-2"
+                            style={{ backgroundColor: "#efefef" }}
+                          >
+                            <div>
+                              <p className="small text-muted mb-1">
+                                Experience
+                              </p>
+                              <p className="mb-0">2+ Years</p>
                             </div>
-                            <div className="d-flex pt-1">
-                              <MDBBtn outline className="me-1 flex-grow-1">
-                                Chat
-                              </MDBBtn>
-                              <Link to="/lawyer-profile/123456789">
-                                <MDBBtn className="flex-grow-1">Profile</MDBBtn>
-                              </Link>
+                            <div className="px-3">
+                              <p className="small text-muted mb-1">Ratings</p>
+                              <p className="mb-0">4.2</p>
                             </div>
+                            <div>
+                              <p className="small text-muted mb-1">Reviews</p>
+                              <p className="mb-0">16</p>
+                            </div>
+                          </div>
+                          <div className="d-flex pt-1">
+                            {/* <MDBBtn outline className="me-1 flex-grow-1">
+                              Chat
+                            </MDBBtn> */}
+                            <Link to="/lawyer-profile/123456789">
+                              <MDBBtn className="flex-grow-1">Profile</MDBBtn>
+                            </Link>
                           </div>
                         </div>
-                      </MDBCardBody>
-                    </MDBCard>
-                  </MDBCol>
-                </MDBRow>
-              </MDBContainer>
-            </div>
+                      </div>
+                    </MDBCardBody>
+                  </MDBCard>
+                </MDBCol>
+              </MDBRow>
+            </MDBContainer>
+          </div>
+          <div className="pCard" style={{ backgroundColor: "#fefefe" }}>
+            <MDBContainer>
+              <MDBRow className="justify-content-center">
+                <MDBCol md="9" lg="7" xl="5" className="mt-5">
+                  <MDBCard style={{ borderRadius: "15px" }}>
+                    <MDBCardBody className="p-4">
+                      <div className="d-flex text-black">
+                        <div className="flex-shrink-0">
+                          <MDBCardImage
+                            style={{
+                              width: "160px",
+                              borderRadius: "0%",
+                              position: "relative",
+                              left: "-25px",
+                            }}
+                            src={samarth}
+                            alt="Balaji"
+                            fluid
+                          />
+                        </div>
+                        <div className="flex-grow-1 ms-3">
+                          <MDBCardTitle>Samarth Thosar</MDBCardTitle>
+                          <MDBCardText>Tax | Bangalore</MDBCardText>
+
+                          <div
+                            className="d-flex justify-content-start rounded-3 p-2 mb-2"
+                            style={{ backgroundColor: "#efefef" }}
+                          >
+                            <div>
+                              <p className="small text-muted mb-1">
+                                Experience
+                              </p>
+                              <p className="mb-0">2+ Years</p>
+                            </div>
+                            <div className="px-3">
+                              <p className="small text-muted mb-1">Ratings</p>
+                              <p className="mb-0">4.5</p>
+                            </div>
+                            <div>
+                              <p className="small text-muted mb-1">Reviews</p>
+                              <p className="mb-0">13</p>
+                            </div>
+                          </div>
+                          <div className="d-flex pt-1">
+                            {/* <MDBBtn outline className="me-1 flex-grow-1">
+                              Chat
+                            </MDBBtn> */}
+                            <Link to="/lawyer-profile/123456789">
+                              <MDBBtn className="flex-grow-1">Profile</MDBBtn>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                    </MDBCardBody>
+                  </MDBCard>
+                </MDBCol>
+              </MDBRow>
+            </MDBContainer>
+          </div>
         </div>
       </div>
       <div className="certificate-container">

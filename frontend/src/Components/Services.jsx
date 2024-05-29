@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import Location from "./Dropdowns/Location";
 import Types from "./Dropdowns/Types";
 import "../css/Services.css";
@@ -7,10 +7,12 @@ import noteContext from "../Context/notes/NoteContext";
 import Lawyer from "./Lawyer";
 const Services = () => {
   const context = useContext(noteContext);
+  // const [exp, setExp] = useState(0);
+  // const [ratings, setRatings] = useState(false);
   const { displayAllLawyer, displayLaw } = context;
   useEffect(() => {
-    displayAllLawyer(null, null);
-    console.log(displayLaw, "lawy?ers displayed");
+    displayAllLawyer(null, null,"",0);
+    console.log(displayLaw, "lawyers displayed");
   }, []);
   const handleFilter = (e) => {
     e.preventDefault();
@@ -26,6 +28,7 @@ const Services = () => {
     let ind = temp.indexOf("/");
     if (ind === -1) {
       console.log(temp);
+
       displayAllLawyer(temp, null);
     } else {
       console.log(
@@ -34,9 +37,19 @@ const Services = () => {
       );
       displayAllLawyer(
         temp.substring(0, temp.indexOf("/")),
-        temp.substring(temp.indexOf("/") + 1)
+        temp.substring(temp.indexOf("/") + 1),
+        // sort.ratings,sort.exp
       );
     }
+    // function handleSort(e){
+    //   setRatings(ratings?"":"desc");
+    // }
+    // function onChange(e){
+    //   setExp({...exp,[e.target.name]: e.target.value})
+    // }
+    // function handleExp(e){
+    //   displayAllLawyer()
+    // }
     // console.log(temp);
   };
   return (
@@ -65,7 +78,34 @@ const Services = () => {
           Filter
         </button>
       </div>
-      <div className="lawyer">
+      {/* <div
+        className="dropdowns drop"
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        Sort By:
+        <div className="drop">
+          <input type="number" name="exp" placeholder="Experience"/>
+        </div>
+        <button
+          className="btn btn-outline-success"
+          type="button"
+        >
+          Sort
+        </button>
+        <button
+          className="btn btn-outline-success"
+          
+          type="button"
+        >
+          Sort By Ratings
+        </button>
+      </div> */}
+      {/* <div className="lawyer"> */}
         {displayLaw &&
           displayLaw.map((e) => {
             return (
@@ -74,7 +114,7 @@ const Services = () => {
               </>
             );
           })}
-      </div>
+      {/* </div> */}
     </>
   );
 };

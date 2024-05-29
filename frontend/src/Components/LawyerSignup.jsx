@@ -20,7 +20,7 @@ function App() {
   let host = "http://localhost:5000";
   const [flag, setFlag] = useState(false);
   const [image, setImage] = useState(null);
-  const [imageUrl, setImageUrl] = useState('');
+  const [imageUrl, setImageUrl] = useState("");
   const [uploading, setUploading] = useState(false);
 
   const [info, setInfo] = useState({
@@ -48,40 +48,40 @@ function App() {
 
   const handleUpload = async () => {
     if (!image) {
-      alert('Please select an image to upload.');
+      alert("Please select an image to upload.");
       return;
     }
     const formData = new FormData();
-    formData.append('file', image);
-    formData.append('lawyerId',info.lawyerId)
+    formData.append("file", image);
+    formData.append("lawyerId", info.lawyerId);
 
     try {
       setUploading(true);
 
-      const response = await fetch('http://localhost:5000/upload', {
-        method: 'POST',
-        body:formData
-            // lawyerId:"123456789"
-        
+      const response = await fetch("http://localhost:5000/upload", {
+        method: "POST",
+        body: formData,
+        // lawyerId:"123456789"
       });
 
       if (!response.ok) {
-        throw new Error('Failed to upload image');
+        throw new Error("Failed to upload image");
       }
 
       const data = await response.json();
-      console.log('Image uploaded successfully:', data);
+      console.log("Image uploaded successfully:", data);
       setImageUrl(`http://localhost:5000/image/${data._id}`); // Set uploaded image URL
-      alert('Image uploaded successfully!');
+      toast.success('Image uploaded successfully!')
       setImage(null); // Clear selected image
     } catch (error) {
-      console.error('Error uploading image:', error);
-      alert('Failed to upload image.');
+      console.error("Error uploading image:", error);
+      alert("Failed to upload image.");
     } finally {
       setUploading(false);
     }
   };
   function Verify() {
+    // handleUpload();
     let temp = check(info.lawyerId);
     if (temp !== null) {
       fill(
@@ -141,7 +141,8 @@ function App() {
     password,
     phoneNo,
     bio,
-    exp
+    exp,
+    city
   ) => {
     console.log(info);
 
@@ -162,6 +163,7 @@ function App() {
           exp,
           court,
           practise,
+          city,
         }),
       }
     );
@@ -169,7 +171,7 @@ function App() {
     if (json.success) {
       localStorage.setItem("token", json.authToken);
       window.location.href = "/login";
-      toast.success("Account created successfully");
+      // toast.success("Account created successfully");
     } else {
       toast.error("Invalid Credentials");
     }
@@ -331,6 +333,21 @@ function App() {
                   name="bio"
                 ></MDBTextArea>
               </MDBRow>
+              <MDBRow>
+                  <p>Upload Image</p>
+                <MDBCol>
+                  <input
+                    type="file"
+                    className="my-2"
+                    onChange={handleImageChange}
+                  />
+                </MDBCol>
+                <MDBCol>
+                  <button onClick={handleUpload} disabled={uploading}>
+                    {uploading ? "Uploading..." : "Upload"}
+                  </button>
+                </MDBCol>
+              </MDBRow>
               <MDBBtn
                 className="mb-4 w-100 shadow-lg btn-success"
                 size="lg"
@@ -339,11 +356,7 @@ function App() {
               >
                 Register
               </MDBBtn>
-              <h2>Upload Image</h2>
-              <input type="file" onChange={handleImageChange} />
-              <button onClick={handleUpload} disabled={uploading}>
-                {uploading ? "Uploading..." : "Upload"}
-              </button>
+
               <p className="paragraph">
                 Already registered? <Link to="/login">Log in</Link>
               </p>

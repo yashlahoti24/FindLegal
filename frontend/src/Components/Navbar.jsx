@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import noteContext from "../Context/notes/NoteContext";
 function Navbar() {
   const context = useContext(noteContext);
-  const { usersBid, showUserBid } = context;
+  const { getUser } = context;
   let [signUp, setSignUp] = useState();
+  let[lawyerId,setLawyerId] = useState();
   const handleSignIn = () => {
     if (!signUp) {
       localStorage.removeItem("token");
@@ -13,10 +14,17 @@ function Navbar() {
     }
   };
   useEffect(() => {
+    const f=async()=>{
+      let id = await getUser();
+      // console.log(id);
+      setLawyerId(id && id.lawyerId);
+    }
     if (localStorage.getItem("token") !== null) {
       setSignUp(false);
     } else setSignUp(true);
-  }, []);
+    f();
+    // console.log(lawyerId)
+  }, [lawyerId]);
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -57,8 +65,8 @@ function Navbar() {
                     </Link>
                   </li>{" "}
                   <li className="nav-item mr-2">
-                    <Link className="nav-link" to="lawyer-profile/345678912">
-                      {/* <Link className="nav-link" to= {`/lawyer-profile/${post._id}`}> */}
+                    <Link className="nav-link" to={`lawyer-profile/${lawyerId}`}>
+                      {/* <Link className="nav-link" to= {/lawyer-profile/${post._id}}> */}
                       Profile
                     </Link>
                   </li>

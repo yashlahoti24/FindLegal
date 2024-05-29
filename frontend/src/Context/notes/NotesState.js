@@ -39,6 +39,15 @@ const NoteState = (props) => {
     });
     const json = await response.json();
     console.log(json);
+    if (json.success) {
+      
+      localStorage.setItem("token", json.authToken);
+      // Redirect to home page or any other page after successful sign up
+      window.location.href = "/login";
+      // props.showAlert("Account created successfully", "success");
+    } else {
+      // props.showAlert("Invalid Credentials", "danger");
+    }
   };
   const getUserById =async(id)=>{
     const response = await fetch(`${host}/discussion-forum/get/${id}`, {
@@ -49,7 +58,7 @@ const NoteState = (props) => {
       // },
     });
     const json = await response.json();
-    // console.log(json[0]);
+    console.log(json[0] && json[0].name);
     setName(json[0] && json[0].name);
 
     // return json[0].name;
@@ -316,9 +325,10 @@ const loginLawyer = async(email,password)=>{
   }
   //bring all lawyers
   const[displayLaw,setAllLawyer] = useState();
-  const displayAllLawyer=async(a,b)=>{
+  const displayAllLawyer=async(a,b,ratings,exp)=>{
     if(b!==null){
-      const response = await fetch(`${host}/search/${a}/${b}`, {
+      const response = await fetch(`${host}/search/${a}/${b}?ratings=${ratings}&exp=${exp}`, {
+
         method: "POST", 
         headers: {
           "Content-Type": "application/json", 

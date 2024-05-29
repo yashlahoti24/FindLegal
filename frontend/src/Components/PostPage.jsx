@@ -4,6 +4,7 @@ import CreateReply from "./CreateReply";
 import noteContext from "../Context/notes/NoteContext";
 import { useLocation } from "react-router-dom";
 import { AiFillHeart } from "react-icons/ai";
+import Replies from "./Replies";
 
 function PostPage(props) {
   const context = useContext(noteContext);
@@ -66,7 +67,7 @@ function PostPage(props) {
 
     //box ke andar sdata aur comment tha
     //use re render hone ka uske vajah se undefine ka error nhi ata par out of resources ka error ata hai
-  }, [sdata]); // Added postId as a dependency for useEffect
+  }, []); // Added postId as a dependency for useEffect
   return (
     <>
       <div className="container col-lg-6 shadow-lg p-3 mt-5 bg-body rounded" style = {{ width:"auto"}}>
@@ -117,16 +118,7 @@ function PostPage(props) {
           Array.from(comment).map((e) => {
             // {console.log( getUserById(e.userId)) ,'hello'}
             return (
-              <div className="container col-lg-6 shadow-lg p-3 mt-3 bg-body rounded">
-                <div className="ml-4">
-                  <PersonCircle size={30} className="mr-3" />
-                  posted by 
-                </div>
-                <div className="m-4">{e.description}</div>
-                <div className="d-flex w-100 justify-content-between mt-3 mb-3">
-                  <p class="mb-1">{e.date}</p>
-                </div>
-              </div>
+              <Replies key = {e._id} e = {e}/>
             );
           })}
       </div>

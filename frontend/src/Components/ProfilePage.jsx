@@ -60,6 +60,7 @@ const ProfilePage = () => {
 
     fetchImages();
     getLawyerId();
+    // console.log(typeof lawyerId);
     const filteredImages = images.filter(image => image.lawyerId === lawyerId);
     // console.log(filteredImages,"filtered images")
     setUpIm(filteredImages);
@@ -120,7 +121,7 @@ const ProfilePage = () => {
                       {lawyer && lawyer.name}
                     </MDBTypography>
                     <MDBCardText>
-                      {lawyer && lawyer.practise} | {lawyer && lawyer.city}
+                      {lawyer && lawyer.practise} | {lawyer && lawyer.city} | {lawyer && lawyer.email}
                     </MDBCardText>
                   </div>
                 </div>
